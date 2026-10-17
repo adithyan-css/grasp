@@ -1,0 +1,128 @@
+{
+  "n_claims": 3041,
+  "n_generations": 558,
+  "ccp_24_8/product": {
+    "roc_auc": 0.8065,
+    "pr_auc": 0.6007,
+    "tpr_at_10fpr": 0.5143
+  },
+  "grasp0 (tau16 a0.9)": {
+    "roc_auc": 0.7356,
+    "pr_auc": 0.395,
+    "tpr_at_10fpr": 0.2722
+  },
+  "claim length only": {
+    "roc_auc": 0.6336,
+    "pr_auc": 0.319,
+    "tpr_at_10fpr": 0.1684
+  },
+  "rank-fuse grasp0+ccp (50/50)": {
+    "roc_auc": 0.8163,
+    "pr_auc": 0.5852,
+    "tpr_at_10fpr": 0.5008
+  },
+  "single_stats_top": [
+    [
+      "b3_grounding_min",
+      0.7815
+    ],
+    [
+      "b3_grounding_salw",
+      0.7555
+    ],
+    [
+      "b3_grounding_mean",
+      0.75
+    ],
+    [
+      "b1_grounding_min",
+      0.7419
+    ],
+    [
+      "b1_grounding_salw",
+      0.738
+    ],
+    [
+      "b1_grounding_mean",
+      0.734
+    ],
+    [
+      "b6_grounding_min",
+      0.7309
+    ],
+    [
+      "b0_grounding_min",
+      0.727
+    ]
+  ],
+  "GRASP-probe LR C=0.01": {
+    "roc_auc": 0.8373,
+    "pr_auc": 0.5878,
+    "tpr_at_10fpr": 0.5188
+  },
+  "GRASP-probe LR C=0.1": {
+    "roc_auc": 0.8408,
+    "pr_auc": 0.5895,
+    "tpr_at_10fpr": 0.5414
+  },
+  "GRASP-probe LR C=1.0": {
+    "roc_auc": 0.8363,
+    "pr_auc": 0.5829,
+    "tpr_at_10fpr": 0.5353
+  },
+  "GRASP-probe GBM": {
+    "roc_auc": 0.8358,
+    "pr_auc": 0.6028,
+    "tpr_at_10fpr": 0.5474
+  },
+  "GRASP-probe+CCP LR C=0.01": {
+    "roc_auc": 0.8667,
+    "pr_auc": 0.675,
+    "tpr_at_10fpr": 0.6075
+  },
+  "GRASP-probe+CCP LR C=0.1": {
+    "roc_auc": 0.8662,
+    "pr_auc": 0.6742,
+    "tpr_at_10fpr": 0.6256
+  },
+  "GRASP-probe+CCP LR C=1.0": {
+    "roc_auc": 0.8615,
+    "pr_auc": 0.6662,
+    "tpr_at_10fpr": 0.6256
+  },
+  "GRASP-probe+CCP GBM": {
+    "roc_auc": 0.8609,
+    "pr_auc": 0.6688,
+    "tpr_at_10fpr": 0.6301
+  },
+  "rank 0.3*probe_lr_C0.1 + 0.7*ccp": {
+    "roc_auc": 0.8464,
+    "pr_auc": 0.667,
+    "tpr_at_10fpr": 0.6045
+  },
+  "rank 0.5*probe_lr_C0.1 + 0.5*ccp": {
+    "roc_auc": 0.8619,
+    "pr_auc": 0.6759,
+    "tpr_at_10fpr": 0.612
+  },
+  "rank 0.7*probe_lr_C0.1 + 0.3*ccp": {
+    "roc_auc": 0.8635,
+    "pr_auc": 0.6653,
+    "tpr_at_10fpr": 0.6301
+  },
+  "rank 0.3*probe_gbm + 0.7*ccp": {
+    "roc_auc": 0.8457,
+    "pr_auc": 0.667,
+    "tpr_at_10fpr": 0.5955
+  },
+  "rank 0.5*probe_gbm + 0.5*ccp": {
+    "roc_auc": 0.8596,
+    "pr_auc": 0.6725,
+    "tpr_at_10fpr": 0.615
+  },
+  "rank 0.7*probe_gbm + 0.3*ccp": {
+    "roc_auc": 0.8594,
+    "pr_auc": 0.6611,
+    "tpr_at_10fpr": 0.6165
+  }
+}

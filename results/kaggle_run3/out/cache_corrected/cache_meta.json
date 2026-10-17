@@ -1,0 +1,8 @@
+{
+  "model": "meta-llama/Llama-3.2-3B-Instruct",
+  "profile": "corrected",
+  "align": "current",
+  "saliency_norm": "per_later_token",
+  "sink_size": 1,
+  "head_select": "variance"
+}

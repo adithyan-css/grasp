@@ -1,0 +1,9 @@
+{
+  "config": "bESSWQcqIaYZslTy7sy1Hg",
+  "model": "meta-llama/Llama-3.2-3B-Instruct",
+  "tau": 16.0,
+  "alpha": 0.9,
+  "fuse_with": "ccp_24_8",
+  "fuse_agg": "product",
+  "profile": "corrected"
+}

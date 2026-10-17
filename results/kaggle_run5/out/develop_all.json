@@ -1,0 +1,154 @@
+{
+  "n_claims": 19884,
+  "n_generations": 4673,
+  "ccp_24_8/product": {
+    "roc_auc": 0.7749,
+    "pr_auc": 0.6429,
+    "tpr_at_10fpr": 0.48
+  },
+  "grasp0 (tau16 a0.9)": {
+    "roc_auc": 0.6516,
+    "pr_auc": 0.4272,
+    "tpr_at_10fpr": 0.2252
+  },
+  "claim length only": {
+    "roc_auc": 0.6225,
+    "pr_auc": 0.3968,
+    "tpr_at_10fpr": 0.1863
+  },
+  "rank-fuse grasp0+ccp (50/50)": {
+    "roc_auc": 0.7683,
+    "pr_auc": 0.5832,
+    "tpr_at_10fpr": 0.3998
+  },
+  "single_stats_top": [
+    [
+      "b3_grounding_min",
+      0.6679
+    ],
+    [
+      "b1_grounding_min",
+      0.6609
+    ],
+    [
+      "b7_grounding_min",
+      0.655
+    ],
+    [
+      "b5_sink_max",
+      0.6495
+    ],
+    [
+      "b2_grounding_min",
+      0.6482
+    ],
+    [
+      "b0_grounding_min",
+      0.6464
+    ],
+    [
+      "b1_grounding_salw",
+      0.6411
+    ],
+    [
+      "b2_grounding_salw",
+      0.6393
+    ]
+  ],
+  "GRASP-probe LR C=0.01": {
+    "roc_auc": 0.7809,
+    "pr_auc": 0.5928,
+    "tpr_at_10fpr": 0.4368
+  },
+  "GRASP-probe LR C=0.1": {
+    "roc_auc": 0.783,
+    "pr_auc": 0.5948,
+    "tpr_at_10fpr": 0.4392
+  },
+  "GRASP-probe LR C=1.0": {
+    "roc_auc": 0.7827,
+    "pr_auc": 0.5949,
+    "tpr_at_10fpr": 0.4389
+  },
+  "GRASP-probe GBM": {
+    "roc_auc": 0.8427,
+    "pr_auc": 0.6991,
+    "tpr_at_10fpr": 0.5467
+  },
+  "GRASP-probe+CCP LR C=0.01": {
+    "roc_auc": 0.8312,
+    "pr_auc": 0.7026,
+    "tpr_at_10fpr": 0.5693
+  },
+  "GRASP-probe+CCP LR C=0.1": {
+    "roc_auc": 0.8325,
+    "pr_auc": 0.7043,
+    "tpr_at_10fpr": 0.5746
+  },
+  "GRASP-probe+CCP LR C=1.0": {
+    "roc_auc": 0.8324,
+    "pr_auc": 0.7038,
+    "tpr_at_10fpr": 0.572
+  },
+  "GRASP-probe+CCP GBM": {
+    "roc_auc": 0.8739,
+    "pr_auc": 0.767,
+    "tpr_at_10fpr": 0.6393
+  },
+  "rank 0.3*probe_lr_C0.1 + 0.7*ccp": {
+    "roc_auc": 0.8104,
+    "pr_auc": 0.689,
+    "tpr_at_10fpr": 0.5505
+  },
+  "rank 0.5*probe_lr_C0.1 + 0.5*ccp": {
+    "roc_auc": 0.8211,
+    "pr_auc": 0.6906,
+    "tpr_at_10fpr": 0.5531
+  },
+  "rank 0.7*probe_lr_C0.1 + 0.3*ccp": {
+    "roc_auc": 0.8156,
+    "pr_auc": 0.672,
+    "tpr_at_10fpr": 0.5257
+  },
+  "rank 0.3*probe_gbm + 0.7*ccp": {
+    "roc_auc": 0.8286,
+    "pr_auc": 0.7149,
+    "tpr_at_10fpr": 0.5768
+  },
+  "rank 0.5*probe_gbm + 0.5*ccp": {
+    "roc_auc": 0.8541,
+    "pr_auc": 0.7372,
+    "tpr_at_10fpr": 0.6047
+  },
+  "rank 0.7*probe_gbm + 0.3*ccp": {
+    "roc_auc": 0.8618,
+    "pr_auc": 0.7408,
+    "tpr_at_10fpr": 0.6061
+  },
+  "lomo": {
+    "google/gemma-3-4b-it": {
+      "n": 3348,
+      "ccp": 0.7847,
+      "probe": 0.6466,
+      "probe+ccp": 0.7335
+    },
+    "meta-llama/Llama-3.1-8B-Instruct": {
+      "n": 5931,
+      "ccp": 0.7792,
+      "probe": 0.7493,
+      "probe+ccp": 0.8052
+    },
+    "meta-llama/Llama-3.2-3B-Instruct": {
+      "n": 5941,
+      "ccp": 0.8105,
+      "probe": 0.7319,
+      "probe+ccp": 0.7972
+    },
+    "mistralai/Ministral-8B-Instruct-2410": {
+      "n": 4664,
+      "ccp": 0.8133,
+      "probe": 0.6539,
+      "probe+ccp": 0.7933
+    }
+  }
+}

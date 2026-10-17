@@ -1,0 +1,83 @@
+train claims 19884, generations 4673, models [np.str_('google/gemma-3-4b-it'), np.str_('meta-llama/Llama-3.1-8B-Instruct'), np.str_('meta-llama/Llama-3.2-3B-Instruct'), np.str_('mistralai/Ministral-8B-Instruct-2410')]
+
+-- references --
+  CCP                                            meanPM=0.7969 pooled=0.7749 PR=0.6429 TPR10=0.480
+  GRASP-0                                        meanPM=0.6578 pooled=0.6516 PR=0.4272 TPR10=0.225
+
+-- training-free (no labels used) --
+  tf_ground_min_mid                              meanPM=0.6593 pooled=0.6540 PR=0.4076 TPR10=0.216
+  tf_ground_all_mid                              meanPM=0.6241 pooled=0.6230 PR=0.3772 TPR10=0.180
+  tf_attn_all_signed                             meanPM=0.6659 pooled=0.6612 PR=0.4323 TPR10=0.223
+  tf_tokenprob_nll                               meanPM=0.7677 pooled=0.7515 PR=0.5613 TPR10=0.387
+  tf_ground_min_mid+tokenprob                    meanPM=0.7758 pooled=0.7600 PR=0.5248 TPR10=0.333
+
+-- supervised, 5-fold grouped CV --
+  A|none|logreg                                  meanPM=0.8035 pooled=0.8148 PR=0.6446 TPR10=0.469
+  A|none|gbm_d3                                  meanPM=0.8323 pooled=0.8474 PR=0.7092 TPR10=0.551
+  A|permodel|logreg                              meanPM=0.8152 pooled=0.8033 PR=0.6190 TPR10=0.458
+  A|permodel|gbm_d3                              meanPM=0.8301 pooled=0.8405 PR=0.6965 TPR10=0.544
+  AL|none|logreg                                 meanPM=0.8079 pooled=0.8190 PR=0.6500 TPR10=0.488
+  AL|none|gbm_d3                                 meanPM=0.8334 pooled=0.8482 PR=0.7115 TPR10=0.556
+  AL|permodel|logreg                             meanPM=0.8167 pooled=0.8047 PR=0.6195 TPR10=0.462
+  AL|permodel|gbm_d3                             meanPM=0.8319 pooled=0.8450 PR=0.7032 TPR10=0.549
+  T|none|logreg                                  meanPM=0.7812 pooled=0.7400 PR=0.5819 TPR10=0.405
+  T|none|gbm_d3                                  meanPM=0.7710 pooled=0.7435 PR=0.5899 TPR10=0.411
+  T|permodel|logreg                              meanPM=0.7852 pooled=0.7690 PR=0.5870 TPR10=0.439
+  T|permodel|gbm_d3                              meanPM=0.7807 pooled=0.7757 PR=0.6191 TPR10=0.447
+  TL|none|logreg                                 meanPM=0.7936 pooled=0.7527 PR=0.5988 TPR10=0.428
+  TL|none|gbm_d3                                 meanPM=0.7887 pooled=0.7628 PR=0.6145 TPR10=0.449
+  TL|permodel|logreg                             meanPM=0.7986 pooled=0.7822 PR=0.6125 TPR10=0.474
+  TL|permodel|gbm_d3                             meanPM=0.8018 pooled=0.8244 PR=0.6879 TPR10=0.540
+  AT|none|logreg                                 meanPM=0.8400 pooled=0.8476 PR=0.7212 TPR10=0.591
+  AT|none|gbm_d3                                 meanPM=0.8657 pooled=0.8787 PR=0.7749 TPR10=0.640
+  AT|permodel|logreg                             meanPM=0.8540 pooled=0.8411 PR=0.7067 TPR10=0.574
+  AT|permodel|gbm_d3                             meanPM=0.8655 pooled=0.8724 PR=0.7654 TPR10=0.633
+  ATL|none|logreg                                meanPM=0.8432 pooled=0.8509 PR=0.7268 TPR10=0.592
+  ATL|none|gbm_d3                                meanPM=0.8671 pooled=0.8798 PR=0.7768 TPR10=0.637
+  ATL|permodel|logreg                            meanPM=0.8555 pooled=0.8426 PR=0.7093 TPR10=0.580
+  ATL|permodel|gbm_d3                            meanPM=0.8670 pooled=0.8771 PR=0.7722 TPR10=0.642
+  ATLC|none|logreg                               meanPM=0.8475 pooled=0.8559 PR=0.7404 TPR10=0.605
+  ATLC|none|gbm_d3                               meanPM=0.8688 pooled=0.8813 PR=0.7818 TPR10=0.652
+  ATLC|permodel|logreg                           meanPM=0.8590 pooled=0.8454 PR=0.7147 TPR10=0.588
+  ATLC|permodel|gbm_d3                           meanPM=0.8712 pooled=0.8806 PR=0.7808 TPR10=0.660
+  ALC|none|logreg                                meanPM=0.8378 pooled=0.8481 PR=0.7250 TPR10=0.580
+  ALC|none|gbm_d3                                meanPM=0.8631 pooled=0.8754 PR=0.7713 TPR10=0.639
+  ALC|permodel|logreg                            meanPM=0.8480 pooled=0.8335 PR=0.6846 TPR10=0.556
+  ALC|permodel|gbm_d3                            meanPM=0.8633 pooled=0.8719 PR=0.7621 TPR10=0.635
+
+-- learner tuning + ensemble on ['ATLC|permodel', 'ATLC|none', 'ATL|none'] --
+  ATLC|permodel|gbm_d5                           meanPM=0.8842 pooled=0.8942 PR=0.8009 TPR10=0.691
+  ATLC|permodel|gbm_l31                          meanPM=0.8879 pooled=0.8979 PR=0.8061 TPR10=0.699
+  ATLC|permodel|ens(logreg+gbm_l31)              meanPM=0.8820 pooled=0.8841 PR=0.7804 TPR10=0.668
+  ATLC|none|gbm_d5                               meanPM=0.8821 pooled=0.8935 PR=0.8006 TPR10=0.681
+  ATLC|none|gbm_l31                              meanPM=0.8871 pooled=0.8979 PR=0.8070 TPR10=0.701
+  ATLC|none|ens(logreg+gbm_l31)                  meanPM=0.8776 pooled=0.8882 PR=0.7921 TPR10=0.668
+  ATL|none|gbm_d5                                meanPM=0.8819 pooled=0.8936 PR=0.7992 TPR10=0.686
+  ATL|none|gbm_l31                               meanPM=0.8848 pooled=0.8965 PR=0.8027 TPR10=0.693
+  ATL|none|ens(logreg+gbm_l31)                   meanPM=0.8752 pooled=0.8860 PR=0.7858 TPR10=0.663
+
+-- leave-one-model-out (transfer to an unseen model) --
+  ATLC|permodel|gbm_l31                          gemma-3-4b-i=0.789  Llama-3.1-8B=0.840  Llama-3.2-3B=0.851  Ministral-8B=0.838
+  ATLC|none|gbm_l31                              gemma-3-4b-i=0.784  Llama-3.1-8B=0.831  Llama-3.2-3B=0.845  Ministral-8B=0.835
+  ATL|none|gbm_l31                               gemma-3-4b-i=0.762  Llama-3.1-8B=0.826  Llama-3.2-3B=0.827  Ministral-8B=0.817
+  ATLC|permodel|gbm_d5                           gemma-3-4b-i=0.790  Llama-3.1-8B=0.837  Llama-3.2-3B=0.850  Ministral-8B=0.837
+  ATLC|none|gbm_d5                               gemma-3-4b-i=0.788  Llama-3.1-8B=0.835  Llama-3.2-3B=0.839  Ministral-8B=0.829
+  ATL|none|gbm_d5                                gemma-3-4b-i=0.769  Llama-3.1-8B=0.828  Llama-3.2-3B=0.822  Ministral-8B=0.813
+  CCP (per model)                                gemma-3-4b-i=0.785  Llama-3.1-8B=0.779  Llama-3.2-3B=0.810  Ministral-8B=0.813
+
+FROZEN v2 (train only): {
+  "criterion": "mean per-model 5-fold grouped CV ROC on the train split",
+  "training_free": {
+    "name": "tf_ground_min_mid+tokenprob",
+    "train_cv": 0.7758
+  },
+  "probe_no_ccp": {
+    "key": "ATL|none|gbm_l31",
+    "train_cv": 0.8848
+  },
+  "probe_with_ccp": {
+    "key": "ATLC|permodel|gbm_l31",
+    "train_cv": 0.8879
+  }
+}
+wrote results\dev\develop_v2_k4.json and results\dev\frozen_v2_k4.json

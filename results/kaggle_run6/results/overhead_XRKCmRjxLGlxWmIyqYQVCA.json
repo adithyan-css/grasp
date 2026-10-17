@@ -1,0 +1,13 @@
+{
+  "config": "XRKCmRjxLGlxWmIyqYQVCA",
+  "model": "google/gemma-3-4b-it",
+  "gpu": "Tesla T4",
+  "n_gpus": 2,
+  "n": 20,
+  "mean_generated_tokens": 8.35,
+  "generation_s_per_gen": 0.7481483192000269,
+  "grasp_extract_s_per_gen": 0.27767578600009984,
+  "grasp_cpu_s_per_gen": 0.00034302024996577527,
+  "overhead_pct": 37.16092105203725,
+  "note": "CCP's overhead on MUCH is ~124% (MUCH paper, A100); not re-measured here."
+}

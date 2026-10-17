@@ -1,0 +1,58 @@
+{
+  "XRKCmRjxLGlxWmIyqYQVCA": {
+    "model": "google/gemma-3-4b-it",
+    "temp": 0.7,
+    "exit": 0,
+    "features": 689,
+    "minutes": 5.8
+  },
+  "Q6U-toJrtxVpeYhI11BKiQ": {
+    "model": "google/gemma-3-4b-it",
+    "temp": 1.0,
+    "exit": 0,
+    "features": 667,
+    "minutes": 5.1
+  },
+  "bESSWQcqIaYZslTy7sy1Hg": {
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "temp": 0.7,
+    "exit": 0,
+    "features": 586,
+    "minutes": 6.3
+  },
+  "iNPhBxMXcn6uNgZtdDG7xQ": {
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "temp": 1.0,
+    "exit": 0,
+    "features": 564,
+    "minutes": 5.6
+  },
+  "h_RExrbMa9DSQoKjgXVAmw": {
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temp": 0.7,
+    "exit": 0,
+    "features": 562,
+    "minutes": 14.2
+  },
+  "HmRDWrH188fefK4uXNC_ew": {
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temp": 1.0,
+    "exit": 0,
+    "features": 547,
+    "minutes": 12.4
+  },
+  "ErZg41d6uehYNo-QcoCVAQ": {
+    "model": "mistralai/Ministral-8B-Instruct-2410",
+    "temp": 0.7,
+    "exit": 0,
+    "features": 632,
+    "minutes": 10.5
+  },
+  "YRYI5VveUmgxhdPi8apIgA": {
+    "model": "mistralai/Ministral-8B-Instruct-2410",
+    "temp": 1.0,
+    "exit": 0,
+    "features": 626,
+    "minutes": 8.8
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "criterion": "mean per-model 5-fold grouped CV ROC on the train split",
+  "training_free": {
+    "name": "tf_ground_min_mid+tokenprob",
+    "train_cv": 0.7758
+  },
+  "probe_no_ccp": {
+    "key": "ATL|none|gbm_l31",
+    "train_cv": 0.8848
+  },
+  "probe_with_ccp": {
+    "key": "ATLC|permodel|gbm_l31",
+    "train_cv": 0.8879
+  },
+  "training_free_features": [
+    "b1_h0_grounding_min",
+    "b1_h1_grounding_min",
+    "b1_h2_grounding_min",
+    "b1_h3_grounding_min",
+    "b2_h0_grounding_min",
+    "b2_h1_grounding_min",
+    "b2_h2_grounding_min",
+    "b2_h3_grounding_min",
+    "b3_h0_grounding_min",
+    "b3_h1_grounding_min",
+    "b3_h2_grounding_min",
+    "b3_h3_grounding_min",
+    "b4_h0_grounding_min",
+    "b4_h1_grounding_min",
+    "b4_h2_grounding_min",
+    "b4_h3_grounding_min",
+    "b5_h0_grounding_min",
+    "b5_h1_grounding_min",
+    "b5_h2_grounding_min",
+    "b5_h3_grounding_min",
+    "b6_h0_grounding_min",
+    "b6_h1_grounding_min",
+    "b6_h2_grounding_min",
+    "b6_h3_grounding_min",
+    "tp_nll_mean",
+    "tp_nll_max",
+    "tp_ent_mean"
+  ]
+}

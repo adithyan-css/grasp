@@ -1,0 +1,24 @@
+candidates (train CV of GRASP-v2): [(0.8848, 'results/dev/claims_k4.npz'), (0.8805, 'results/dev/claims_v2_1head.npz')]
+chosen table: results/dev/claims_k4.npz
+frozen: {"criterion": "mean per-model 5-fold grouped CV ROC on the train split", "training_free": {"name": "tf_ground_min_mid+tokenprob", "train_cv": 0.7758}, "probe_no_ccp": {"key": "ATL|none|gbm_l31", "train_cv": 0.8848}, "probe_with_ccp": {"key": "ATLC|permodel|gbm_l31", "train_cv": 0.8879}}
+
+TEST v2: 867 claims, 229 hallucinated, 200 generations
+  CCP            ROC=0.7697 [0.7243, 0.8172]  PR=0.6372  TPR@10=0.537
+  GRASP-0        ROC=0.6289 [0.5688, 0.6871]  PR=0.3878  TPR@10=0.188  dROC vs CCP -0.1408 [-0.2154, -0.0721]
+  GRASP-v2-free  ROC=0.7637 [0.7129, 0.8154]  PR=0.5008  TPR@10=0.354  dROC vs CCP -0.0060 [-0.0559, 0.0412]
+  GRASP-v2       ROC=0.9238 [0.8962, 0.9481]  PR=0.8447  TPR@10=0.790  dROC vs CCP +0.1541 [0.1101, 0.1985]
+  GRASP-v2+CCP   ROC=0.9201 [0.895, 0.9444]  PR=0.8375  TPR@10=0.729  dROC vs CCP +0.1504 [0.1113, 0.1905]
+
+per model (ROC):
+  gemma-3-4b-it                n= 134 CCP=0.726  GRASP-0=0.701  GRASP-v2-free=0.764  GRASP-v2=0.917  GRASP-v2+CCP=0.900
+  Llama-3.1-8B-Instruct        n= 282 CCP=0.831  GRASP-0=0.750  GRASP-v2-free=0.841  GRASP-v2=0.937  GRASP-v2+CCP=0.933
+  Llama-3.2-3B-Instruct        n= 279 CCP=0.767  GRASP-0=0.627  GRASP-v2-free=0.758  GRASP-v2=0.889  GRASP-v2+CCP=0.895
+  Ministral-8B-Instruct-2410   n= 172 CCP=0.830  GRASP-0=0.478  GRASP-v2-free=0.708  GRASP-v2=0.897  GRASP-v2+CCP=0.902
+
+transfer on test (fit on the other 3 models):
+  gemma-3-4b-it                n= 134  GRASP-v2=0.808  CCP=0.726
+  Llama-3.1-8B-Instruct        n= 282  GRASP-v2=0.882  CCP=0.831
+  Llama-3.2-3B-Instruct        n= 279  GRASP-v2=0.759  CCP=0.767
+  Ministral-8B-Instruct-2410   n= 172  GRASP-v2=0.853  CCP=0.830
+
+wrote results\final_eval_v2.json

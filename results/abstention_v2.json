@@ -1,0 +1,79 @@
+{
+  "CCP": {
+    "base_hallucination_rate": 0.2641,
+    "reject_5pct": {
+      "coverage": 0.9504,
+      "hallucination_rate_kept": 0.2282,
+      "relative_reduction_pct": 13.6
+    },
+    "reject_10pct": {
+      "coverage": 0.8997,
+      "hallucination_rate_kept": 0.2051,
+      "relative_reduction_pct": 22.3
+    },
+    "reject_20pct": {
+      "coverage": 0.8005,
+      "hallucination_rate_kept": 0.1628,
+      "relative_reduction_pct": 38.4
+    },
+    "reject_30pct": {
+      "coverage": 0.7001,
+      "hallucination_rate_kept": 0.1466,
+      "relative_reduction_pct": 44.5
+    },
+    "aurc": 0.152
+  },
+  "GRASP-v2-free": {
+    "base_hallucination_rate": 0.2641,
+    "reject_5pct": {
+      "coverage": 0.9504,
+      "hallucination_rate_kept": 0.2488,
+      "relative_reduction_pct": 5.8
+    },
+    "reject_10pct": {
+      "coverage": 0.8997,
+      "hallucination_rate_kept": 0.2308,
+      "relative_reduction_pct": 12.6
+    },
+    "reject_20pct": {
+      "coverage": 0.8005,
+      "hallucination_rate_kept": 0.1988,
+      "relative_reduction_pct": 24.7
+    },
+    "reject_30pct": {
+      "coverage": 0.7001,
+      "hallucination_rate_kept": 0.1598,
+      "relative_reduction_pct": 39.5
+    },
+    "aurc": 0.1266
+  },
+  "GRASP-v2": {
+    "base_hallucination_rate": 0.2641,
+    "reject_5pct": {
+      "coverage": 0.9504,
+      "hallucination_rate_kept": 0.2269,
+      "relative_reduction_pct": 14.1
+    },
+    "reject_10pct": {
+      "coverage": 0.8997,
+      "hallucination_rate_kept": 0.1885,
+      "relative_reduction_pct": 28.6
+    },
+    "reject_20pct": {
+      "coverage": 0.8005,
+      "hallucination_rate_kept": 0.1138,
+      "relative_reduction_pct": 56.9
+    },
+    "reject_30pct": {
+      "coverage": 0.7001,
+      "hallucination_rate_kept": 0.0725,
+      "relative_reduction_pct": 72.6
+    },
+    "aurc": 0.0622
+  },
+  "_check_roc": {
+    "CCP": 0.7697,
+    "GRASP-v2-free": 0.7637,
+    "GRASP-v2": 0.9238
+  }
+}

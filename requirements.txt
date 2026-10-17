@@ -1,0 +1,21 @@
+# GRASP — core
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+torch>=2.1
+transformers>=4.44
+accelerate>=0.30
+matplotlib>=3.7
+nltk>=3.8
+
+# MUCH benchmark interop (installed alongside the much repo)
+much-segmenter
+typer
+loguru
+pydantic>=2
+filelock
+datasets
+huggingface_hub
+
+# optional: 4-bit loading for the 8B models on a 16GB GPU
+bitsandbytes; platform_system != "Darwin"

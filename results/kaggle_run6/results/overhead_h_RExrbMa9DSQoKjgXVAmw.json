@@ -1,0 +1,13 @@
+{
+  "config": "h_RExrbMa9DSQoKjgXVAmw",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "gpu": "Tesla T4",
+  "n_gpus": 2,
+  "n": 20,
+  "mean_generated_tokens": 23.95,
+  "generation_s_per_gen": 2.2801120961999457,
+  "grasp_extract_s_per_gen": 0.8276823010499811,
+  "grasp_cpu_s_per_gen": 0.0006494378000297729,
+  "overhead_pct": 36.32855332992249,
+  "note": "CCP's overhead on MUCH is ~124% (MUCH paper, A100); not re-measured here."
+}

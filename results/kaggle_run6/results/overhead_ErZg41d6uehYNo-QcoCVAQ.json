@@ -1,0 +1,13 @@
+{
+  "config": "ErZg41d6uehYNo-QcoCVAQ",
+  "model": "mistralai/Ministral-8B-Instruct-2410",
+  "gpu": "Tesla T4",
+  "n_gpus": 2,
+  "n": 20,
+  "mean_generated_tokens": 14.9,
+  "generation_s_per_gen": 1.4031159147500603,
+  "grasp_extract_s_per_gen": 0.5314456422001967,
+  "grasp_cpu_s_per_gen": 0.00048751904996606753,
+  "overhead_pct": 37.91084939300379,
+  "note": "CCP's overhead on MUCH is ~124% (MUCH paper, A100); not re-measured here."
+}

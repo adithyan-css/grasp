@@ -1,0 +1,15 @@
+{
+  "n_samples": 50,
+  "total_tokens": 1434,
+  "avg_tokens_per_gen": 28.68,
+  "device": "Tesla T4",
+  "gpu_extract_seconds_total": 17.202005126999666,
+  "gpu_extract_seconds_per_gen": 0.3440401025399933,
+  "cpu_score_seconds_total": 0.009303911999722914,
+  "cpu_score_seconds_per_gen": 0.00018607823999445828,
+  "total_grasp_latency_per_gen": 0.34422618077998773,
+  "estimated_autoregressive_gen_time_per_gen": 0.8603999999999999,
+  "measured_overhead_pct": 40.00769186192326,
+  "throughput_gens_per_sec": 2.9050666562725813,
+  "throughput_tokens_per_sec": 83.36237487508033
+}

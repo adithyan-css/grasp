@@ -1,0 +1,11 @@
+{
+  "n_generations": 667,
+  "seconds": 210.36818146705627,
+  "seconds_per_generation": 0.31539457491312783,
+  "model": "google/gemma-3-4b-it",
+  "profile": "corrected",
+  "align": "current",
+  "saliency_norm": "per_later_token",
+  "head_select": "variance_topk",
+  "gpu": "Tesla T4"
+}

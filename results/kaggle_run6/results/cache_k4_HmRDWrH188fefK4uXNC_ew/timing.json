@@ -1,0 +1,11 @@
+{
+  "n_generations": 547,
+  "seconds": 475.9796016216278,
+  "seconds_per_generation": 0.8701638055239996,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "profile": "corrected",
+  "align": "current",
+  "saliency_norm": "per_later_token",
+  "head_select": "variance_topk",
+  "gpu": "Tesla T4"
+}

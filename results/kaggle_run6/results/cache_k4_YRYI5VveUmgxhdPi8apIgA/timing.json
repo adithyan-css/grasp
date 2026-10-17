@@ -1,0 +1,11 @@
+{
+  "n_generations": 626,
+  "seconds": 346.0587935447693,
+  "seconds_per_generation": 0.5528095743526666,
+  "model": "mistralai/Ministral-8B-Instruct-2410",
+  "profile": "corrected",
+  "align": "current",
+  "saliency_norm": "per_later_token",
+  "head_select": "variance_topk",
+  "gpu": "Tesla T4"
+}

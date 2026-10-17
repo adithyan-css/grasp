@@ -1,0 +1,5 @@
+CCP            base=0.264  AURC=0.1520  reject5pct: 0.228 (-13.6%)  reject10pct: 0.205 (-22.3%)  reject20pct: 0.163 (-38.4%)  reject30pct: 0.147 (-44.5%)
+GRASP-v2-free  base=0.264  AURC=0.1266  reject5pct: 0.249 (-5.8%)  reject10pct: 0.231 (-12.6%)  reject20pct: 0.199 (-24.7%)  reject30pct: 0.160 (-39.5%)
+GRASP-v2       base=0.264  AURC=0.0622  reject5pct: 0.227 (-14.1%)  reject10pct: 0.189 (-28.6%)  reject20pct: 0.114 (-56.9%)  reject30pct: 0.072 (-72.6%)
+ROC check (must match final_eval_v2.json): {'CCP': 0.7697, 'GRASP-v2-free': 0.7637, 'GRASP-v2': 0.9238}
+wrote results\abstention_v2.json and results\test_scores_v2.csv

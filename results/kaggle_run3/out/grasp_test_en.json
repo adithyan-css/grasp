@@ -1,0 +1,107 @@
+{
+  "profile": "corrected",
+  "norm_mode": "corpus",
+  "reset_mode": "reset",
+  "split": "test",
+  "cache_meta": {
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "profile": "corrected",
+    "align": "current",
+    "saliency_norm": "per_later_token",
+    "sink_size": 1,
+    "head_select": "variance"
+  },
+  "scoring_saliency_norm": "none",
+  "align_shift": 0,
+  "lang": "en",
+  "model": null,
+  "grasp": {
+    "native": {
+      "n": 28,
+      "positives": 2,
+      "roc_auc": 0.05769230769230771,
+      "pr_auc": 0.03753306878306878,
+      "average_precision": 0.05654761904761904,
+      "tpr_at_10fpr": 0.0,
+      "tpr_at_05fpr": 0.0
+    },
+    "much_agg/mean": {
+      "n": 28,
+      "positives": 2,
+      "roc_auc": 0.25,
+      "pr_auc": 0.04497354497354497,
+      "average_precision": 0.07142857142857142,
+      "tpr_at_10fpr": 0.0,
+      "tpr_at_05fpr": 0.0
+    },
+    "much_agg/max": {
+      "n": 28,
+      "positives": 2,
+      "roc_auc": 0.07692307692307693,
+      "pr_auc": 0.03798596733379342,
+      "average_precision": 0.05745341614906832,
+      "tpr_at_10fpr": 0.0,
+      "tpr_at_05fpr": 0.0
+    },
+    "much_agg/geometric": {
+      "n": 28,
+      "positives": 2,
+      "roc_auc": 0.21153846153846156,
+      "pr_auc": 0.042741402116402115,
+      "average_precision": 0.06696428571428571,
+      "tpr_at_10fpr": 0.0,
+      "tpr_at_05fpr": 0.0
+    },
+    "much_agg/product": {
+      "n": 28,
+      "positives": 2,
+      "roc_auc": 0.34615384615384615,
+      "pr_auc": 0.05489417989417989,
+      "average_precision": 0.09126984126984126,
+      "tpr_at_10fpr": 0.0,
+      "tpr_at_05fpr": 0.0
+    },
+    "best": "much_agg/product"
+  },
+  "counts": {
+    "annotations": 5,
+    "chunks": 28,
+    "missing": 0
+  },
+  "baseline_alone": {
+    "n": 4204,
+    "positives": 1164,
+    "roc_auc": 0.808666237113402,
+    "pr_auc": 0.700178427418959,
+    "average_precision": 0.6988416929867864,
+    "tpr_at_10fpr": 0.5592783505154639,
+    "tpr_at_05fpr": 0.4484536082474227
+  },
+  "grasp_alone_aligned": {
+    "n": 28,
+    "positives": 2,
+    "roc_auc": 0.05769230769230771,
+    "pr_auc": 0.03753306878306878,
+    "average_precision": 0.05654761904761904,
+    "tpr_at_10fpr": 0.0,
+    "tpr_at_05fpr": 0.0
+  },
+  "baseline_aligned": {
+    "n": 28,
+    "positives": 2,
+    "roc_auc": 0.9038461538461539,
+    "pr_auc": 0.24583333333333335,
+    "average_precision": 0.3666666666666667,
+    "tpr_at_10fpr": 0.5,
+    "tpr_at_05fpr": 0.0
+  },
+  "grasp_fuse": {
+    "n": 28,
+    "positives": 2,
+    "roc_auc": 0.47115384615384615,
+    "pr_auc": 0.06458333333333333,
+    "average_precision": 0.09583333333333333,
+    "tpr_at_10fpr": 0.0,
+    "tpr_at_05fpr": 0.0
+  }
+}

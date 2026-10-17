@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GRASP Project Report</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1f2937; line-height: 1.55; font-size: 10.5pt; margin: 0; padding: 0;
+  }
+  h1, h2, h3 { color: #111827; font-weight: 700; }
+  h1 { font-size: 22pt; line-height: 1.2; margin-bottom: 4px; color: #1e3a8a; }
+  .subtitle { font-size: 12.5pt; color: #4b5563; margin-top: 0; margin-bottom: 14px; font-weight: 500; }
+  .meta-box { background: #f3f4f6; border-left: 4px solid #2563eb; padding: 10px 14px; margin-bottom: 20px;
+              border-radius: 0 6px 6px 0; font-size: 9.5pt; }
+  .meta-box p { margin: 2px 0; }
+  h2 { font-size: 14.5pt; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; margin-top: 22px;
+       margin-bottom: 10px; color: #1e40af; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin-top: 14px; margin-bottom: 6px; page-break-after: avoid; }
+  p { margin: 6px 0 10px 0; }
+  ul, ol { margin: 6px 0 12px 20px; padding: 0; }
+  li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-size: 9.2pt; page-break-inside: avoid; }
+  th, td { padding: 6px 8px; text-align: left; border: 1px solid #d1d5db; vertical-align: top; }
+  th { background: #f8fafc; color: #0f172a; font-weight: 600; }
+  tr:nth-child(even) { background: #f9fafb; }
+  .hl { background: #eff6ff !important; font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .card { border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px 14px; margin: 12px 0; }
+  .callout-info { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .callout-success { background: #ecfdf5; border-left: 4px solid #10b981; padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .callout-warning { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 8.8pt;
+         background: #f1f5f9; padding: 1px 4px; border-radius: 4px; color: #0f172a; }
+  .small { font-size: 9pt; color: #4b5563; }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<h1>GRASP: Claim-Level Hallucination Detection from Attention</h1>
+<div class="subtitle">Project report &mdash; BCSE306L Artificial Intelligence, Topic 16: Uncertainty-Aware Abstention in LLM Applications</div>
+
+<div class="meta-box">
+  <p><strong>Method:</strong> GRASP (<strong>GR</strong>ounding, <strong>A</strong>ttention <strong>S</strong>ink, dis<strong>P</strong>ersion), version 2.</p>
+  <p><strong>Benchmark:</strong> MUCH (arXiv 2511.17081): 4,873 generations, 20,751 claims, 4 languages, 4 open LLMs.</p>
+  <p><strong>Main result:</strong> On MUCH's human-annotated test split, GRASP-v2 reaches <strong>0.924 ROC-AUC vs 0.770</strong> for CCP, the best published baseline (&Delta; +0.154, 95% CI +0.110 to +0.199). It wins on all four models, needs no NLI model, and costs <strong>34&ndash;38%</strong> of generation time on a T4.</p>
+  <p><strong>Main caveat:</strong> GRASP-v2 is <em>supervised</em> (trained on MUCH's training labels). The training-free variant ties CCP but does not beat it.</p>
+  <p class="small">Report date: 17 October 2026. Supersedes the earlier report, whose headline numbers (0.8343 vs 0.8251, &ldquo;6.4% overhead&rdquo;, German &ldquo;win&rdquo;) did not survive the audit &mdash; see &sect;8.</p>
+</div>
+
+<h2>1. Summary</h2>
+<ul>
+  <li><strong>The problem:</strong> LLMs state invented facts as fluently as true ones. A useful detector has to score each <em>claim</em>, not the whole answer, so a system can flag or withhold exactly the wrong part.</li>
+  <li><strong>The idea:</strong> read <em>where the model was looking</em> while it wrote each claim. Three attention statistics &mdash; grounding, sink leakage and dispersion &mdash; come from one extra forward pass. GRASP-v2 combines them with the token probabilities the model already produced.</li>
+  <li><strong>The result:</strong> a small gradient-boosted classifier on these features beats CCP by a wide margin, on every model, and also improves selective answering: withholding the riskiest 30% of claims cuts the hallucination rate of what remains from 26.4% to 7.2% (CCP: 14.7%).</li>
+  <li><strong>The honest limits:</strong> the winning detector needs labelled training data. The test split has now been read twice (v1 and v2). The overhead comparison with CCP crosses hardware. All three are stated in &sect;8.</li>
+</ul>
+
+<h2>2. The problem</h2>
+<p>A language model always answers. Asked for a biography, it may write six fluent sentences of which one is invented, and the invented one carries the same confidence as the rest. Scoring the whole answer (&ldquo;this paragraph is 70% reliable&rdquo;) does not say <em>which</em> sentence to check. What is needed is a score per <strong>atomic claim</strong>:</p>
+<div class="card">
+  <p><em>&ldquo;Marie Curie was born in Warsaw in 1899 and received two Nobel prizes.&rdquo;</em></p>
+  <ul>
+    <li><code>Marie Curie was born in Warsaw</code> &rarr; low risk</li>
+    <li><code>She was born in 1899</code> &rarr; <strong>high risk</strong> (she was born in 1867)</li>
+    <li><code>She received two Nobel prizes</code> &rarr; low risk</li>
+  </ul>
+</div>
+<p>MUCH provides exactly this setting: claims are pre-segmented, labelled and evaluated under a fixed protocol. Its authors report that the best existing method, CCP, reaches 0.772 ROC-AUC. That is useful but far from solved, and CCP spends more compute than generation itself did.</p>
+
+<h2>3. Existing approaches</h2>
+<table>
+  <thead><tr><th>Family</th><th>Example</th><th>Claim-level</th><th>Needs labels</th><th>Cost</th><th>Weakness</th></tr></thead>
+  <tbody>
+    <tr><td>Token probabilities</td><td>max likelihood, entropy</td><td>yes</td><td>no</td><td>negligible</td><td>confidence &ne; correctness; dominated by function words</td></tr>
+    <tr><td>Meaning-filtered probabilities</td><td><strong>CCP</strong> (Fadeeva et al., 2024)</td><td>yes</td><td>no</td><td>~124% of generation (A100, per MUCH)</td><td>an NLI model runs on every token</td></tr>
+    <tr><td>Multi-sample consistency</td><td>SelfCheckGPT, semantic entropy</td><td>yes</td><td>no</td><td>10&ndash;20&times;</td><td>consistent false beliefs pass</td></tr>
+    <tr><td>Supervised internal probes</td><td>UHeads/LUH, SAPLMA, SinkProbe</td><td>some</td><td>yes</td><td>low at inference</td><td>labels needed; transfer across languages/models is often poor</td></tr>
+  </tbody>
+</table>
+<p>The closest prior work is <strong>UHeads / LUH</strong> (Shelmanov et al., EMNLP 2025). It is also supervised and claim-level, and also uses attention plus token probabilities, but it trains a transformer head on attention maps. GRASP-v2 uses three interpretable statistics and a small tree model instead. A re-run of the prior-art search (October 2026, <code>docs/03_novelty_recheck.md</code>) found no published method that beats CCP on MUCH. GRASP-v2 has not yet been compared head-to-head with UHeads.</p>
+
+<h2>4. Method</h2>
+
+<h3>4.1 Three per-token attention signals</h3>
+<p>The generated tokens are replayed through the model once (teacher forcing, no sampling). For each generated token, each kept head gives:</p>
+<ul>
+  <li><strong>G &mdash; grounding ratio:</strong> the share of non-sink attention that goes back to the <em>prompt</em> rather than to the model's own freshly written text. Low grounding means the model is building on its own output instead of retrieving.</li>
+  <li><strong>S &mdash; sink leakage:</strong> attention mass dumped on the first token, the transformer's &ldquo;nothing relevant here&rdquo; position.</li>
+  <li><strong>P &mdash; dispersion:</strong> normalised entropy of the attention row. Peaked attention means one clear source; flat attention means none.</li>
+</ul>
+<p>The audit fixed two implementation details. The attention row is now the one that <em>generated</em> each token, not the one after it. Token saliency is normalised by the number of later tokens exactly once, not twice.</p>
+
+<h3>4.2 Choosing heads without labels</h3>
+<p>A model has hundreds of heads. For each layer, GRASP keeps the heads whose grounding ratio varies most across tokens on 200 unlabelled generations. A head that always returns the same value cannot tell anything apart. v1 kept one head per layer; <strong>v2 keeps four</strong>.</p>
+
+<h3>4.3 From tokens to claims (GRASP-v2)</h3>
+<p>Each claim becomes one row of features:</p>
+<ol>
+  <li><strong>Attention statistics:</strong> layers are grouped into 8 relative-depth bins, so models of different depth share one feature space. For every bin, kept head and signal, the claim's content tokens give mean, max, min and a saliency-weighted mean (384 features). Each value is z-scored per (layer, head) on unlabelled data from the same model.</li>
+  <li><strong>Token probabilities</strong> (7 features): surprisal of the chosen token, entropy, top-1 probability and the top-1/top-2 gap. They come from the top-24 probabilities MUCH ships with every generation, so no extra model runs.</li>
+  <li><strong>Claim length</strong> (2 features).</li>
+</ol>
+<p>A gradient-boosted tree classifier (31 leaves, 800 rounds) maps the 393 features to a hallucination probability. A <strong>training-free</strong> variant, GRASP-v2-free, uses no labels: it averages the per-model rank of mid-depth minimum grounding (sign fixed in advance) with the rank of token surprisal and entropy.</p>
+<p class="small">The original training-free score, GRASP-0 (saliency-weighted soft-max over a hand-weighted risk, with a claim-boundary reset), is kept as a reference row.</p>
+
+<h2>5. Evaluation protocol</h2>
+<div class="callout-info">
+  <ul>
+    <li><strong>Data:</strong> all 8 MUCH generation configs (Llama-3.2-3B, Llama-3.1-8B, Gemma-3-4B, Ministral-8B, each at T = 0.7 and 1.0). Features extracted for all 4,873 generations on Kaggle (2&times; Tesla T4).</li>
+    <li><strong>Split:</strong> MUCH's own. <em>Test</em> is the 200 human-annotated generations (867 claims, 229 hallucinated); <em>train</em> is the other 4,673 (19,884 claims). MUCH stores no split field; human annotations are identified by their annotator keys (<code>an0</code>, <code>an1</code>), which gives exactly 200.</li>
+    <li><strong>MUCH protocol:</strong> &minus;1 is the hallucination class; the trailing EOS chunk is dropped; stopwords are masked for the probability baselines; only claims where GPT-4o and GPT-4.1 agree are scored.</li>
+    <li><strong>Selection:</strong> every choice (feature groups, normalisation, learner, number of heads) was made by 5-fold cross-validation on train, grouped by generation, ranked by the <em>mean of per-model</em> ROC-AUCs. Pooled ROC could be inflated by recognising which model wrote a claim, because hallucination rates differ (Gemma ~54% vs Llama ~22%).</li>
+    <li><strong>Test reads:</strong> the selection was frozen to a file before the test split was read. This was the <strong>second</strong> read; the first was v1 (&sect;6.6).</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+<h2>6. Results</h2>
+
+<h3>6.1 Checkpoint: CCP reproduced</h3>
+<p>Before scoring GRASP, the published baseline was reproduced from MUCH's shipped signals. <code>ccp_24_8</code> with the <code>product</code> aggregator gives <strong>ROC 0.7747 / PR 0.6426</strong>, against the published 0.772 / 0.639. Our evaluator also matches MUCH's own code exactly on a shared fixture.</p>
+
+<h3>6.2 Main result &mdash; human-annotated test split (867 claims)</h3>
+<table>
+  <thead><tr><th>Method</th><th>Labels?</th><th class="num">ROC-AUC [95% CI]</th><th class="num">PR-AUC</th><th class="num">TPR @ 10% FPR</th><th class="num">&Delta;ROC vs CCP [95% CI]</th></tr></thead>
+  <tbody>
+    <tr><td>CCP (<code>ccp_24_8</code>)</td><td>no</td><td class="num">0.770 [0.724, 0.817]</td><td class="num">0.637</td><td class="num">0.537</td><td class="num">&mdash;</td></tr>
+    <tr><td>GRASP-0 (original)</td><td>no</td><td class="num">0.629 [0.569, 0.687]</td><td class="num">0.388</td><td class="num">0.188</td><td class="num">&minus;0.141 [&minus;0.215, &minus;0.072]</td></tr>
+    <tr><td>GRASP-v2-free</td><td>no</td><td class="num">0.764 [0.713, 0.815]</td><td class="num">0.501</td><td class="num">0.354</td><td class="num">&minus;0.006 [&minus;0.056, +0.041]</td></tr>
+    <tr class="hl"><td>GRASP-v2</td><td>yes</td><td class="num">0.924 [0.896, 0.948]</td><td class="num">0.845</td><td class="num">0.790</td><td class="num">+0.154 [+0.110, +0.199]</td></tr>
+    <tr><td>GRASP-v2 + CCP as input</td><td>yes</td><td class="num">0.920 [0.895, 0.944]</td><td class="num">0.838</td><td class="num">0.729</td><td class="num">+0.150 [+0.111, +0.191]</td></tr>
+  </tbody>
+</table>
+<p class="small">Bootstrap: 2,000 samples resampled by generation; &Delta;ROC is paired on identical claims. Adding CCP as an input does not help, so its NLI step can be dropped entirely.</p>
+
+<h3>6.3 Per model</h3>
+<table>
+  <thead><tr><th>Model (test claims)</th><th class="num">CCP</th><th class="num">GRASP-v2</th><th class="num">&Delta;ROC [95% CI]</th><th class="num">PR: CCP &rarr; GRASP-v2</th></tr></thead>
+  <tbody>
+    <tr><td>Gemma-3-4B (134)</td><td class="num">0.726</td><td class="num"><strong>0.917</strong></td><td class="num">+0.191 [+0.073, +0.284]</td><td class="num">0.793 &rarr; 0.911</td></tr>
+    <tr><td>Llama-3.1-8B (282)</td><td class="num">0.831</td><td class="num"><strong>0.937</strong></td><td class="num">+0.106 [+0.046, +0.155]</td><td class="num">0.682 &rarr; 0.871</td></tr>
+    <tr><td>Llama-3.2-3B (279)</td><td class="num">0.767</td><td class="num"><strong>0.889</strong></td><td class="num">+0.122 [+0.047, +0.193]</td><td class="num">0.519 &rarr; 0.728</td></tr>
+    <tr><td>Ministral-8B (172)</td><td class="num">0.830</td><td class="num"><strong>0.897</strong></td><td class="num">+0.067 [+0.013, +0.128]</td><td class="num">0.712 &rarr; 0.815</td></tr>
+  </tbody>
+</table>
+
+<h3>6.4 Transfer to a model the detector has never seen</h3>
+<p>The classifier is fitted on the training claims of three models and scored on the test claims of the fourth:</p>
+<table>
+  <thead><tr><th>Unseen model</th><th class="num">GRASP-v2</th><th class="num">CCP</th></tr></thead>
+  <tbody>
+    <tr><td>Gemma-3-4B</td><td class="num"><strong>0.808</strong></td><td class="num">0.726</td></tr>
+    <tr><td>Llama-3.1-8B</td><td class="num"><strong>0.882</strong></td><td class="num">0.831</td></tr>
+    <tr><td>Llama-3.2-3B</td><td class="num">0.759</td><td class="num"><strong>0.767</strong></td></tr>
+    <tr><td>Ministral-8B</td><td class="num"><strong>0.853</strong></td><td class="num">0.830</td></tr>
+  </tbody>
+</table>
+<p>So the detector stays comparable to or better than CCP even without labels from the target model. In v1 it lost on all four.</p>
+
+<h3>6.5 What each ingredient contributes (train cross-validation, mean per-model ROC)</h3>
+<table>
+  <thead><tr><th>Features (same learner: gradient boosting, depth 3)</th><th class="num">1 head / layer</th><th class="num">4 heads / layer</th></tr></thead>
+  <tbody>
+    <tr><td>Token probabilities only</td><td class="num">0.771</td><td class="num">0.771</td></tr>
+    <tr><td>Attention only</td><td class="num">0.811</td><td class="num">0.832</td></tr>
+    <tr><td>Attention + token probabilities</td><td class="num">0.854</td><td class="num">0.866</td></tr>
+    <tr><td>&hellip; + claim length</td><td class="num">0.857</td><td class="num">0.867</td></tr>
+    <tr class="hl"><td>&hellip; tuned learner (31 leaves, 800 rounds)</td><td class="num">0.881</td><td class="num">0.885</td></tr>
+    <tr><td><em>CCP, same claims</em></td><td class="num" colspan="2"><em>0.797</em></td></tr>
+  </tbody>
+</table>
+<p>Attention alone already beats CCP, and token probabilities add information it lacks. More heads help consistently. Per-model rank normalisation helps logistic regression but not the tree model.</p>
+
+<h3>6.6 How the result evolved (and what was corrected)</h3>
+<table>
+  <thead><tr><th>Stage</th><th>Test claims</th><th class="num">Best GRASP</th><th class="num">CCP</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Pre-audit report</td><td>727 (one config, no split)</td><td class="num">0.834 (fused)</td><td class="num">0.825</td><td>invalid: no train/test split, test-selected aggregator, misaligned attention</td></tr>
+    <tr><td>Audited, one config</td><td>136</td><td class="num">0.737 (fused)</td><td class="num">0.776</td><td>GRASP-0 alone 0.635; sample too small</td></tr>
+    <tr><td>v1 (first test read)</td><td>867</td><td class="num">0.891 (probe + CCP)</td><td class="num">0.770</td><td>supervised; no cross-model transfer</td></tr>
+    <tr class="hl"><td>v2 (second test read)</td><td>867</td><td class="num">0.924 (no CCP)</td><td class="num">0.770</td><td>4 heads + token probabilities; transfers</td></tr>
+  </tbody>
+</table>
+
+<h3>6.7 Runtime, measured on the same GPU</h3>
+<table>
+  <thead><tr><th>Model</th><th class="num">tokens / answer</th><th class="num">generation</th><th class="num">GRASP-v2</th><th class="num">overhead</th></tr></thead>
+  <tbody>
+    <tr><td>Gemma-3-4B</td><td class="num">8.3</td><td class="num">0.75 s</td><td class="num">0.28 s</td><td class="num">37%</td></tr>
+    <tr><td>Llama-3.2-3B</td><td class="num">21.4</td><td class="num">1.11 s</td><td class="num">0.38 s</td><td class="num">34%</td></tr>
+    <tr><td>Llama-3.1-8B</td><td class="num">23.9</td><td class="num">2.28 s</td><td class="num">0.83 s</td><td class="num">36%</td></tr>
+    <tr><td>Ministral-8B</td><td class="num">14.9</td><td class="num">1.40 s</td><td class="num">0.53 s</td><td class="num">38%</td></tr>
+  </tbody>
+</table>
+<p>Generation is timed with MUCH's own generation code; GRASP's teacher-forced eager-attention pass runs on exactly those outputs (2&times; Tesla T4, model loading excluded). GRASP-v2 costs <strong>34&ndash;38%</strong> of generation time. CCP's published figure is ~124% (A100). A same-GPU CCP timing is in progress (&sect;9).</p>
+
+<div class="page-break"></div>
+<h2>7. Topic 16: uncertainty-aware abstention</h2>
+<p>A detector earns its keep when the system can <em>withhold</em> the claims it doubts. Ranking test claims by risk and withholding the riskiest share gives the following:</p>
+<table>
+  <thead><tr><th>Withhold</th><th class="num">CCP: hallucinations in kept claims</th><th class="num">GRASP-v2-free</th><th class="num">GRASP-v2</th></tr></thead>
+  <tbody>
+    <tr><td>nothing</td><td class="num">26.4%</td><td class="num">26.4%</td><td class="num">26.4%</td></tr>
+    <tr><td>riskiest 10%</td><td class="num">20.5%</td><td class="num">23.1%</td><td class="num"><strong>18.9%</strong></td></tr>
+    <tr><td>riskiest 20%</td><td class="num">16.3%</td><td class="num">19.9%</td><td class="num"><strong>11.4%</strong></td></tr>
+    <tr><td>riskiest 30%</td><td class="num">14.7%</td><td class="num">16.0%</td><td class="num"><strong>7.2%</strong></td></tr>
+    <tr><td>Area under risk&ndash;coverage (lower is better)</td><td class="num">0.152</td><td class="num">0.127</td><td class="num"><strong>0.062</strong></td></tr>
+  </tbody>
+</table>
+<p>In practice, a system that withholds or routes for verification the 30% of claims GRASP-v2 rates riskiest keeps 70% of its claims at a 7.2% hallucination rate, against 14.7% with CCP. Because scoring is one forward pass plus a tree model, this works at claim granularity with modest latency.</p>
+
+<h2>8. Limits and corrections</h2>
+<div class="callout-warning">
+  <ol>
+    <li><strong>Supervision.</strong> GRASP-v2 is trained on MUCH's training labels (GPT-4o annotations). The fully training-free GRASP-v2-free ties CCP on ROC (&Delta; &minus;0.006, CI includes zero) but is weaker on PR and TPR.</li>
+    <li><strong>Two test reads.</strong> v1 and v2 both read the test split. All v2 choices were frozen on train first, and the v2 margin is well clear of v1's, but an independent confirmation is still owed. A RAGTruth evaluation is in progress (&sect;9).</li>
+    <li><strong>Labels.</strong> Test claims are scored against GPT-4o labels on the human-annotated samples, as MUCH's evaluator does, not against the human labels.</li>
+    <li><strong>Optimism.</strong> Test ROC (0.924) sits above train cross-validation (~0.885&ndash;0.897). The final model trains on 100% of train and the test set is small, so expect some regression on new data. The lower CI bound is 0.896.</li>
+    <li><strong>Cost comparison.</strong> 34&ndash;38% is measured on a T4; CCP's 124% is from the MUCH paper on an A100.</li>
+    <li><strong>Prior work.</strong> No head-to-head comparison with UHeads/LUH yet.</li>
+  </ol>
+</div>
+<p><strong>Corrections to the earlier report.</strong> An independent audit (<code>audit_report.md</code>) found the earlier evaluation had no train/test separation, selected the fusion aggregator on test data, compared a single-model German subset against CCP's 4-model pooled score, used attention rows shifted by one token, normalised saliency twice, and printed the soft-min formula with inverted signs. It also claimed 1&ndash;3% overhead against an estimated, not measured, denominator. All of these are fixed, and the numbers above replace the earlier 0.8343 vs 0.8251, &ldquo;6.4% overhead&rdquo; and &ldquo;beats CCP on German&rdquo; claims, which should not be cited.</p>
+
+<h2>9. Work in progress</h2>
+<ul>
+  <li><strong>Fresh benchmark:</strong> the frozen GRASP-v2 applied to RAGTruth (Mistral-7B-Instruct responses), a dataset and generator it was never developed on.</li>
+  <li><strong>Same-GPU CCP timing:</strong> MUCH's CCP implementation timed on the same T4, replacing the cross-hardware 124%.</li>
+</ul>
+
+<h2>10. Reproducibility</h2>
+<p class="small">
+Code: <code>src/grasp/</code> (features, head selection, scoring, MUCH protocol) and <code>scripts/01&ndash;14</code>. GPU extraction: <code>kaggle/build_notebook.py</code>, which builds a self-contained Kaggle notebook. Development and frozen choices: <code>scripts/12_develop_v2.py</code> &rarr; <code>results/dev/frozen_v2_*.json</code>. Test evaluation: <code>scripts/13_final_eval_v2.py</code> &rarr; <code>results/final_eval_v2.json</code>. Abstention and per-claim test scores: <code>scripts/14_abstention_v2.py</code> &rarr; <code>results/test_scores_v2.csv</code>. Full write-up: <code>results/FINAL_RESULTS_v2.md</code>. Unit tests: 20 in <code>src/tests/test_grasp.py</code>, 10 protocol checks in <code>src/tests/test_much_eval.py</code>.
+</p>
+
+</body>
+</html>

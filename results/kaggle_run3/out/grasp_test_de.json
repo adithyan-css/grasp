@@ -1,0 +1,66 @@
+{
+  "profile": "corrected",
+  "norm_mode": "corpus",
+  "reset_mode": "reset",
+  "split": "test",
+  "cache_meta": {
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "profile": "corrected",
+    "align": "current",
+    "saliency_norm": "per_later_token",
+    "sink_size": 1,
+    "head_select": "variance"
+  },
+  "scoring_saliency_norm": "none",
+  "align_shift": 0,
+  "lang": "de",
+  "model": null,
+  "grasp": {
+    "native": {
+      "n": 35,
+      "positives": 0
+    },
+    "much_agg/mean": {
+      "n": 35,
+      "positives": 0
+    },
+    "much_agg/max": {
+      "n": 35,
+      "positives": 0
+    },
+    "much_agg/geometric": {
+      "n": 35,
+      "positives": 0
+    },
+    "much_agg/product": {
+      "n": 35,
+      "positives": 0
+    }
+  },
+  "counts": {
+    "annotations": 7,
+    "chunks": 35,
+    "missing": 0
+  },
+  "baseline_alone": {
+    "n": 4790,
+    "positives": 1626,
+    "roc_auc": 0.7872866916090147,
+    "pr_auc": 0.70482296072914,
+    "average_precision": 0.7047922809187177,
+    "tpr_at_10fpr": 0.48954489544895446,
+    "tpr_at_05fpr": 0.36162361623616235
+  },
+  "grasp_alone_aligned": {
+    "n": 35,
+    "positives": 0
+  },
+  "baseline_aligned": {
+    "n": 35,
+    "positives": 0
+  },
+  "grasp_fuse": {
+    "n": 35,
+    "positives": 0
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "model": "google/gemma-3-4b-it",
+  "profile": "corrected",
+  "align": "current",
+  "saliency_norm": "per_later_token",
+  "sink_size": 1,
+  "head_select": "variance_topk"
+}

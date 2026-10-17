@@ -1,0 +1,8 @@
+{
+  "model": "mistralai/Ministral-8B-Instruct-2410",
+  "profile": "corrected",
+  "align": "current",
+  "saliency_norm": "per_later_token",
+  "sink_size": 1,
+  "head_select": "variance_topk"
+}

@@ -1,0 +1,26 @@
+{
+  "criterion": "mean per-model 5-fold grouped CV ROC on the train split",
+  "training_free": {
+    "name": "tf_ground_min_mid+tokenprob",
+    "train_cv": 0.771
+  },
+  "probe_no_ccp": {
+    "key": "ATL|permodel|gbm_l31",
+    "train_cv": 0.8805
+  },
+  "probe_with_ccp": {
+    "key": "ATLC|permodel|gbm_l31",
+    "train_cv": 0.8814
+  },
+  "training_free_features": [
+    "b1_h0_grounding_min",
+    "b2_h0_grounding_min",
+    "b3_h0_grounding_min",
+    "b4_h0_grounding_min",
+    "b5_h0_grounding_min",
+    "b6_h0_grounding_min",
+    "tp_nll_mean",
+    "tp_nll_max",
+    "tp_ent_mean"
+  ]
+}

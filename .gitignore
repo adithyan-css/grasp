@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+output/
+
+# per-generation feature caches: thousands of .npy files, regenerated on Kaggle
+results/cache_*/
+results/*.npy
+results/**/features/
+
+# paper PDFs: copyrighted, ~49 MB; fetch with scripts/05_download_papers.py
+papers/*.pdf
+
+# Kaggle CLI kernel logs (large; run_log.txt keeps the useful part)
+results/**/grasp-full-run.log
