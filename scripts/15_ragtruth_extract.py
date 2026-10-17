@@ -28,6 +28,10 @@ Nothing here looks at labels except to store them.
 
 from __future__ import annotations
 
+import os
+
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
 import argparse
 import gc
 import json
@@ -66,8 +70,14 @@ def load_ragtruth(data_dir: Path, generator: str):
 
 
 def load_llm(name, eager: bool):
+    """Shard over all GPUs, leaving headroom on GPU 0: with device_map='auto',
+    accelerate moves each layer's full attention tensor back to the input device
+    (GPU 0) before our hooks can reduce it."""
     from transformers import AutoModelForCausalLM
     kw = dict(torch_dtype=torch.bfloat16, device_map="auto")
+    n = torch.cuda.device_count()
+    if n > 1:
+        kw["max_memory"] = {0: "7GiB", **{i: "14GiB" for i in range(1, n)}}
     if eager:
         kw["attn_implementation"] = "eager"
     m = AutoModelForCausalLM.from_pretrained(name, **kw)
@@ -146,6 +156,8 @@ def main() -> int:
     ap.add_argument("--ccp-test-n", type=int, default=450)
     ap.add_argument("--ccp-much-n", type=int, default=30)
     ap.add_argument("--max-tokens", type=int, default=2048, help="skip prompt+response longer than this")
+    ap.add_argument("--calib-max-tokens", type=int, default=1024,
+                    help="calibration (unlabelled head selection) uses only responses up to this length")
     ap.add_argument("--skip-ccp", action="store_true")
     args = ap.parse_args()
 
@@ -187,11 +199,20 @@ def main() -> int:
 
     # 2a. label-free head selection on unlabelled training responses
     calib_feats = []
-    for r in train[: args.calib]:
+    all_heads = FeatureConfig(keep_heads=None, align="current", saliency_norm="per_later_token")
+    for r in train:
+        if len(calib_feats) >= args.calib:
+            break
         out_ids = tok(r["response"], add_special_tokens=False)["input_ids"]
-        f, *_ = teacher_forced(model, tok, chat_prompt(tok, S[r["source_id"]]["prompt"]), out_ids,
-                               FeatureConfig(keep_heads=None, align="current", saliency_norm="per_later_token"))
-        calib_feats.append(f)
+        prompt = chat_prompt(tok, S[r["source_id"]]["prompt"])
+        if len(tok.encode(prompt, add_special_tokens=False)) + len(out_ids) > args.calib_max_tokens:
+            continue
+        try:
+            f, *_ = teacher_forced(model, tok, prompt, out_ids, all_heads)
+            calib_feats.append(f)
+        except torch.OutOfMemoryError:
+            torch.cuda.empty_cache()
+    print(f"head calibration on {len(calib_feats)} unlabelled responses", flush=True)
     heads = select_heads_variance_topk(calib_feats, k=args.top_k)
     del calib_feats; gc.collect()
     (out / "selected_heads.json").write_text(json.dumps({str(k): v for k, v in heads.items()}))
@@ -203,9 +224,13 @@ def main() -> int:
     # 2b. GRASP extraction timing on the generated outputs (overhead on long answers)
     ext = []
     for r, gids, _ in gen_outputs:
-        sync(); t0 = time.perf_counter()
-        teacher_forced(model, tok, chat_prompt(tok, S[r["source_id"]]["prompt"]), gids, cfg)
-        sync(); ext.append(time.perf_counter() - t0)
+        try:
+            sync(); t0 = time.perf_counter()
+            teacher_forced(model, tok, chat_prompt(tok, S[r["source_id"]]["prompt"]), gids, cfg)
+            sync(); ext.append(time.perf_counter() - t0)
+        except torch.OutOfMemoryError:
+            torch.cuda.empty_cache(); ext.append(float("nan"))
+    ext = [e for e in ext if e == e]
     if ext:
         timing["grasp_extract_s"] = ext
         timing["overhead_pct"] = 100 * float(np.mean(ext)) / float(np.mean(timing["generation_s"]))
@@ -233,7 +258,9 @@ def main() -> int:
                          "n_tokens": len(out_ids), "labels": labels, "char_spans": cspans,
                          "response_hallucinated": int(bool(r["labels"]))})
         except Exception as exc:  # noqa: BLE001
-            print(f"  skip {r['id']}: {type(exc).__name__}: {exc}", flush=True)
+            print(f"  skip {r['id']}: {type(exc).__name__}: {str(exc)[:120]}", flush=True)
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
         if (k + 1) % 100 == 0:
             el = time.time() - t_start
             print(f"  {k + 1}/{len(train) + len(test)}  ({el:.0f}s, {el / (k + 1):.2f}s/resp)", flush=True)

@@ -162,7 +162,7 @@ class _AttentionReducer:
         s = cfg.sink_size
         P = self._prompt_len
 
-        a = attn[0].float()  # (H, N, N)
+        a = attn[0]  # (H, N, N); select heads before upcasting to save memory
         if cfg.keep_heads is not None:
             head = cfg.keep_heads.get(layer_idx)
             if head is None:
@@ -171,6 +171,7 @@ class _AttentionReducer:
                 a = a[list(head)]  # k heads, kept in the given (variance) order
             else:
                 a = a[head : head + 1]
+        a = a.float()
 
         H, N, _ = a.shape
         T = N - P
