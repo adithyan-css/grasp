@@ -263,9 +263,54 @@ print('done')
 ]
 
 
+RAGTRUTH_CELLS = [
+    md("""
+# GRASP — RAGTruth confirmation + CCP timing on the same GPU
+
+Self-contained. Extracts GRASP features (top-4 heads/layer) and top-24 token
+probabilities for RAGTruth's Mistral-7B-Instruct responses, then times MUCH's CCP
+and real generation on this GPU. No evaluation happens here: the frozen GRASP-v2
+is scored locally by `scripts/16_ragtruth_eval.py`, whose rules were fixed first.
+"""),
+    "SHARED_SETUP",
+    "SHARED_LOGIN",
+    md("## 1. MUCH code and data (for CCP and the claim segmenter)"),
+    code("""
+sh(f'{sys.executable} {PROJECT}/scripts/01_setup_much.py --root {MUCH_PARENT}')
+sh(f'{sys.executable} -m src import-much', cwd=MUCH)
+sh(f'{sys.executable} {PROJECT}/src/tests/test_grasp.py')
+"""),
+    md("## 2. RAGTruth extraction, CCP and generation timing"),
+    code("""
+RT = RESULTS / 'ragtruth'
+sh(f'{sys.executable} {PROJECT}/scripts/15_ragtruth_extract.py --much-root {MUCH} '
+   f'--data-dir {MUCH_PARENT}/ragtruth --out {RT} --n-train 1500 --calib 100 --top-k 4 '
+   f'--gen-n 15 --ccp-test-n 450 --ccp-much-n 30')
+print(json.loads((RT / 'timing.json').read_text()))
+"""),
+    code("""
+import shutil
+shutil.make_archive(str(WORK / 'grasp_ragtruth'), 'zip', RESULTS)
+print('done')
+"""),
+]
+
+
 def main() -> None:
+    import sys as _sys
+    mode = _sys.argv[1] if len(_sys.argv) > 1 else "much"
     blob = code_zip_b64()
-    cells = [dict(c) for c in CELLS]
+    if mode == "ragtruth":
+        cells = []
+        for c in RAGTRUTH_CELLS:
+            if c == "SHARED_SETUP":
+                cells.append(dict(CELLS[1]))
+            elif c == "SHARED_LOGIN":
+                cells.append(dict(CELLS[2]))
+            else:
+                cells.append(dict(c))
+    else:
+        cells = [dict(c) for c in CELLS]
     for c in cells:
         if "__CODE_ZIP__" in c["source"]:
             c["source"] = c["source"].replace("__CODE_ZIP__", blob)

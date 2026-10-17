@@ -1,0 +1,220 @@
+{
+  "_how_to_use": "Paste this JSON into a chat assistant and ask it to teach you the project step by step, e.g. 'Explain section X like I am a beginner, then quiz me'. All numbers come from files in this repository (paths given in 'evidence'). Status is as of 2026-10-17.",
+
+  "project": {
+    "name": "GRASP",
+    "acronym": "GRounding, Attention Sink and disPersion",
+    "course": "BCSE306L Artificial Intelligence — Case Study, Topic 16: Uncertainty-Aware Abstention in LLM Applications",
+    "one_sentence": "GRASP detects which individual claims in an LLM's answer are likely hallucinated by reading the model's own attention patterns (plus the token probabilities it already produced), and does this better and more cheaply than the best published method (CCP) on the MUCH benchmark.",
+    "status_one_line": "Supervised GRASP-v2 beats CCP on MUCH (ROC 0.924 vs 0.770). The training-free version only ties CCP. A second-benchmark check (RAGTruth) and a same-GPU CCP timing are in progress."
+  },
+
+  "background_concepts": {
+    "hallucination": "When an LLM states something false or unsupported with the same fluent confidence as true facts. The model has no built-in 'I don't know'.",
+    "claim_level_detection": "Instead of one score for the whole answer, give a risk score to each atomic claim (the smallest standalone factual statement). This tells you WHICH part to check or remove.",
+    "atomic_claim_example": "'Marie Curie was born in Warsaw in 1899' splits into 'born in Warsaw' (true) and 'born in 1899' (false; she was born in 1867).",
+    "ROC_AUC": "Probability that a randomly chosen hallucinated claim gets a higher risk score than a randomly chosen correct claim. 0.5 = random guessing, 1.0 = perfect.",
+    "PR_AUC": "Precision-recall area. More sensitive to how well you rank the rare positive class; depends on the base rate, so only compare it within the same dataset.",
+    "TPR_at_10pct_FPR": "Share of hallucinations caught when you accept that 10% of correct claims are wrongly flagged. A practical 'how many do we catch' number.",
+    "confidence_interval": "The 95% range the true value plausibly lies in, estimated by bootstrap (resampling generations 2,000 times). If the CI of a difference excludes 0, the difference is unlikely to be chance.",
+    "supervised_vs_training_free": "Supervised = learns from labelled examples (here: claims labelled hallucinated or not). Training-free = uses no labels at all. Training-free methods are cheaper to deploy on a new model; supervised ones are usually more accurate.",
+    "attention": "Inside a transformer, each attention head records which earlier tokens the model was reading when it produced the current token. It is a free record of 'where the model was looking'.",
+    "attention_sink": "When a head finds nothing relevant to attend to, it dumps its attention on the very first token. High sink mass is a 'no-op' signal.",
+    "teacher_forcing": "Re-feeding the model's own already-generated tokens through it in one pass, so we can read its attention without generating again or sampling.",
+    "abstention": "Topic 16: a system should withhold or route for checking the claims it is unsure about. A good detector lets you withhold a small share of claims and remove most hallucinations."
+  },
+
+  "the_benchmark_MUCH": {
+    "paper": "MUCH: A Multilingual Claim Hallucination Benchmark, arXiv 2511.17081 (Apache-2.0, École Polytechnique)",
+    "size": "4,873 generations, 20,751 claims, 4 languages (en, fr, es, de)",
+    "models": ["Llama-3.2-3B-Instruct", "Llama-3.1-8B-Instruct", "Gemma-3-4B-it", "Ministral-8B-Instruct-2410"],
+    "configs": "8 generation configs = 4 models x 2 temperatures (0.7 and 1.0)",
+    "split": "train = 4,673 generations labelled automatically by GPT-4o and GPT-4.1; test = 200 generations also annotated by human experts (annotators an0, an1). MUCH stores no split field; we identify the test set by the presence of human annotator label keys, which gives exactly 200.",
+    "protocol_rules": [
+      "labels are {-1,+1} and -1 means hallucinated",
+      "the trailing end-of-sequence chunk is dropped",
+      "stopwords and punctuation are zeroed before aggregating token-level baseline scores",
+      "only claims where GPT-4o and GPT-4.1 agree are scored"
+    ],
+    "what_it_ships": "Claim boundaries (token_chunks), labels, the exact generated token ids, and the top-24 token probabilities for every generated token. This makes white-box methods possible without re-generating."
+  },
+
+  "the_baseline_to_beat_CCP": {
+    "name": "CCP, Claim-Conditioned Probability (Fadeeva et al., ACL Findings 2024)",
+    "idea": "At each token, check whether the alternative tokens the model considered mean the same thing (paraphrase, so ignore) or something different (real factual doubt, so count it), using a natural-language-inference (NLI) model on every token.",
+    "published_score_on_MUCH": "ROC 0.772, PR 0.639",
+    "our_reproduction": "ROC 0.7747, PR 0.6426 for ccp_24_8 / product aggregator (evidence: results/kaggle_run5/out/ccp_reproduction.json)",
+    "cost": "~124% of generation time according to the MUCH paper (A100). Not yet measured on our GPU; that measurement is in progress."
+  },
+
+  "the_method": {
+    "three_attention_signals_per_token": {
+      "G_grounding_ratio": "Share of non-sink attention going back to the PROMPT rather than to the model's own freshly written text. Low = the model is riffing on its own output instead of retrieving.",
+      "S_sink_leakage": "Attention mass dumped on the first token (the 'nothing relevant here' position).",
+      "P_dispersion": "Normalised entropy of the attention row. Flat = no specific source."
+    },
+    "head_selection_label_free": "For each layer, keep the heads whose grounding ratio varies most across tokens on 200 unlabelled generations (a constant head carries no information). v1 kept 1 head per layer; v2 keeps the top 4.",
+    "GRASP_0_original": "Training-free. Hand-weighted combination of G, S, P into a per-token risk, saliency weighting, soft-max over a claim's tokens, and a reset at claim boundaries. This was the original idea; it underperforms CCP.",
+    "GRASP_v2_final": {
+      "features_per_claim": [
+        "attention: 8 relative-depth layer bins x 4 heads x 3 signals x 4 statistics (mean, max, min, saliency-weighted mean) over the claim's content tokens = 384 numbers, z-scored per (layer, head) on unlabelled data",
+        "token probabilities (7 numbers): surprisal of the chosen token, entropy, top-1 probability, top-1/top-2 gap, taken from the probabilities MUCH already ships (no extra model run)",
+        "claim length (2 numbers)"
+      ],
+      "learner": "Gradient-boosted decision trees (sklearn HistGradientBoosting, 31 leaves, 800 rounds), trained on MUCH's train split",
+      "needs_CCP": false,
+      "needs_labels": true
+    },
+    "GRASP_v2_free": "Training-free variant: average of the per-model rank of mid-depth minimum grounding and the rank of token surprisal/entropy. Uses no labels."
+  },
+
+  "what_happened_timeline": [
+    {"step": "Original implementation + first report", "outcome": "Report claimed GRASP-fuse 0.8343 vs CCP 0.8251, '1–3% / 6.4% overhead', and a German 'win'."},
+    {"step": "Independent audit (audit_report.md)", "outcome": "Found: no train/test split, fusion aggregator chosen on test data, a single-model German subset compared against CCP's 4-model pooled score, attention rows shifted by one token, saliency normalised twice, a sign error in the soft-min formula, and an estimated (not measured) overhead denominator. The original headline numbers were invalid."},
+    {"step": "Fixes", "outcome": "Corrected attention alignment, single saliency normalisation, MUCH's real human-annotated test split, train-only tuning, cache metadata so settings cannot be mixed. Unit tests grew from 11 to 20."},
+    {"step": "Audited re-run, one config (Llama-3.2-3B, T=0.7)", "outcome": "GRASP-0 0.635 vs CCP 0.776 on only 136 test claims. CCP won; sample too small."},
+    {"step": "v1: all 8 configs extracted on Kaggle (2x T4), supervised probe", "outcome": "First read of the test split. GRASP-probe+CCP 0.891 vs CCP 0.770; attention-only probe 0.863. But the probe failed to transfer to unseen models."},
+    {"step": "v2: 4 heads/layer + token probabilities + tuned trees, selection frozen on train", "outcome": "Second read of the test split. GRASP-v2 0.924 vs CCP 0.770, no CCP needed, wins on all 4 models, transfers to 3 of 4 unseen models."},
+    {"step": "Runtime measured on Kaggle T4 (scripts/11_overhead.py)", "outcome": "GRASP-v2 costs 34–38% of generation time."},
+    {"step": "Report, PDF, README rewritten; repo cleaned; git initialised", "outcome": "Old claims retracted in writing."},
+    {"step": "In progress", "outcome": "RAGTruth fresh-benchmark confirmation with Mistral-7B-Instruct, and CCP timed on the same T4."}
+  ],
+
+  "results_MUCH_test": {
+    "evidence": "results/final_eval_v2.json",
+    "test_set": "867 claims, 229 hallucinated, 200 generations (human-annotated split; scored against GPT-4o labels as MUCH's evaluator does)",
+    "table": [
+      {"method": "CCP (ccp_24_8)", "labels": "no", "roc": 0.770, "roc_ci95": [0.724, 0.817], "pr": 0.637, "tpr10": 0.537},
+      {"method": "GRASP-0 (original)", "labels": "no", "roc": 0.629, "roc_ci95": [0.569, 0.687], "pr": 0.388, "tpr10": 0.188, "delta_roc_vs_ccp": -0.141, "delta_ci95": [-0.215, -0.072]},
+      {"method": "GRASP-v2-free", "labels": "no", "roc": 0.764, "roc_ci95": [0.713, 0.815], "pr": 0.501, "tpr10": 0.354, "delta_roc_vs_ccp": -0.006, "delta_ci95": [-0.056, 0.041]},
+      {"method": "GRASP-v2", "labels": "yes", "roc": 0.924, "roc_ci95": [0.896, 0.948], "pr": 0.845, "tpr10": 0.790, "delta_roc_vs_ccp": 0.154, "delta_ci95": [0.110, 0.199]},
+      {"method": "GRASP-v2 + CCP input", "labels": "yes", "roc": 0.920, "roc_ci95": [0.895, 0.944], "pr": 0.838, "tpr10": 0.729, "delta_roc_vs_ccp": 0.150, "delta_ci95": [0.111, 0.191]}
+    ],
+    "per_model_roc": {
+      "Gemma-3-4B": {"ccp": 0.726, "grasp_v2": 0.917, "delta_ci95": [0.073, 0.284]},
+      "Llama-3.1-8B": {"ccp": 0.831, "grasp_v2": 0.937, "delta_ci95": [0.046, 0.155]},
+      "Llama-3.2-3B": {"ccp": 0.767, "grasp_v2": 0.889, "delta_ci95": [0.047, 0.193]},
+      "Ministral-8B": {"ccp": 0.830, "grasp_v2": 0.897, "delta_ci95": [0.013, 0.128]}
+    },
+    "transfer_to_unseen_model_roc": {
+      "note": "classifier trained on the other 3 models, scored on this model's test claims",
+      "Gemma-3-4B": {"grasp_v2": 0.808, "ccp": 0.726},
+      "Llama-3.1-8B": {"grasp_v2": 0.882, "ccp": 0.831},
+      "Llama-3.2-3B": {"grasp_v2": 0.759, "ccp": 0.767},
+      "Ministral-8B": {"grasp_v2": 0.853, "ccp": 0.830}
+    },
+    "abstention_topic16": {
+      "evidence": "results/abstention_v2.json",
+      "base_hallucination_rate": 0.264,
+      "hallucination_rate_in_kept_claims": {
+        "withhold_10pct": {"ccp": 0.205, "grasp_v2": 0.189},
+        "withhold_20pct": {"ccp": 0.163, "grasp_v2": 0.114},
+        "withhold_30pct": {"ccp": 0.147, "grasp_v2": 0.072}
+      },
+      "area_under_risk_coverage": {"ccp": 0.152, "grasp_v2_free": 0.127, "grasp_v2": 0.062}
+    },
+    "runtime_overhead_T4": {
+      "evidence": "results/kaggle_run6/results/overhead_*.json",
+      "Gemma-3-4B": "37%", "Llama-3.2-3B": "34%", "Llama-3.1-8B": "36%", "Ministral-8B": "38%",
+      "caveat": "CCP's 124% is from the MUCH paper on different hardware; same-GPU CCP timing is in progress."
+    }
+  },
+
+  "what_contributed": {
+    "evidence": "results/dev/develop_v2_k4.json (train-split cross-validation, mean per-model ROC; CCP = 0.797)",
+    "token_probabilities_only": 0.771,
+    "attention_only_4_heads": 0.832,
+    "attention_plus_token_probabilities": 0.866,
+    "plus_claim_length": 0.867,
+    "tuned_learner": 0.885,
+    "takeaways": [
+      "attention alone already beats CCP in cross-validation",
+      "token probabilities add information attention lacks",
+      "4 heads per layer beat 1 head per layer consistently (+0.01 to +0.02)",
+      "adding CCP as an input adds nothing, so CCP's expensive NLI step can be dropped"
+    ]
+  },
+
+  "honest_answer_does_it_outperform": {
+    "yes": [
+      "Supervised GRASP-v2 beats CCP on MUCH's human-annotated test split: +0.154 ROC, CI +0.110 to +0.199",
+      "It wins on all 4 models individually, each CI above zero",
+      "It wins on PR-AUC and TPR@10%FPR too, and on abstention"
+    ],
+    "no_or_not_yet": [
+      "The training-free GRASP-v2-free only ties CCP (0.764 vs 0.770)",
+      "The original GRASP-0 idea loses to CCP",
+      "On an unseen Llama-3.2-3B it is slightly behind CCP (0.759 vs 0.767)",
+      "Only one benchmark so far; the RAGTruth confirmation has not run yet",
+      "No head-to-head comparison with UHeads (closest prior work)"
+    ]
+  },
+
+  "limitations_to_state": [
+    "GRASP-v2 is supervised (trained on GPT-4o labels from MUCH's train split)",
+    "The MUCH test split has been read twice (v1 then v2); all v2 choices were frozen on train beforehand, but an independent confirmation is still owed",
+    "Test labels are GPT-4o's, applied to the human-annotated samples, as in MUCH's own evaluator",
+    "Test ROC (0.924) sits above train cross-validation (~0.885–0.897); expect some regression on new data",
+    "The overhead comparison with CCP crosses hardware until the same-GPU timing finishes"
+  ],
+
+  "novelty": {
+    "evidence": "docs/03_novelty_recheck.md (search date 2026-10-17)",
+    "closest_prior_work": "UHeads / LUH (Shelmanov et al., EMNLP 2025): also supervised, claim-level, and uses attention + token probabilities, but trains a transformer head on attention maps.",
+    "what_is_new": [
+      "first reported result beating CCP on MUCH",
+      "a much lighter learner: 3 interpretable attention statistics from label-free-selected heads + a small tree model on CPU",
+      "measured cost and cross-model transfer results"
+    ],
+    "what_we_must_not_claim": "that no prior method combines attention, token probabilities and claim-level scoring; or that GRASP beats UHeads (untested)"
+  },
+
+  "in_progress_now": {
+    "RAGTruth_confirmation": {
+      "what": "Apply the FROZEN GRASP-v2 (trained only on MUCH) to RAGTruth: a different benchmark, task family (retrieval-augmented QA, summarisation, data-to-text) and generator (Mistral-7B-Instruct).",
+      "why": "MUCH's test split has been used twice, so an untouched benchmark is the honest way to confirm the result.",
+      "how": "Kaggle GPU extracts attention and top-24 probabilities for 450 test + 1,500 train responses; claims come from MUCH's own segmenter; a claim is hallucinated if it overlaps an annotated span. Local script 16 compares frozen GRASP-v2 (zero-shot), GRASP-v2-free, GRASP-v2 retrained on RAGTruth, CCP, and token-probability baselines on identical claims.",
+      "rules": "Fixed in scripts/16_ragtruth_eval.py before any RAGTruth feature existed; no tuning on RAGTruth.",
+      "current_stage": "CPU smoke test of the pipeline with a tiny stand-in model, then the Kaggle run (needs one HuggingFace login approval)."
+    },
+    "same_GPU_CCP_timing": "MUCH's own CCP code timed on the same T4 for MUCH and RAGTruth outputs, to replace the cross-hardware 124%."
+  },
+
+  "next_steps": [
+    "finish RAGTruth and report it whatever the outcome",
+    "improve unseen-model transfer using train data only, then confirm on RAGTruth",
+    "try label-free improvements for the training-free version (may not beat CCP)",
+    "head-to-head comparison with UHeads",
+    "rotate the Kaggle API token (it was visible in screenshots); only the user can do this"
+  ],
+
+  "repository_map": {
+    "src/grasp/features.py": "teacher-forced attention extraction (G, S, P, saliency), head filtering incl. top-k",
+    "src/grasp/heads.py": "label-free head selection (variance, top-k)",
+    "src/grasp/score.py": "GRASP-0 token and claim scoring, alignment and normalisation fixes",
+    "src/grasp/much_eval.py": "exact replication of MUCH's evaluation protocol",
+    "src/tests/": "20 unit tests + 10 protocol checks (incl. cross-checks against MUCH's own code)",
+    "scripts/01–04": "MUCH setup, extraction, GRASP-0 scoring, CCP reproduction",
+    "scripts/08_claim_table.py": "per-claim feature table (attention, token probabilities, length)",
+    "scripts/09/10": "v1 development and test evaluation",
+    "scripts/11_overhead.py": "measured overhead vs real generation on the same GPU",
+    "scripts/12/13": "v2 development (train-only CV, frozen config) and v2 test evaluation",
+    "scripts/14_abstention_v2.py": "abstention analysis + per-claim test scores",
+    "scripts/15/16": "RAGTruth extraction (Kaggle) and evaluation (local)",
+    "kaggle/build_notebook.py": "builds the self-contained Kaggle notebook (MUCH mode or RAGTruth mode)",
+    "results/FINAL_RESULTS_v2.md": "the authoritative write-up",
+    "report.html / GRASP_Project_Report.pdf": "course report, rewritten from audited results",
+    "audit_report.md": "the independent audit that invalidated the first results",
+    "docs/03_novelty_recheck.md": "October 2026 prior-art re-check"
+  },
+
+  "suggested_questions_to_ask_GPT": [
+    "Explain ROC-AUC with a tiny worked example of 5 claims.",
+    "Why does a training/test split matter, and why is reading the test set twice a problem?",
+    "What exactly are grounding, sink and dispersion, and why might they signal hallucination?",
+    "Why is GRASP-v2 'supervised' even though the attention features need no labels?",
+    "What does the transfer-to-unseen-model result tell us about deployment?",
+    "How does the abstention table connect to Topic 16?",
+    "What would a reviewer criticise, and how should I answer?"
+  ]
+}
