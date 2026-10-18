@@ -296,13 +296,47 @@ print('done')
 ]
 
 
+UHEAD_CELLS = [
+    md("""
+# GRASP — UHeads (Shelmanov et al., EMNLP 2025) on the same claims
+
+Runs the authors' pre-trained claim-level heads, teacher-forced, on exactly the claims
+GRASP is evaluated on: MUCH's Llama-3.1-8B-Instruct generations (test + a train sample
+used only to fix the sign) and RAGTruth's Mistral responses (test + a train sample used
+only for sign and head choice). Comparison happens locally (`scripts/18_uhead_compare.py`).
+"""),
+    "SHARED_SETUP",
+    "SHARED_LOGIN",
+    md("## 1. MUCH data, UHeads code"),
+    code("""
+sh(f'{sys.executable} {PROJECT}/scripts/01_setup_much.py --root {MUCH_PARENT}')
+sh(f'{sys.executable} -m src import-much', cwd=MUCH)
+sh(f'{sys.executable} -m pip install -q omegaconf')
+sh(f'git clone --depth 1 -q https://github.com/IINemo/llm-uncertainty-head.git {MUCH_PARENT}/llm-uncertainty-head')
+sh(f'{sys.executable} {PROJECT}/scripts/17_uhead_extract.py --uhead-src {MUCH_PARENT}/llm-uncertainty-head --self-test')
+"""),
+    md("## 2. Pre-trained UHeads on MUCH (Llama-3.1-8B) and RAGTruth (Mistral-7B v0.2)"),
+    code("""
+UH = RESULTS / 'uhead'
+sh(f'{sys.executable} {PROJECT}/scripts/17_uhead_extract.py --much-root {MUCH} '
+   f'--uhead-src {MUCH_PARENT}/llm-uncertainty-head --rt-data {MUCH_PARENT}/ragtruth --out {UH} '
+   f'--n-train 150 --rt-n-train 150')
+"""),
+    code("""
+import shutil
+shutil.make_archive(str(WORK / 'grasp_uhead'), 'zip', RESULTS)
+print('done')
+"""),
+]
+
+
 def main() -> None:
     import sys as _sys
     mode = _sys.argv[1] if len(_sys.argv) > 1 else "much"
     blob = code_zip_b64()
-    if mode == "ragtruth":
+    if mode in ("ragtruth", "uhead"):
         cells = []
-        for c in RAGTRUTH_CELLS:
+        for c in (RAGTRUTH_CELLS if mode == "ragtruth" else UHEAD_CELLS):
             if c == "SHARED_SETUP":
                 cells.append(dict(CELLS[1]))
             elif c == "SHARED_LOGIN":
