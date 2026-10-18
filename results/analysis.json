@@ -1,0 +1,108 @@
+{
+  "error_types": {
+    "number/date": {
+      "n": 105,
+      "hallucinated": 59,
+      "rate": 0.562,
+      "CCP": 0.8668,
+      "GRASP-v2": 0.9595
+    },
+    "named entity": {
+      "n": 338,
+      "hallucinated": 100,
+      "rate": 0.296,
+      "CCP": 0.7791,
+      "GRASP-v2": 0.9374
+    },
+    "other": {
+      "n": 424,
+      "hallucinated": 70,
+      "rate": 0.165,
+      "CCP": 0.6594,
+      "GRASP-v2": 0.8646
+    }
+  },
+  "profile_example": {
+    "gen_id": "3nqxYVrKjqdqQdUvgS8rMg",
+    "model": "mistralai/Ministral-8B-Instruct-2410",
+    "lang": "en",
+    "text": "Herman Frazier won gold medals for boxing in the 1964 and 1968 Olympics.</s>"
+  },
+  "importance": {
+    "val_roc": 0.8959,
+    "roc_drop_when_permuted": {
+      "grounding|b0": 0.0039,
+      "sink|b0": 0.0032,
+      "dispersion|b0": 0.0011,
+      "grounding|b1": 0.0041,
+      "sink|b1": 0.0042,
+      "dispersion|b1": 0.0011,
+      "grounding|b2": 0.0097,
+      "sink|b2": 0.0018,
+      "dispersion|b2": 0.0013,
+      "grounding|b3": 0.0071,
+      "sink|b3": 0.0034,
+      "dispersion|b3": 0.003,
+      "grounding|b4": 0.0008,
+      "sink|b4": 0.0063,
+      "dispersion|b4": 0.003,
+      "grounding|b5": 0.004,
+      "sink|b5": 0.0335,
+      "dispersion|b5": 0.0012,
+      "grounding|b6": 0.0058,
+      "sink|b6": 0.0082,
+      "dispersion|b6": 0.0017,
+      "grounding|b7": 0.0014,
+      "sink|b7": 0.0022,
+      "dispersion|b7": 0.0017,
+      "token probabilities": 0.1297,
+      "claim length": 0.0021
+    },
+    "by_signal_sum": {
+      "grounding": 0.0368,
+      "sink": 0.0628,
+      "dispersion": 0.0141
+    }
+  },
+  "variance": {
+    "gpt4o_roc": {
+      "mean": 0.9158,
+      "sd": 0.0032,
+      "runs": [
+        0.9182,
+        0.9182,
+        0.9122,
+        0.9178,
+        0.9124
+      ]
+    },
+    "gpt4o_pr": {
+      "mean": 0.8229,
+      "sd": 0.0066,
+      "runs": [
+        0.8237,
+        0.8245,
+        0.821,
+        0.8319,
+        0.8135
+      ]
+    },
+    "human_roc": {
+      "mean": 0.9355,
+      "sd": 0.004,
+      "runs": [
+        0.9376,
+        0.9381,
+        0.9331,
+        0.9391,
+        0.9296
+      ]
+    }
+  },
+  "ragtruth_ablation_train_cv": {
+    "T": 0.6185,
+    "A": 0.7845,
+    "AT": 0.8007,
+    "ATL": 0.8005
+  }
+}

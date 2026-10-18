@@ -19,3 +19,5 @@ variance: {'gpt4o_roc': {'mean': 0.9158, 'sd': 0.0032, 'runs': [0.9182, 0.9182, 
   RAGTruth train CV  T    ROC=0.6185
   RAGTruth train CV  A    ROC=0.7845
   RAGTruth train CV  AT   ROC=0.8007
+  RAGTruth train CV  ATL  ROC=0.8005
+wrote results\analysis.json
