@@ -1,0 +1,12 @@
+<section id="protocol" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">How we kept the evaluation honest</h2>
+<table style="width:1664px;border-collapse:collapse;font-size:28px">
+<tr><th style="text-align:left;padding:18px 24px;border-bottom:2px solid #14213D;width:480px">Rule</th><th style="text-align:left;padding:18px 24px;border-bottom:2px solid #14213D">What it means here</th></tr>
+<tr><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;font-weight:600">MUCH’s own split</td><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;color:#4A5568">Test = its 200 human-annotated answers (867 claims); train = the other 4,673</td></tr>
+<tr><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;font-weight:600">Train-only choices</td><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;color:#4A5568">Every setting picked by cross-validation on train, frozen to a file before test was read</td></tr>
+<tr><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;font-weight:600">Fair criterion</td><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;color:#4A5568">Ranked by mean per-model score, so knowing which model wrote a claim can’t inflate it</td></tr>
+<tr><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;font-weight:600">Baseline reproduced</td><td style="padding:18px 24px;border-bottom:1px solid #E2DED4;color:#4A5568">CCP 0.775 here vs 0.772 published</td></tr>
+<tr><td style="padding:18px 24px;font-weight:600">Uncertainty shown</td><td style="padding:18px 24px;color:#4A5568">95% bootstrap confidence intervals; differences paired on identical claims</td></tr>
+</table>
+<aside>An early version of this project reported wins that an audit showed were invalid: no train/test split and choices made on test data. Everything shown from here on follows these rules. The MUCH test split was read twice in total, once by an earlier version and once by the final one, and we say so.</aside>
+</section>

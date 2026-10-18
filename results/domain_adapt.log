@@ -1,0 +1,11 @@
+  LOMO gemma-3-4b-it                frozen=0.7620  rank=0.7852  rank+iw=0.7839
+  LOMO Llama-3.1-8B-Instruct        frozen=0.8263  rank=0.8310  rank+iw=0.8314
+  LOMO Llama-3.2-3B-Instruct        frozen=0.8273  rank=0.8348  rank+iw=0.8361
+  LOMO Ministral-8B-Instruct-2410   frozen=0.8167  rank=0.8244  rank+iw=0.8219
+LOMO mean ROC: {'frozen': 0.8081, 'rank': 0.8189, 'rank+iw': 0.8183} -> selected: rank
+
+RAGTruth TEST zero-shot: 17226 claims
+  CCP                                        ROC=0.6231 [0.6023, 0.6435]  PR=0.1499
+  GRASP-v2 frozen (zero-shot)                ROC=0.6250 [0.606, 0.6447]  PR=0.1183  dROC vs CCP +0.0019 [-0.0249, 0.0285]
+  GRASP-v2 rank (zero-shot, selected)        ROC=0.6384 [0.6165, 0.6587]  PR=0.1312  dROC vs CCP +0.0153 [-0.011, 0.0423]
+wrote results\domain_adapt.json

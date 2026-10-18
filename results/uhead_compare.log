@@ -1,0 +1,18 @@
+MUCH UHead sign from 863 train claims: +1 (oriented train ROC 0.5262)
+
+MUCH Llama-3.1-8B test: 282 claims, 65 hallucinated, 49 generations
+  CCP                                  ROC=0.8313 [0.7692, 0.8984]  PR=0.6820  TPR@10=0.631  vs UHead +0.2614 [0.1982, 0.3474]
+  UHead                                ROC=0.5699 [0.4855, 0.6532]  PR=0.2411  TPR@10=0.046  dROC vs CCP -0.2614 [-0.3474, -0.1982]
+  GRASP-v2 (in-domain)                 ROC=0.9370 [0.885, 0.9738]  PR=0.8714  TPR@10=0.785  dROC vs CCP +0.1057 [0.0462, 0.1554]  vs UHead +0.3672 [0.2894, 0.4494]
+  GRASP-v2 (other 3 models only)       ROC=0.8825 [0.8169, 0.9376]  PR=0.7338  TPR@10=0.677  dROC vs CCP +0.0512 [-0.0073, 0.0992]  vs UHead +0.3127 [0.2342, 0.3966]
+
+RAGTruth heads (sign, oriented train ROC): {'uhead_claim_exp5_Mistral-7B-Instruct-v0.2': (1.0, 0.6576), 'uhead_claim_exp6_Mistral-7B-Instruct-v0.2': (1.0, 0.6703)} -> uhead_claim_exp6_Mistral-7B-Instruct-v0.2
+
+RAGTruth Mistral test: 17181 claims, 1316 hallucinated, 444 generations
+  CCP                                  ROC=0.6232 [0.6014, 0.6439]  PR=0.1491  TPR@10=0.267  vs UHead -0.0566 [-0.0831, -0.0294]
+  UHead                                ROC=0.6798 [0.6493, 0.7079]  PR=0.2021  TPR@10=0.317  dROC vs CCP +0.0566 [0.0294, 0.0831]
+  GRASP-v2 zero-shot (MUCH)            ROC=0.6250 [0.6055, 0.6453]  PR=0.1181  TPR@10=0.186  dROC vs CCP +0.0019 [-0.0248, 0.0294]  vs UHead -0.0547 [-0.0895, -0.0166]
+  GRASP-v2 zero-shot + rank            ROC=0.6388 [0.6172, 0.6597]  PR=0.1311  TPR@10=0.219  dROC vs CCP +0.0156 [-0.0121, 0.0425]  vs UHead -0.0410 [-0.076, -0.0041]
+  GRASP-v2 (RAGTruth-trained)          ROC=0.8266 [0.8031, 0.8488]  PR=0.3828  TPR@10=0.556  dROC vs CCP +0.2035 [0.1759, 0.232]  vs UHead +0.1469 [0.1163, 0.1798]
+
+wrote results\uhead_compare.json

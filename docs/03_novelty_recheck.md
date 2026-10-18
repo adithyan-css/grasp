@@ -43,8 +43,10 @@ UHeads, not a new family.
    suggestive, not a head-to-head comparison.
 4. **Measured cost:** 34–38% of generation time on a T4.
 
-**Owed to reviewers:** a direct GRASP-v2 vs UHeads comparison on MUCH, either with pre-trained
-heads if any are released for these models (not checked here), or by training UHeads on the
-same train split. Without that comparison, the paper should not claim to beat UHeads.
+**Update (18 Oct 2026): comparison done** with the authors' released pre-trained heads, on
+identical claims (`results/uhead_compare.json`). With in-domain labels GRASP-v2 beats them on MUCH
+(Llama-3.1-8B: 0.937 vs 0.570) and on RAGTruth (0.827 vs 0.680). Zero-shot, the pre-trained
+UHead transfers to RAGTruth better than MUCH-trained GRASP (0.680 vs 0.639). Still owed: UHeads
+retrained on MUCH's training split, for an identical-data comparison.
 
 Search date: 2026-10-17. Re-run again the week the paper is submitted.

@@ -1,0 +1,129 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Azaria and Mitchell(2023)]{azaria2023internalstatellmknows}
+Amos Azaria and Tom Mitchell.
+\newblock The internal state of an llm knows when it's lying, 2023.
+\newblock URL \url{https://arxiv.org/abs/2304.13734}.
+
+\bibitem[Binkowski et~al.(2026)Binkowski, Adamczewski, and
+  Kajdanowicz]{binkowski2026attentionsinksinternalsignals}
+Jakub Binkowski, Kamil Adamczewski, and Tomasz Kajdanowicz.
+\newblock Attention sinks as internal signals for hallucination detection in
+  large language models, 2026.
+\newblock URL \url{https://arxiv.org/abs/2604.10697}.
+
+\bibitem[Chen et~al.(2024)Chen, Liu, Chen, Gu, Wu, Tao, Fu, and
+  Ye]{chen2024insidellmsinternalstates}
+Chao Chen, Kai Liu, Ze~Chen, Yi~Gu, Yue Wu, Mingyuan Tao, Zhihang Fu, and
+  Jieping Ye.
+\newblock Inside: Llms' internal states retain the power of hallucination
+  detection, 2024.
+\newblock URL \url{https://arxiv.org/abs/2402.03744}.
+
+\bibitem[Chuang et~al.(2024)Chuang, Qiu, Hsieh, Krishna, Kim, and
+  Glass]{chuang2024lookbacklensdetectingmitigating}
+Yung-Sung Chuang, Linlu Qiu, Cheng-Yu Hsieh, Ranjay Krishna, Yoon Kim, and
+  James Glass.
+\newblock Lookback lens: Detecting and mitigating contextual hallucinations in
+  large language models using only attention maps, 2024.
+\newblock URL \url{https://arxiv.org/abs/2407.07071}.
+
+\bibitem[Dentan et~al.(2026)Dentan, Canesse, Buscaldi, Shabou, and
+  Vanier]{dentan2026muchmultilingualclaimhallucination}
+Jérémie Dentan, Alexi Canesse, Davide Buscaldi, Aymen Shabou, and Sonia
+  Vanier.
+\newblock Much: A multilingual claim hallucination benchmark, 2026.
+\newblock URL \url{https://arxiv.org/abs/2511.17081}.
+
+\bibitem[Fadeeva et~al.(2024)Fadeeva, Rubashevskii, Shelmanov, Petrakov, Li,
+  Mubarak, Tsymbalov, Kuzmin, Panchenko, Baldwin, Nakov, and
+  Panov]{fadeeva-etal-2024-fact}
+Ekaterina Fadeeva, Aleksandr Rubashevskii, Artem Shelmanov, Sergey Petrakov,
+  Haonan Li, Hamdy Mubarak, Evgenii Tsymbalov, Gleb Kuzmin, Alexander
+  Panchenko, Timothy Baldwin, Preslav Nakov, and Maxim Panov.
+\newblock Fact-checking the output of large language models via token-level
+  uncertainty quantification.
+\newblock In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors,
+  \emph{Findings of the Association for Computational Linguistics: ACL 2024},
+  pages 9367--9385, Bangkok, Thailand, August 2024. Association for
+  Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.findings-acl.558}.
+\newblock URL \url{https://aclanthology.org/2024.findings-acl.558/}.
+
+\bibitem[Kuhn et~al.(2023)Kuhn, Gal, and
+  Farquhar]{kuhn2023semanticuncertaintylinguisticinvariances}
+Lorenz Kuhn, Yarin Gal, and Sebastian Farquhar.
+\newblock Semantic uncertainty: Linguistic invariances for uncertainty
+  estimation in natural language generation, 2023.
+\newblock URL \url{https://arxiv.org/abs/2302.09664}.
+
+\bibitem[Manakul et~al.(2023)Manakul, Liusie, and
+  Gales]{manakul-etal-2023-selfcheckgpt}
+Potsawee Manakul, Adian Liusie, and Mark Gales.
+\newblock {S}elf{C}heck{GPT}: Zero-resource black-box hallucination detection
+  for generative large language models.
+\newblock In Houda Bouamor, Juan Pino, and Kalika Bali, editors,
+  \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural
+  Language Processing}, pages 9004--9017, Singapore, December 2023. Association
+  for Computational Linguistics.
+\newblock \doi{10.18653/v1/2023.emnlp-main.557}.
+\newblock URL \url{https://aclanthology.org/2023.emnlp-main.557/}.
+
+\bibitem[Min et~al.(2023)Min, Krishna, Lyu, Lewis, Yih, Koh, Iyyer,
+  Zettlemoyer, and Hajishirzi]{min-etal-2023-factscore}
+Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen-tau Yih, Pang Koh, Mohit
+  Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi.
+\newblock {FA}ct{S}core: Fine-grained atomic evaluation of factual precision in
+  long form text generation.
+\newblock In Houda Bouamor, Juan Pino, and Kalika Bali, editors,
+  \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural
+  Language Processing}, pages 12076--12100, Singapore, December 2023.
+  Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2023.emnlp-main.741}.
+\newblock URL \url{https://aclanthology.org/2023.emnlp-main.741/}.
+
+\bibitem[Niu et~al.(2024)Niu, Wu, Zhu, Xu, Shum, Zhong, Song, and
+  Zhang]{niu-etal-2024-ragtruth}
+Cheng Niu, Yuanhao Wu, Juno Zhu, Siliang Xu, KaShun Shum, Randy Zhong, Juntong
+  Song, and Tong Zhang.
+\newblock {RAGT}ruth: A hallucination corpus for developing trustworthy
+  retrieval-augmented language models.
+\newblock In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors,
+  \emph{Proceedings of the 62nd Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)}, pages 10862--10878,
+  Bangkok, Thailand, August 2024. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.acl-long.585}.
+\newblock URL \url{https://aclanthology.org/2024.acl-long.585/}.
+
+\bibitem[Shelmanov et~al.(2025)Shelmanov, Fadeeva, Tsvigun, Tsvigun, Xie,
+  Kiselev, Daheim, Zhang, Vazhentsev, Sachan, Nakov, and
+  Baldwin]{shelmanov-etal-2025-head}
+Artem Shelmanov, Ekaterina Fadeeva, Akim Tsvigun, Ivan Tsvigun, Zhuohan Xie,
+  Igor Kiselev, Nico Daheim, Caiqi Zhang, Artem Vazhentsev, Mrinmaya Sachan,
+  Preslav Nakov, and Timothy Baldwin.
+\newblock A head to predict and a head to question: Pre-trained uncertainty
+  quantification heads for hallucination detection in {LLM} outputs.
+\newblock In Christos Christodoulopoulos, Tanmoy Chakraborty, Carolyn Rose, and
+  Violet Peng, editors, \emph{Proceedings of the 2025 Conference on Empirical
+  Methods in Natural Language Processing}, pages 35712--35731, Suzhou, China,
+  November 2025. Association for Computational Linguistics.
+\newblock ISBN 979-8-89176-332-6.
+\newblock \doi{10.18653/v1/2025.emnlp-main.1809}.
+\newblock URL \url{https://aclanthology.org/2025.emnlp-main.1809/}.
+
+\bibitem[Vazhentsev et~al.(2026)Vazhentsev, Rvanova, Kuzmin, Fadeeva, Lazichny,
+  Panchenko, Panov, Sachan, Nakov, Baldwin, and
+  Shelmanov]{vazhentsev2026efficienthallucinationdetectionllms}
+Artem Vazhentsev, Lyudmila Rvanova, Gleb Kuzmin, Ekaterina Fadeeva, Ivan
+  Lazichny, Alexander Panchenko, Maxim Panov, Mrinmaya Sachan, Preslav Nakov,
+  Timothy Baldwin, and Artem Shelmanov.
+\newblock Efficient hallucination detection for llms using uncertainty-aware
+  attention heads, 2026.
+\newblock URL \url{https://arxiv.org/abs/2505.20045}.
+
+\end{thebibliography}

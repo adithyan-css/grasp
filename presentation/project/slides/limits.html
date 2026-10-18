@@ -1,0 +1,22 @@
+<section id="limits" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">What it does not do</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">Needs labels</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">The winning detector is trained on labelled claims from the setting it monitors.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">No zero-shot win across tasks</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Trained on MUCH, moved to RAGTruth: about CCP’s level (0.639 vs 0.623 with adaptation), below pre-trained UHeads (0.680).</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">Training-free doesn’t beat CCP</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Ties on MUCH (0.764 vs 0.770), loses on RAGTruth.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">Test split read twice</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Once by an earlier version; choices were frozen on train both times.</p>
+</div>
+</div>
+<aside>These are stated in the report and the paper draft. The original idea, a fully training-free attention score, works but does not beat CCP. What beats it is the same signals fed to a small trained classifier.</aside>
+</section>

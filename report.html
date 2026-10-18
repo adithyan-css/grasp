@@ -47,7 +47,8 @@
   <p><strong>Benchmark:</strong> MUCH (arXiv 2511.17081): 4,873 generations, 20,751 claims, 4 languages, 4 open LLMs.</p>
   <p><strong>Main result:</strong> On MUCH's human-annotated test split, GRASP-v2 reaches <strong>0.924 ROC-AUC vs 0.770</strong> for CCP, the best published baseline (&Delta; +0.154, 95% CI +0.110 to +0.199). It wins on all four models and needs no NLI model. On a second benchmark, <strong>RAGTruth</strong>, the same recipe retrained on RAGTruth's own labels reaches <strong>0.827 vs 0.623</strong> (&Delta; +0.203).</p>
   <p><strong>Cost, same GPU (T4):</strong> GRASP-v2 costs 33&ndash;38% of generation time; CCP costs 192&ndash;430%.</p>
-  <p><strong>Main caveats:</strong> GRASP-v2 is <em>supervised</em> and needs labels from the setting it monitors. Trained on MUCH and applied unchanged to RAGTruth, it only ties CCP. The training-free variant does not beat CCP on either benchmark.</p>
+  <p><strong>Against UHeads</strong> (closest prior method, authors' pre-trained heads, same claims): with in-domain labels GRASP-v2 wins on both benchmarks (RAGTruth 0.827 vs 0.680).</p>
+  <p><strong>Main caveats:</strong> GRASP-v2 is <em>supervised</em> and needs labels from the setting it monitors. Trained on MUCH and applied to RAGTruth without its labels, it reaches only CCP's level (0.639 with label-free adaptation), and there pre-trained UHeads transfer better (0.680). The training-free variant does not beat CCP on either benchmark.</p>
   <p class="small">Report date: 18 October 2026. Supersedes the earlier report, whose headline numbers (0.8343 vs 0.8251, &ldquo;6.4% overhead&rdquo;, German &ldquo;win&rdquo;) did not survive the audit &mdash; see &sect;8.</p>
 </div>
 
@@ -225,6 +226,19 @@
 <p>By task, the RAGTruth-trained detector beats CCP everywhere (QA 0.859 vs 0.626, summary 0.765 vs 0.617, data-to-text 0.853 vs 0.624). The zero-shot MUCH-trained detector is better than CCP on QA (0.677) and summaries (0.652) but worse on data-to-text (0.568). At response level (max over claims) the RAGTruth-trained detector scores 0.832 vs CCP's 0.647.</p>
 <div class="callout-info"><strong>What RAGTruth shows:</strong> the recipe generalises (it wins again when trained on the new setting's labels), but a detector trained on one benchmark does not transfer to a different task family and labelling scheme without retraining.</div>
 
+<h3>6.9 Label-free adaptation, response level, and UHeads</h3>
+<p><strong>Label-free adaptation.</strong> Three ways to adapt the MUCH-trained detector without target labels were compared on MUCH's training split (leave one model out). Per-domain rank normalisation of every feature won: mean held-out ROC 0.819 vs 0.808, better on all four models. Applied once to RAGTruth it lifts zero-shot ROC from 0.625 to 0.639. That is closer to, but still not significantly above, CCP's 0.623 (&Delta; +0.015, CI &minus;0.011 to +0.042).</p>
+<p><strong>Response level.</strong> Does an answer contain any hallucination? On MUCH's 200 test answers, GRASP-v2 scores 0.911 vs CCP's 0.762 (&Delta; +0.149, CI +0.086 to +0.214). The training-free variants lose (best: 0.644), so the training-free response-level edge seen on RAGTruth does not hold on MUCH.</p>
+<p><strong>UHeads.</strong> The authors' pre-trained claim-level heads (Shelmanov et al., EMNLP 2025), run on exactly the same claims. Score sign and head choice were fixed on training claims only.</p>
+<table>
+  <thead><tr><th>Benchmark</th><th class="num">CCP</th><th class="num">UHead (pre-trained)</th><th class="num">GRASP-v2, no target labels</th><th class="num">GRASP-v2, in-domain</th></tr></thead>
+  <tbody>
+    <tr><td>MUCH, Llama-3.1-8B (282 claims)</td><td class="num">0.831</td><td class="num">0.570</td><td class="num">0.883</td><td class="num"><strong>0.937</strong></td></tr>
+    <tr><td>RAGTruth, Mistral (17,181 claims)</td><td class="num">0.623</td><td class="num"><strong>0.680</strong></td><td class="num">0.639</td><td class="num"><strong>0.827</strong></td></tr>
+  </tbody>
+</table>
+<p>With in-domain labels GRASP-v2 beats UHeads on both benchmarks (RAGTruth &Delta; +0.147, CI +0.116 to +0.180). Without them, UHeads' pre-trained head transfers to RAGTruth better than GRASP trained on MUCH alone (&Delta; &minus;0.041, CI &minus;0.076 to &minus;0.004). It was trained on far larger, more varied data. The pre-trained Llama head is weak on MUCH even on training claims, likely because MUCH's claims are very short (~4.6 tokens), so the MUCH margin over UHeads is indicative only.</p>
+
 <div class="page-break"></div>
 <h2>7. Topic 16: uncertainty-aware abstention</h2>
 <p>A detector earns its keep when the system can <em>withhold</em> the claims it doubts. Ranking test claims by risk and withholding the riskiest share gives the following:</p>
@@ -247,7 +261,7 @@
     <li><strong>Two test reads.</strong> v1 and v2 both read MUCH's test split. All v2 choices were frozen on train first. The RAGTruth check (&sect;6.8), whose rules were fixed in advance, confirms the in-domain result but shows no zero-shot advantage.</li>
     <li><strong>Labels.</strong> Test claims are scored against GPT-4o labels on the human-annotated samples, as MUCH's evaluator does, not against the human labels.</li>
     <li><strong>Optimism.</strong> Test ROC (0.924) sits above train cross-validation (~0.885&ndash;0.897). The final model trains on 100% of train and the test set is small, so expect some regression on new data. The lower CI bound is 0.896.</li>
-    <li><strong>Transfer.</strong> Trained on MUCH and applied to RAGTruth without retraining, GRASP-v2 only ties CCP, and it is worse on data-to-text.</li>
+    <li><strong>Transfer.</strong> Trained on MUCH and applied to RAGTruth without retraining, GRASP-v2 reaches only CCP's level (0.639 with label-free adaptation), and pre-trained UHeads do better there (0.680).</li>
     <li><strong>Prior work.</strong> No head-to-head comparison with UHeads/LUH yet.</li>
   </ol>
 </div>
@@ -255,9 +269,8 @@
 
 <h2>9. Next steps</h2>
 <ul>
-  <li><strong>Transfer without retraining:</strong> close the zero-shot gap (RAGTruth data-to-text) with label-free domain adaptation, judged on training data only.</li>
-  <li><strong>Head-to-head with UHeads/LUH</strong>, the closest prior method, on the same MUCH training split.</li>
-  <li><strong>Training-free variant:</strong> it currently ties or trails CCP at claim level; at response level on RAGTruth it beats CCP (0.679 vs 0.647), which may be the better use for it.</li>
+  <li><strong>Transfer without labels:</strong> rank normalisation narrowed the gap but did not close it. Training on more diverse data, as UHeads does, is the likely route.</li>
+  <li><strong>UHeads retrained on MUCH</strong>, to compare both methods with identical training data, rather than using their released heads.</li>
 </ul>
 
 <h2>10. Reproducibility</h2>

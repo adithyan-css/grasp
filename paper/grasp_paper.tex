@@ -1,0 +1,259 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\setcitestyle{authoryear,round}
+
+\newcommand{\pending}{\textcolor{red}{\textbf{[pending]}}}
+
+\title{Where Was the Model Looking? Cheap Claim-Level Hallucination Detection\\ from Attention and Token Probabilities}
+\author{Anonymous submission}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Claim-level hallucination detection for long-form LLM output is far from solved: on the
+MUCH benchmark the strongest published training-free method, Claim-Conditioned Probability
+(CCP), reaches 0.77 ROC-AUC while spending more compute than generation itself. We study
+GRASP, a detector that reads three interpretable attention statistics (grounding to the
+prompt, attention-sink leakage and dispersion) from a few label-free-selected heads per layer,
+pools them over relative depth, adds the token probabilities the model already produced, and
+scores each claim with a small gradient-boosted classifier. On MUCH's human-annotated test
+split GRASP reaches 0.924 ROC-AUC against CCP's 0.770 ($\Delta$ +0.154, 95\% CI
++0.110 to +0.199), wins on each of four open models, and costs 33--38\% of generation time
+on a T4, where CCP measured on the same hardware costs 192--430\%. Retrained with the same
+frozen recipe on RAGTruth it again beats CCP (0.827 vs 0.623). We report the limits as
+plainly: the detector is supervised; trained on MUCH and applied unchanged to RAGTruth it only
+ties CCP, even after label-free domain adaptation, and there the authors' pre-trained UHeads
+transfer better (0.680 vs 0.639); its training-free variants do not beat CCP. With in-domain
+labels GRASP also outperforms pre-trained UHeads on both benchmarks.
+\end{abstract}
+
+\section{Introduction}
+An LLM states invented facts as fluently as true ones. For long answers, a single
+answer-level confidence score does not tell a user \emph{which} sentence to check, so the useful
+unit is the atomic claim \citep{min-etal-2023-factscore}. The MUCH benchmark
+\citep{dentan2026muchmultilingualclaimhallucination} makes this setting measurable: 4,873
+generations from four open models in four languages, pre-segmented into 20,751 claims, with the
+generated tokens and their top-24 probabilities released. Its strongest baseline, CCP
+\citep{fadeeva-etal-2024-fact}, filters token-level uncertainty through a natural-language
+inference model applied at every token; it reaches 0.772 ROC-AUC at a cost the benchmark authors
+put above that of generation.
+
+We ask whether the model's own attention, read in one teacher-forced pass, can do better and
+cheaper. The intuition is that when a model states a fact it holds, some heads retrieve from the
+prompt; when it improvises, attention drifts to its own recent output or collapses onto the
+attention sink. We make three contributions:
+\begin{itemize}
+  \item A lightweight claim-level detector, GRASP, built from three interpretable attention
+        statistics on label-free-selected heads plus free token probabilities, and a small tree model.
+  \item An evaluation that follows MUCH's protocol exactly, keeps every modelling choice on the
+        training split, and reports per model, across models, on a second benchmark (RAGTruth;
+        \citealp{niu-etal-2024-ragtruth}) and with runtime measured against CCP on the same GPU.
+  \item An explicit account of what does \emph{not} work: zero-shot cross-benchmark transfer and
+        training-free variants.
+\end{itemize}
+
+\section{Related work}
+\textbf{Probability-based.} Token likelihood and entropy are cheap but conflate lexical and factual
+uncertainty; CCP \citep{fadeeva-etal-2024-fact} removes lexical variation with NLI at a large
+cost. \textbf{Sampling-based} methods such as SelfCheckGPT \citep{manakul-etal-2023-selfcheckgpt}
+and semantic entropy \citep{kuhn2023semanticuncertaintylinguisticinvariances} multiply generation
+cost and miss consistent errors. \textbf{Internal-state probes} predict hallucination from hidden
+states \citep{azaria2023internalstatellmknows,chen2024insidellmsinternalstates} or attention:
+Lookback Lens \citep{chuang2024lookbacklensdetectingmitigating} uses the ratio of attention to
+context versus generated text, SinkProbe \citep{binkowski2026attentionsinksinternalsignals} the
+attention-sink mass, and RAUQ \citep{vazhentsev2026efficienthallucinationdetectionllms} selects
+uncertainty-aware heads without labels at sequence level. Closest to us, UHeads
+\citep{shelmanov-etal-2025-head} train a transformer head on attention features and token
+probabilities for claim-level detection. GRASP is in the same family; it differs in using three
+interpretable statistics from a few label-free-selected heads and a small tree model, and in being
+evaluated head-to-head against CCP on MUCH.
+
+\section{Method}
+\subsection{Per-token attention signals}
+The generated tokens are replayed through the model once. For generated token $t$ and a kept head,
+with attention row $a_t$ over positions $0..t$ (position 0 is the sink, $1..P{-}1$ the prompt):
+\begin{align}
+G_t &= \frac{\sum_{j=1}^{P-1} a_{t,j}}{\sum_{j\ge 1} a_{t,j}} &\text{(grounding to the prompt)}\\
+S_t &= a_{t,0} &\text{(sink leakage)}\\
+D_t &= \frac{-\sum_{j\ge1} \tilde a_{t,j}\log \tilde a_{t,j}}{\log |\{j\ge1\}|} &\text{(dispersion)}
+\end{align}
+where $\tilde a$ is the non-sink row renormalised. The row used is the one that \emph{produced}
+token $t$. A saliency weight $W_t$ is the attention token $t$ receives from later generated tokens,
+divided by their number.
+
+\subsection{Label-free head selection}
+For each layer we keep the $k$ heads whose $G$ varies most across tokens on 200 unlabelled
+generations of the same model; a head with near-constant $G$ cannot discriminate. We use $k{=}4$.
+
+\subsection{Claim features and classifier}
+Layers are pooled into 8 relative-depth bins so that models of different depth share one feature
+space. For each bin, kept head and signal, a claim's content tokens (stopwords and punctuation
+removed) give the mean, max, min and saliency-weighted mean of the per-(layer, head) z-scored value
+(384 features). We add seven token-probability features from the top-24 probabilities MUCH
+already releases (chosen-token surprisal, entropy, top-1 probability, top-1/top-2 gap) and two
+claim-length features. A gradient-boosted tree classifier (31 leaves, 800 rounds) predicts the
+hallucination label. \textbf{GRASP-free}, a training-free variant, averages the per-model rank of
+mid-depth minimum grounding with the rank of token surprisal and entropy, with signs fixed a priori.
+
+\section{Experimental setup}
+\textbf{Data.} MUCH, all 8 generation configs (Llama-3.2-3B, Llama-3.1-8B, Gemma-3-4B and
+Ministral-8B, at temperatures 0.7 and 1.0). MUCH's test split is its 200 human-annotated generations
+(867 claims); the train split is the other 4,673 (19,884 claims). We follow MUCH's evaluator:
+GPT-4o labels on claims where GPT-4o and GPT-4.1 agree, the trailing end-of-sequence chunk dropped,
+and stopwords masked for probability baselines.
+
+\textbf{Protocol.} Feature groups, normalisation, learner and $k$ were chosen by 5-fold
+cross-validation on the train split, grouped by generation and ranked by the \emph{mean of
+per-model} ROC-AUCs, since pooled ROC can be inflated by recognising which model wrote a claim
+(hallucination rates range from 22\% to 54\%). The selection was frozen to a file before the test
+split was read. This was the second reading of MUCH's test split; the first evaluated an earlier
+version (\S\ref{sec:limits}).
+
+\textbf{Baselines.} CCP as released by MUCH ($\delta{=}24$, $\sigma{=}8$, \texttt{product}
+aggregation), which we reproduce at 0.775 ROC / 0.643 PR (published: 0.772 / 0.639); token
+surprisal and entropy; and UHeads \citep{shelmanov-etal-2025-head} via the authors' pre-trained
+claim heads (\S\ref{sec:uheads}).
+
+\textbf{Statistics.} 95\% CIs come from 2,000 bootstrap resamples of generations; differences
+are paired on identical claims.
+
+\section{Results}
+\subsection{MUCH}
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lccccc}
+\toprule
+Method & Labels & ROC-AUC [95\% CI] & PR-AUC & TPR@10\% & $\Delta$ROC vs CCP \\
+\midrule
+CCP & no & 0.770 [0.724, 0.817] & 0.637 & 0.537 & -- \\
+GRASP-0 (hand-weighted) & no & 0.629 [0.569, 0.687] & 0.388 & 0.188 & $-$0.141 \\
+GRASP-free & no & 0.764 [0.713, 0.815] & 0.501 & 0.354 & $-$0.006 [$-$0.056, +0.041] \\
+\textbf{GRASP} & yes & \textbf{0.924} [0.896, 0.948] & \textbf{0.845} & \textbf{0.790} & \textbf{+0.154} [+0.110, +0.199] \\
+GRASP + CCP input & yes & 0.920 [0.895, 0.944] & 0.838 & 0.729 & +0.150 [+0.111, +0.191] \\
+\bottomrule
+\end{tabular}
+\caption{MUCH human-annotated test split (867 claims, 229 hallucinated).}
+\label{tab:main}
+\end{table}
+
+GRASP beats CCP on every model: Gemma-3-4B 0.917 vs 0.726, Llama-3.1-8B 0.937 vs 0.831,
+Llama-3.2-3B 0.889 vs 0.767 and Ministral-8B 0.897 vs 0.830; all paired CIs exclude zero. Adding CCP
+as an input does not help, so its NLI step is unnecessary. At response level (does an answer contain
+any hallucination; 200 generations) GRASP reaches 0.911 vs CCP's 0.762 ($\Delta$ +0.149,
+CI +0.086 to +0.214).
+
+\textbf{Transfer to an unseen model.} Trained on three models' training claims and scored on the
+fourth model's test claims, GRASP beats CCP on Gemma (0.808 vs 0.726), Llama-3.1-8B (0.882 vs 0.831)
+and Ministral (0.853 vs 0.830) and trails it on Llama-3.2-3B (0.759 vs 0.767).
+
+\textbf{What contributes.} In train cross-validation (mean per-model ROC; CCP 0.797), token
+probabilities alone give 0.771, attention alone 0.832, both 0.866, and the tuned learner 0.885.
+Four heads per layer beat one consistently (+0.01 to +0.02).
+
+\subsection{Abstention}
+Withholding the claims GRASP rates riskiest lowers the hallucination rate of what remains from
+26.4\% to 11.4\% at 20\% withheld and to 7.2\% at 30\% (CCP: 16.3\% and 14.7\%); the area under
+the risk--coverage curve is 0.062 vs 0.152.
+
+\subsection{Second benchmark: RAGTruth}
+We apply the frozen recipe to RAGTruth's Mistral-7B-Instruct responses (retrieval-augmented QA,
+summarisation, data-to-text). Claims come from MUCH's segmenter and are hallucinated if they overlap
+an annotated span; the test set has 445 responses and 17,226 claims (7.7\% hallucinated). Rules were
+fixed before extraction (Table~\ref{tab:rag}).
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llccc}
+\toprule
+Method & Trained on & ROC-AUC [95\% CI] & PR-AUC & $\Delta$ROC vs CCP \\
+\midrule
+CCP & -- & 0.623 [0.602, 0.644] & 0.150 & -- \\
+mean token entropy & -- & 0.623 & 0.114 & $-$0.000 \\
+GRASP-free & -- & 0.595 & 0.098 & $-$0.028 [$-$0.057, +0.001] \\
+GRASP, zero-shot & MUCH & 0.625 [0.606, 0.645] & 0.118 & +0.002 [$-$0.025, +0.029] \\
+GRASP, zero-shot + rank norm. & MUCH + unlabelled RAGTruth & 0.639 [0.617, 0.659] & 0.131 & +0.015 [$-$0.011, +0.042] \\
+\textbf{GRASP} & RAGTruth train & \textbf{0.827} [0.803, 0.849] & \textbf{0.383} & \textbf{+0.203} [+0.177, +0.233] \\
+\bottomrule
+\end{tabular}
+\caption{RAGTruth test, claim level.}
+\label{tab:rag}
+\end{table}
+Retrained in-domain, GRASP wins on every task (QA 0.859, summary 0.765, data-to-text 0.853, vs
+CCP 0.626, 0.617, 0.624). Zero-shot from MUCH it only ties CCP: better on QA and summaries, worse
+on data-to-text. As a label-free remedy we compared, by MUCH leave-one-model-out on the training
+split, the frozen recipe (mean held-out ROC 0.808), per-domain rank normalisation of every feature
+fitted on unlabelled target features (0.819) and rank normalisation with importance weighting
+(0.818). The selected rank normalisation lifts zero-shot RAGTruth ROC to 0.639, still not
+significantly above CCP.
+
+\subsection{Comparison with UHeads}
+\label{sec:uheads}
+We ran the authors' pre-trained claim-level UHeads \citep{shelmanov-etal-2025-head}, teacher-forced
+on exactly the claims GRASP is scored on. Our reimplementation of their attention features was
+checked equal to their extractor. The score's sign and, on RAGTruth, the choice between their two
+Mistral heads were fixed on training claims only.
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llcc}
+\toprule
+Benchmark & Method (labels) & ROC-AUC [95\% CI] & $\Delta$ROC vs UHead \\
+\midrule
+MUCH, Llama-3.1-8B & UHead (pre-trained) & 0.570 [0.486, 0.653] & -- \\
+(282 claims) & CCP & 0.831 & +0.261 \\
+ & GRASP (other three models) & 0.883 [0.817, 0.938] & +0.313 [+0.234, +0.397] \\
+ & GRASP (in-domain) & \textbf{0.937} & +0.367 [+0.289, +0.449] \\
+\midrule
+RAGTruth, Mistral & CCP & 0.623 & $-$0.057 \\
+(17,181 claims) & GRASP zero-shot + rank norm. (MUCH) & 0.639 & $-$0.041 [$-$0.076, $-$0.004] \\
+ & UHead (pre-trained) & 0.680 [0.649, 0.708] & -- \\
+ & GRASP (RAGTruth train) & \textbf{0.827} & +0.147 [+0.116, +0.180] \\
+\bottomrule
+\end{tabular}
+\caption{GRASP vs pre-trained UHeads on identical claims.}
+\label{tab:uheads}
+\end{table}
+With in-domain labels GRASP outperforms UHeads on both benchmarks. Zero-shot, UHeads' pre-trained
+Mistral head transfers to RAGTruth better than GRASP trained on MUCH alone; it was trained on far
+larger and more varied data. The pre-trained Llama head is weak on MUCH even on training claims
+(oriented ROC 0.526), while the same code is sensible on RAGTruth. We therefore attribute this to a
+mismatch between its training claims and MUCH's very short claims (about 4.6 tokens), and treat the
+MUCH margin over UHeads as indicative only.
+
+\subsection{Runtime}
+On Tesla T4s, GRASP's extraction pass costs 33--38\% of measured generation time. MUCH's CCP,
+timed on the same hardware, costs 235--430\% on MUCH's models and 192\% on RAGTruth-length
+answers. CCP's NLI cost is fixed per token, so it is relatively worst for small, fast models.
+
+\section{Limitations}
+\label{sec:limits}
+GRASP is supervised and needs labels from the setting it monitors; without them it transfers
+across models but not across benchmarks and task families. Training-free variants do not beat
+CCP at claim level on either benchmark, and at response level the RAGTruth advantage of the
+training-free score (0.679 vs 0.647) does not hold on MUCH (0.616 vs 0.762). Without in-domain
+labels, pre-trained UHeads transfer better than GRASP (RAGTruth 0.680 vs 0.639), and our
+comparison uses their released heads rather than retraining them on MUCH. MUCH's test split was
+read twice: once by an earlier version and once by GRASP as reported, with all choices frozen on
+the training split beforehand. Test labels are GPT-4o's, applied to the human-annotated samples, as
+in MUCH's evaluator. CCP and generation were timed on different sample generations, so overheads
+compare per token. RAGTruth responses were replayed through Mistral-7B-Instruct-v0.1, assumed to
+be the generator version.
+
+\section{Conclusion}
+Reading where the model looked, through a few interpretable attention statistics, plus the
+probabilities it already produced, gives a claim-level hallucination detector that clearly beats
+CCP and pre-trained UHeads on MUCH and, retrained, on RAGTruth, at a fraction of CCP's cost. The
+open problem it leaves is transfer to new task families without labels, where large pre-trained
+heads currently do better.
+
+\bibliographystyle{plainnat}
+\bibliography{../papers/references}
+\end{document}

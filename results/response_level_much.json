@@ -1,0 +1,149 @@
+{
+  "unit": "generation",
+  "train_selection": {
+    "GRASP-v2-free": 0.7063,
+    "mean entropy": 0.6812,
+    "max surprisal": 0.7386,
+    "GRASP-v2-free + mean entropy": 0.7252
+  },
+  "best_training_free": "max surprisal",
+  "test": {
+    "CCP": {
+      "roc_auc": 0.762,
+      "pr_auc": 0.8345,
+      "tpr_at_10fpr": 0.4622,
+      "roc_auc_ci95": [
+        0.6946,
+        0.8268
+      ],
+      "pr_auc_ci95": [
+        0.7598,
+        0.8938
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.3333,
+        0.5917
+      ]
+    },
+    "GRASP-v2-free": {
+      "roc_auc": 0.6162,
+      "pr_auc": 0.6931,
+      "tpr_at_10fpr": 0.1261,
+      "roc_auc_ci95": [
+        0.534,
+        0.6948
+      ],
+      "pr_auc_ci95": [
+        0.5987,
+        0.7817
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.0536,
+        0.3445
+      ],
+      "roc_diff_vs_ccp": -0.1458,
+      "roc_diff_vs_ccp_ci95": [
+        -0.219,
+        -0.0779
+      ],
+      "p_diff_le_0": 1.0
+    },
+    "mean entropy": {
+      "roc_auc": 0.5731,
+      "pr_auc": 0.6496,
+      "tpr_at_10fpr": 0.1008,
+      "roc_auc_ci95": [
+        0.4885,
+        0.6542
+      ],
+      "pr_auc_ci95": [
+        0.5525,
+        0.7479
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.0467,
+        0.2689
+      ],
+      "roc_diff_vs_ccp": -0.1889,
+      "roc_diff_vs_ccp_ci95": [
+        -0.2602,
+        -0.1197
+      ],
+      "p_diff_le_0": 1.0
+    },
+    "max surprisal": {
+      "roc_auc": 0.6437,
+      "pr_auc": 0.7116,
+      "tpr_at_10fpr": 0.2941,
+      "roc_auc_ci95": [
+        0.5634,
+        0.7219
+      ],
+      "pr_auc_ci95": [
+        0.6152,
+        0.8061
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1017,
+        0.4224
+      ],
+      "roc_diff_vs_ccp": -0.1183,
+      "roc_diff_vs_ccp_ci95": [
+        -0.1749,
+        -0.0631
+      ],
+      "p_diff_le_0": 1.0
+    },
+    "GRASP-v2-free + mean entropy": {
+      "roc_auc": 0.6539,
+      "pr_auc": 0.7068,
+      "tpr_at_10fpr": 0.1429,
+      "roc_auc_ci95": [
+        0.574,
+        0.735
+      ],
+      "pr_auc_ci95": [
+        0.6109,
+        0.8007
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.0601,
+        0.375
+      ],
+      "roc_diff_vs_ccp": -0.1081,
+      "roc_diff_vs_ccp_ci95": [
+        -0.1767,
+        -0.0397
+      ],
+      "p_diff_le_0": 0.999
+    },
+    "GRASP-v2": {
+      "roc_auc": 0.911,
+      "pr_auc": 0.9378,
+      "tpr_at_10fpr": 0.7899,
+      "roc_auc_ci95": [
+        0.8706,
+        0.9487
+      ],
+      "pr_auc_ci95": [
+        0.9005,
+        0.9687
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.6065,
+        0.8684
+      ],
+      "roc_diff_vs_ccp": 0.149,
+      "roc_diff_vs_ccp_ci95": [
+        0.086,
+        0.2139
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 200,
+      "hallucinated": 119,
+      "generations": 200
+    }
+  }
+}

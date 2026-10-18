@@ -26,8 +26,11 @@ and costs **33–38%** of generation time on a T4, where CCP measured on the sam
 **192–430%**. On a second benchmark, RAGTruth, the same recipe retrained on RAGTruth's
 labels reaches **0.827 vs CCP's 0.623**.
 
-It is **supervised**. Trained on MUCH and applied unchanged to RAGTruth, it only ties CCP;
-the training-free variant does not beat CCP on either benchmark. Full results and limits:
+With in-domain labels it also beats the authors' pre-trained **UHeads** (closest prior method)
+on both benchmarks. It is **supervised**: trained on MUCH and applied to RAGTruth without its
+labels, it only reaches CCP's level (0.639 with label-free adaptation), and there pre-trained
+UHeads transfer better (0.680). The training-free variant does not beat CCP. Full results and
+limits:
 [`results/FINAL_RESULTS_v2.md`](results/FINAL_RESULTS_v2.md).
 
 ---
@@ -240,6 +243,9 @@ baseline is apples-to-apples under an identical protocol.
 | v2 evaluation (second test look) | GRASP-v2 0.924 vs CCP 0.770, no CCP needed — `results/FINAL_RESULTS_v2.md` |
 | Runtime overhead | measured on T4: GRASP-v2 33–38%, CCP 192–430% (same GPU); the old 1–3% claim is retracted |
 | Second benchmark (RAGTruth, Mistral-7B) | retrained in-domain: 0.827 vs CCP 0.623; zero-shot from MUCH: ties CCP (0.625) |
+| UHeads head-to-head (pre-trained heads, same claims) | in-domain GRASP wins on both; zero-shot, UHeads transfer better to RAGTruth |
+| Label-free adaptation / response level | rank normalisation 0.625 → 0.639 zero-shot (n.s.); response level GRASP 0.911 vs CCP 0.762 |
+| Paper draft / slides | `paper/grasp_paper.pdf` (6 pp.), `presentation/` (15-slide deck) |
 | `report.html` / PDF | rewritten from the audited results (18 Oct 2026) |
 
 Superseded numbers (pre-audit `report.html`, `results/RESULTS.md`) are kept for the record

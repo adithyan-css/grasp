@@ -1,0 +1,22 @@
+<section id="signals" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">Three signals read from each attention head</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #E2DED4;border-top:8px solid #2F5F9E;border-radius:16px;padding:44px">
+<h3 style="font-size:36px;font-weight:600">G · Grounding</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Share of attention going back to the <b>prompt</b> rather than the model’s own new text.</p>
+<p style="font-size:28px;color:#A14A12;line-height:1.4">Low = improvising</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #E2DED4;border-top:8px solid #2F5F9E;border-radius:16px;padding:44px">
+<h3 style="font-size:36px;font-weight:600">S · Sink leakage</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Attention dumped on the first token, the transformer’s “nothing relevant here” position.</p>
+<p style="font-size:28px;color:#A14A12;line-height:1.4">High = nothing to retrieve</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #E2DED4;border-top:8px solid #2F5F9E;border-radius:16px;padding:44px">
+<h3 style="font-size:36px;font-weight:600">D · Dispersion</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Entropy of the attention row: one clear source, or smeared across everything?</p>
+<p style="font-size:28px;color:#A14A12;line-height:1.4">High = no specific source</p>
+</div>
+</div>
+<p style="font-size:30px;color:#4A5568;line-height:1.4">Heads are chosen <b>without labels</b>: per layer, the 4 heads whose grounding varies most on unlabelled text.</p>
+<aside>Each generated token gets three numbers per kept head. A head whose grounding is nearly constant carries no information, so we keep the four most variable heads per layer, chosen on 200 unlabelled answers.</aside>
+</section>

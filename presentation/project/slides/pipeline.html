@@ -1,0 +1,26 @@
+<section id="pipeline" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">From tokens to a claim score</h2>
+<div style="display:flex;align-items:center;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:36px">
+<h3 style="font-size:32px;font-weight:600">1. One pass</h3>
+<p style="font-size:26px;color:#4A5568;line-height:1.4">Replay the answer; read G, S, D from 4 heads per layer</p>
+</div>
+<x-icon name="ArrowRight" style="width:56px;height:56px;color:#C2611F"></x-icon>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:36px">
+<h3 style="font-size:32px;font-weight:600">2. Per claim</h3>
+<p style="font-size:26px;color:#4A5568;line-height:1.4">Mean, max, min over content words, in 8 depth bins</p>
+</div>
+<x-icon name="ArrowRight" style="width:56px;height:56px;color:#C2611F"></x-icon>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:36px">
+<h3 style="font-size:32px;font-weight:600">3. Add free signals</h3>
+<p style="font-size:26px;color:#4A5568;line-height:1.4">Token probabilities the model already produced + claim length</p>
+</div>
+<x-icon name="ArrowRight" style="width:56px;height:56px;color:#C2611F"></x-icon>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#14213D;border-radius:16px;padding:36px">
+<h3 style="font-size:32px;font-weight:600;color:#FAF8F3">4. Small classifier</h3>
+<p style="font-size:26px;color:#C9D3E3;line-height:1.4">Gradient-boosted trees → hallucination probability</p>
+</div>
+</div>
+<p style="font-size:30px;color:#4A5568;line-height:1.4">393 features per claim. No sampling, no NLI model, no change to the LLM. The classifier is trained on labelled claims: this is a <b>supervised</b> detector.</p>
+<aside>Depth bins let models with different numbers of layers share one feature space. The token probabilities come from the same forward pass, so they are free. The final classifier is small and runs on a CPU in under a millisecond per claim.</aside>
+</section>

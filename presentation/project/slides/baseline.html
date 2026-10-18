@@ -1,0 +1,19 @@
+<section id="baseline" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">The best existing method is accurate but expensive</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:48px">
+<h3 style="font-size:32px;font-weight:600">CCP (Fadeeva et al., 2024)</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">At every token, an NLI model checks whether the alternatives the LLM considered mean the same thing or contradict it.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:48px">
+<h3 style="font-size:32px;font-weight:600">On the MUCH benchmark</h3>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">4,873 answers · 20,751 claims · 4 open models · 4 languages</p>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">Published: <b style="color:#14213D">0.772 ROC-AUC</b>. Reproduced here: <b style="color:#14213D">0.775</b>.</p>
+</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:32px">
+<p style="font-family:'EB Garamond', Georgia, serif;font-size:120px;font-weight:600;color:#C2611F;line-height:1">192–430%</p>
+<p style="font-size:32px;color:#4A5568;line-height:1.4">of generation time, measured on our T4 GPU: checking the answer costs more than writing it.</p>
+</div>
+<aside>CCP is the strongest published training-free detector on MUCH. We reproduced its score exactly from the benchmark’s released signals. Its weakness is cost: an NLI model runs on every generated token, which on our GPU costs 2 to 4 times the generation time.</aside>
+</section>

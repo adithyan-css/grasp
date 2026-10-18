@@ -302,13 +302,14 @@
     "yes": [
       "Supervised GRASP-v2 beats CCP on MUCH's human-annotated test split: +0.154 ROC, CI +0.110 to +0.199, on all 4 models",
       "Retrained on RAGTruth with the same frozen recipe, it beats CCP on a second benchmark: +0.203 ROC, CI +0.177 to +0.233, on all 3 task types",
-      "It costs 33-38% of generation time vs CCP's 192-430% on the same GPU"
+      "It costs 33-38% of generation time vs CCP's 192-430% on the same GPU",
+      "With in-domain labels it also beats pre-trained UHeads (closest prior method) on both benchmarks",
+      "At response level on MUCH: 0.911 vs CCP 0.762"
     ],
     "no_or_not_yet": [
-      "Zero-shot (trained on MUCH, applied to RAGTruth) it only ties CCP, and is worse on data-to-text",
-      "The training-free GRASP-v2-free ties CCP on MUCH and loses on RAGTruth at claim level",
-      "The original GRASP-0 idea loses to CCP",
-      "No head-to-head comparison with UHeads (closest prior work)"
+      "Zero-shot to a new benchmark it only reaches CCP's level (0.639 vs 0.623 after adaptation) and loses to pre-trained UHeads (0.680)",
+      "The training-free versions do not beat CCP at claim or response level",
+      "The original GRASP-0 idea loses to CCP"
     ]
   },
   "limitations_to_state": [
@@ -332,10 +333,9 @@
     "status": "nothing running; RAGTruth and same-GPU CCP timing are complete"
   },
   "next_steps": [
-    "label-free domain adaptation to close the zero-shot gap (judged on training data only)",
-    "head-to-head comparison with UHeads on MUCH's training split",
-    "explore the training-free score at response level, where it beats CCP on RAGTruth",
-    "rotate the Kaggle API token (it was visible in screenshots); only the user can do this"
+    "train on more diverse data to improve zero-shot transfer",
+    "retrain UHeads on MUCH for an identical-data comparison",
+    "re-run the novelty search the week of submission"
   ],
   "repository_map": {
     "src/grasp/features.py": "teacher-forced attention extraction (G, S, P, saliency), head filtering incl. top-k",
@@ -354,7 +354,12 @@
     "results/FINAL_RESULTS_v2.md": "the authoritative write-up",
     "report.html / GRASP_Project_Report.pdf": "course report, rewritten from audited results",
     "audit_report.md": "the independent audit that invalidated the first results",
-    "docs/03_novelty_recheck.md": "October 2026 prior-art re-check"
+    "docs/03_novelty_recheck.md": "October 2026 prior-art re-check",
+    "scripts/17/18": "UHeads extraction (Kaggle) and comparison",
+    "scripts/19_response_level.py": "response-level evaluation on MUCH",
+    "scripts/20_domain_adapt.py": "label-free domain adaptation for zero-shot transfer",
+    "paper/": "6-page paper draft (LaTeX + PDF)",
+    "presentation/": "15-slide deck source"
   },
   "suggested_questions_to_ask_GPT": [
     "Explain ROC-AUC with a tiny worked example of 5 claims.",
@@ -451,5 +456,52 @@
       "trained on MUCH and moved to RAGTruth unchanged, it only ties CCP (better on QA and summaries, worse on data-to-text)",
       "the training-free score loses to CCP at claim level but beats it at response level"
     ]
+  },
+  "results_UHeads": {
+    "evidence": "results/uhead_compare.json; scripts/17_uhead_extract.py, 18_uhead_compare.py",
+    "what": "the authors' pre-trained claim-level UHeads run on exactly GRASP's claims; sign/head chosen on train only",
+    "MUCH_Llama31_8B_roc": {
+      "CCP": 0.831,
+      "UHead_pretrained": 0.57,
+      "GRASP_other_3_models": 0.883,
+      "GRASP_in_domain": 0.937
+    },
+    "RAGTruth_Mistral_roc": {
+      "CCP": 0.623,
+      "UHead_pretrained": 0.68,
+      "GRASP_zero_shot_rank": 0.639,
+      "GRASP_retrained": 0.827
+    },
+    "reading": [
+      "with in-domain labels GRASP beats UHeads on both benchmarks",
+      "zero-shot on RAGTruth, pre-trained UHeads transfer better than MUCH-trained GRASP",
+      "the Llama UHead is weak on MUCH even on training claims (likely short-claim mismatch), so that margin is indicative only"
+    ]
+  },
+  "results_domain_adaptation": {
+    "evidence": "results/domain_adapt.json",
+    "selection_lomo_mean_roc": {
+      "frozen": 0.808,
+      "rank_normalisation": 0.819,
+      "rank_plus_importance_weighting": 0.818
+    },
+    "ragtruth_zero_shot_roc": {
+      "frozen": 0.625,
+      "rank_normalisation": 0.639,
+      "CCP": 0.623,
+      "delta_vs_ccp_ci95": [
+        -0.011,
+        0.042
+      ]
+    }
+  },
+  "results_response_level_MUCH": {
+    "evidence": "results/response_level_much.json",
+    "roc": {
+      "CCP": 0.762,
+      "GRASP_v2": 0.911,
+      "best_training_free_max_surprisal": 0.644,
+      "GRASP_v2_free": 0.616
+    }
   }
 }

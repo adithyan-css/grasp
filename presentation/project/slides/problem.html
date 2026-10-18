@@ -1,0 +1,13 @@
+<section id="problem" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">The problem: one wrong claim hides among true ones</h2>
+<div style="display:flex;flex-direction:column;gap:20px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:48px">
+<p style="font-size:36px;font-style:italic;color:#4A5568">“Marie Curie was born in Warsaw in 1899 and received two Nobel prizes.”</p>
+<div style="display:flex;gap:24px">
+<div style="flex:1;background:#EEF2F8;border-radius:12px;padding:28px"><p style="font-size:28px">born in Warsaw</p><p style="font-size:28px;font-weight:600;color:#2F5F9E">low risk</p></div>
+<div style="flex:1;background:#FBEBDD;border-radius:12px;padding:28px"><p style="font-size:28px">born in 1899</p><p style="font-size:28px;font-weight:600;color:#A14A12">high risk: she was born in 1867</p></div>
+<div style="flex:1;background:#EEF2F8;border-radius:12px;padding:28px"><p style="font-size:28px">two Nobel prizes</p><p style="font-size:28px;font-weight:600;color:#2F5F9E">low risk</p></div>
+</div>
+</div>
+<p style="font-size:32px;color:#4A5568;line-height:1.4">A single answer-level score cannot say <b>which</b> part to check. The useful unit is the <b>atomic claim</b>, and the model gives no signal of its own.</p>
+<aside>Language models never say “I don’t know”. In long answers, most claims are right and a few are invented with the same confidence. To be useful, a detector must score each claim separately, so a system can flag or withhold exactly the wrong part.</aside>
+</section>

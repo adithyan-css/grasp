@@ -176,3 +176,76 @@ On the same GPU, GRASP-v2 costs roughly **one-sixth to one-twelfth** of CCP.
 | …at a fraction of CCP's cost | **Yes**: 33–38% vs 192–430% overhead, same GPU |
 | Beats CCP zero-shot on a new benchmark/task | **No**: ties on RAGTruth; better on QA and summaries, worse on data-to-text |
 | Training-free GRASP beats CCP | **No**: ties on MUCH, loses on RAGTruth at claim level |
+
+---
+
+## Round 3 (added 2026-10-18): UHeads, zero-shot adaptation, response level
+
+### Head-to-head with UHeads (Shelmanov et al., EMNLP 2025)
+
+The authors' **pre-trained** claim heads, run teacher-forced on exactly the claims GRASP is
+scored on (`scripts/17_uhead_extract.py`, Kaggle run v10; `scripts/18_uhead_compare.py`,
+`results/uhead_compare.json`). The reimplemented band-attention features were checked equal
+to the authors' extractor. Score sign, and on RAGTruth the choice of head (exp6 over exp5),
+were fixed on training claims only.
+
+**MUCH, Llama-3.1-8B-Instruct test** (282 claims; UHead covers all):
+
+| Method | Labels | ROC [95% CI] | PR | TPR@10% | ΔROC vs UHead |
+|---|---|---|---|---|---|
+| UHead (pre-trained) | authors' data | 0.570 [0.486, 0.653] | 0.241 | 0.046 | — |
+| CCP | — | 0.831 | 0.682 | 0.631 | +0.261 |
+| GRASP-v2, other 3 models only | MUCH, not this model | 0.883 [0.817, 0.938] | 0.734 | 0.677 | +0.313 [+0.234, +0.397] |
+| GRASP-v2, in-domain | MUCH | **0.937** | **0.871** | **0.785** | **+0.367** [+0.289, +0.449] |
+
+The pre-trained Llama head is weak on MUCH even on training claims (oriented ROC 0.526). The
+same code gives a sensible result on RAGTruth (below), so this is most likely a mismatch
+between the head's training claims and MUCH's very short claims (about 4.6 tokens), not an
+integration error. Treat the margin over UHead on MUCH as indicative, not decisive.
+
+**RAGTruth, Mistral test** (17,181 of 17,226 claims; UHead uses its v0.2 backbone):
+
+| Method | Labels | ROC [95% CI] | PR | TPR@10% | ΔROC vs UHead |
+|---|---|---|---|---|---|
+| CCP | — | 0.623 | 0.149 | 0.267 | −0.057 [−0.083, −0.029] |
+| GRASP-v2 zero-shot | MUCH | 0.625 | 0.118 | 0.186 | −0.055 [−0.090, −0.017] |
+| GRASP-v2 zero-shot + rank normalisation | MUCH + unlabelled RAGTruth | 0.639 | 0.131 | 0.219 | **−0.041 [−0.076, −0.004]** |
+| **UHead (pre-trained)** | authors' data | **0.680** [0.649, 0.708] | 0.202 | 0.317 | — |
+| GRASP-v2 retrained | RAGTruth | **0.827** | **0.383** | **0.556** | **+0.147 [+0.116, +0.180]** |
+
+**Reading.** With in-domain labels, GRASP beats UHead clearly on both benchmarks. Without them,
+UHead's pre-trained head transfers to RAGTruth better than GRASP trained on MUCH alone; it was
+trained on much larger and more varied data.
+
+### Label-free domain adaptation (`scripts/20_domain_adapt.py`, `results/domain_adapt.json`)
+
+Candidates were selected by MUCH leave-one-model-out on the train split. Mean held-out ROC:
+frozen 0.808, **per-domain rank normalisation 0.819** (better on all 4 models),
+rank + importance weighting 0.818. Applied once to RAGTruth test (its second read), rank
+normalisation lifts zero-shot GRASP from 0.625 to **0.639** vs CCP 0.623
+(Δ +0.015, CI −0.011 to +0.042). It is closer, but **still not a significant win** over CCP.
+
+### Response level on MUCH (`scripts/19_response_level.py`, `results/response_level_much.json`)
+
+Unit: does an answer contain any hallucinated claim (200 test generations, 119 positive)?
+Score: the max over its claims.
+
+| Method | ROC [95% CI] | ΔROC vs CCP |
+|---|---|---|
+| CCP | 0.762 [0.695, 0.827] | — |
+| best training-free by train selection (max surprisal) | 0.644 | −0.118 [−0.175, −0.063] |
+| GRASP-v2-free | 0.616 | −0.146 |
+| **GRASP-v2** | **0.911** [0.871, 0.949] | **+0.149 [+0.086, +0.214]** |
+
+The training-free response-level edge seen on RAGTruth (0.679 vs 0.647) does **not** hold on
+MUCH.
+
+### Updated bottom line
+
+| Claim | Status |
+|---|---|
+| GRASP-v2 beats CCP with in-domain labels | **Yes**, MUCH +0.154 and RAGTruth +0.203; also at response level (+0.149) |
+| GRASP-v2 beats UHeads with in-domain labels | **Yes**, MUCH +0.367 and RAGTruth +0.147 (the MUCH margin has the caveat above) |
+| Cheaper than CCP | **Yes**: 33–38% vs 192–430%, same GPU |
+| Zero-shot to a new benchmark | **No**: ties CCP; rank normalisation narrows the gap (+0.015, n.s.); **loses to pre-trained UHeads** (−0.041) |
+| Training-free beats CCP | **No**, at claim or response level, on either benchmark |

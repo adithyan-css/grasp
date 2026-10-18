@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-18T09:30:00Z"},
+  "lists": "css",
+  "title": "GRASP: Claim-Level Hallucination Detection",
+  "order": ["cover", "problem", "baseline", "idea", "signals", "pipeline", "protocol", "headline", "permodel", "ragtruth", "uheads", "cost", "abstain", "limits", "takeaway"],
+  "sections": {
+    "s1": {"description": "Why claim-level hallucination detection matters and what the best method costs", "start": "cover"},
+    "s2": {"description": "How GRASP reads attention and token probabilities", "start": "idea"},
+    "s3": {"description": "Results on MUCH and RAGTruth, cost and abstention", "start": "protocol"},
+    "s4": {"description": "Honest limits and what to take away", "start": "limits"}
+  },
+  "faces": {
+    "eb-garamond": {"family": "EB Garamond", "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..700&display=swap"},
+    "ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"}
+  },
+  "designSystems": []
+}

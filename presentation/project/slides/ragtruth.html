@@ -1,0 +1,17 @@
+<section id="ragtruth" style="background:#FAF8F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">A second benchmark: RAGTruth</h2>
+<p style="font-size:30px;color:#4A5568;line-height:1.4">New model (Mistral-7B), new tasks (retrieval-augmented QA, summaries, data-to-text), human-marked spans. 17,226 test claims. Rules fixed before any data was extracted.</p>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:44px">
+<h3 style="font-size:32px;font-weight:600">Retrained on RAGTruth</h3>
+<p style="font-family:'EB Garamond', Georgia, serif;font-size:96px;font-weight:600;color:#2F5F9E;line-height:1">0.827</p>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">vs CCP 0.623, +0.203 (CI +0.177 to +0.233). Wins on all three tasks.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #E2DED4;border-radius:16px;padding:44px">
+<h3 style="font-size:32px;font-weight:600">Trained on MUCH only</h3>
+<p style="font-family:'EB Garamond', Georgia, serif;font-size:96px;font-weight:600;color:#A14A12;line-height:1">0.625</p>
+<p style="font-size:28px;color:#4A5568;line-height:1.4">vs CCP 0.623: a tie. Better on QA and summaries, worse on data-to-text.</p>
+</div>
+</div>
+<aside>The recipe works again when retrained on the new setting’s labels, by an even wider margin. But a detector trained on MUCH and moved unchanged to a different task family only matches CCP. This is the method’s main limitation, and we state it plainly.</aside>
+</section>

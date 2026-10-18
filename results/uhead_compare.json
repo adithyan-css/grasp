@@ -1,0 +1,439 @@
+{
+  "much_llama31": {
+    "uhead_sign": 1.0,
+    "uhead_train_roc": 0.5262,
+    "coverage": "282/282",
+    "vs_CCP": {
+      "CCP": {
+        "roc_auc": 0.8313,
+        "pr_auc": 0.682,
+        "tpr_at_10fpr": 0.6308,
+        "roc_auc_ci95": [
+          0.7692,
+          0.8984
+        ],
+        "pr_auc_ci95": [
+          0.5671,
+          0.7834
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.4902,
+          0.7551
+        ]
+      },
+      "UHead": {
+        "roc_auc": 0.5699,
+        "pr_auc": 0.2411,
+        "tpr_at_10fpr": 0.0462,
+        "roc_auc_ci95": [
+          0.4855,
+          0.6532
+        ],
+        "pr_auc_ci95": [
+          0.1459,
+          0.3505
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.0,
+          0.129
+        ],
+        "roc_diff_vs_ccp": -0.2614,
+        "roc_diff_vs_ccp_ci95": [
+          -0.3474,
+          -0.1982
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "GRASP-v2 (in-domain)": {
+        "roc_auc": 0.937,
+        "pr_auc": 0.8714,
+        "tpr_at_10fpr": 0.7846,
+        "roc_auc_ci95": [
+          0.885,
+          0.9738
+        ],
+        "pr_auc_ci95": [
+          0.7658,
+          0.9412
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.6579,
+          0.9194
+        ],
+        "roc_diff_vs_ccp": 0.1057,
+        "roc_diff_vs_ccp_ci95": [
+          0.0462,
+          0.1554
+        ],
+        "p_diff_le_0": 0.002
+      },
+      "GRASP-v2 (other 3 models only)": {
+        "roc_auc": 0.8825,
+        "pr_auc": 0.7338,
+        "tpr_at_10fpr": 0.6769,
+        "roc_auc_ci95": [
+          0.8169,
+          0.9376
+        ],
+        "pr_auc_ci95": [
+          0.5819,
+          0.8519
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.4658,
+          0.8033
+        ],
+        "roc_diff_vs_ccp": 0.0512,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0073,
+          0.0992
+        ],
+        "p_diff_le_0": 0.039
+      },
+      "_n": {
+        "claims": 282,
+        "hallucinated": 65,
+        "generations": 49
+      }
+    },
+    "vs_UHead": {
+      "UHead": {
+        "roc_auc": 0.5699,
+        "pr_auc": 0.2411,
+        "tpr_at_10fpr": 0.0462,
+        "roc_auc_ci95": [
+          0.4855,
+          0.6532
+        ],
+        "pr_auc_ci95": [
+          0.1459,
+          0.3505
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.0,
+          0.129
+        ]
+      },
+      "CCP": {
+        "roc_auc": 0.8313,
+        "pr_auc": 0.682,
+        "tpr_at_10fpr": 0.6308,
+        "roc_auc_ci95": [
+          0.7692,
+          0.8984
+        ],
+        "pr_auc_ci95": [
+          0.5671,
+          0.7834
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.4902,
+          0.7551
+        ],
+        "roc_diff_vs_ccp": 0.2614,
+        "roc_diff_vs_ccp_ci95": [
+          0.1982,
+          0.3474
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "GRASP-v2 (in-domain)": {
+        "roc_auc": 0.937,
+        "pr_auc": 0.8714,
+        "tpr_at_10fpr": 0.7846,
+        "roc_auc_ci95": [
+          0.885,
+          0.9738
+        ],
+        "pr_auc_ci95": [
+          0.7658,
+          0.9412
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.6579,
+          0.9194
+        ],
+        "roc_diff_vs_ccp": 0.3672,
+        "roc_diff_vs_ccp_ci95": [
+          0.2894,
+          0.4494
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "GRASP-v2 (other 3 models only)": {
+        "roc_auc": 0.8825,
+        "pr_auc": 0.7338,
+        "tpr_at_10fpr": 0.6769,
+        "roc_auc_ci95": [
+          0.8169,
+          0.9376
+        ],
+        "pr_auc_ci95": [
+          0.5819,
+          0.8519
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.4658,
+          0.8033
+        ],
+        "roc_diff_vs_ccp": 0.3127,
+        "roc_diff_vs_ccp_ci95": [
+          0.2342,
+          0.3966
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 282,
+        "hallucinated": 65,
+        "generations": 49
+      }
+    }
+  },
+  "ragtruth_mistral": {
+    "heads": {
+      "uhead_claim_exp5_Mistral-7B-Instruct-v0.2": [
+        1.0,
+        0.6576
+      ],
+      "uhead_claim_exp6_Mistral-7B-Instruct-v0.2": [
+        1.0,
+        0.6703
+      ]
+    },
+    "selected_head": "uhead_claim_exp6_Mistral-7B-Instruct-v0.2",
+    "coverage": "17181/17226",
+    "vs_CCP": {
+      "CCP": {
+        "roc_auc": 0.6232,
+        "pr_auc": 0.1491,
+        "tpr_at_10fpr": 0.2667,
+        "roc_auc_ci95": [
+          0.6014,
+          0.6439
+        ],
+        "pr_auc_ci95": [
+          0.1238,
+          0.178
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.235,
+          0.2957
+        ]
+      },
+      "UHead": {
+        "roc_auc": 0.6798,
+        "pr_auc": 0.2021,
+        "tpr_at_10fpr": 0.3169,
+        "roc_auc_ci95": [
+          0.6493,
+          0.7079
+        ],
+        "pr_auc_ci95": [
+          0.1663,
+          0.2433
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.276,
+          0.358
+        ],
+        "roc_diff_vs_ccp": 0.0566,
+        "roc_diff_vs_ccp_ci95": [
+          0.0294,
+          0.0831
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "GRASP-v2 zero-shot (MUCH)": {
+        "roc_auc": 0.625,
+        "pr_auc": 0.1181,
+        "tpr_at_10fpr": 0.1862,
+        "roc_auc_ci95": [
+          0.6055,
+          0.6453
+        ],
+        "pr_auc_ci95": [
+          0.1,
+          0.1408
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1612,
+          0.2136
+        ],
+        "roc_diff_vs_ccp": 0.0019,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0248,
+          0.0294
+        ],
+        "p_diff_le_0": 0.4485
+      },
+      "GRASP-v2 zero-shot + rank": {
+        "roc_auc": 0.6388,
+        "pr_auc": 0.1311,
+        "tpr_at_10fpr": 0.2188,
+        "roc_auc_ci95": [
+          0.6172,
+          0.6597
+        ],
+        "pr_auc_ci95": [
+          0.109,
+          0.1575
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1908,
+          0.2535
+        ],
+        "roc_diff_vs_ccp": 0.0156,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0121,
+          0.0425
+        ],
+        "p_diff_le_0": 0.1315
+      },
+      "GRASP-v2 (RAGTruth-trained)": {
+        "roc_auc": 0.8266,
+        "pr_auc": 0.3828,
+        "tpr_at_10fpr": 0.5562,
+        "roc_auc_ci95": [
+          0.8031,
+          0.8488
+        ],
+        "pr_auc_ci95": [
+          0.33,
+          0.4366
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.5116,
+          0.6004
+        ],
+        "roc_diff_vs_ccp": 0.2035,
+        "roc_diff_vs_ccp_ci95": [
+          0.1759,
+          0.232
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 17181,
+        "hallucinated": 1316,
+        "generations": 444
+      }
+    },
+    "vs_UHead": {
+      "UHead": {
+        "roc_auc": 0.6798,
+        "pr_auc": 0.2021,
+        "tpr_at_10fpr": 0.3169,
+        "roc_auc_ci95": [
+          0.6493,
+          0.7079
+        ],
+        "pr_auc_ci95": [
+          0.1663,
+          0.2433
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.276,
+          0.358
+        ]
+      },
+      "CCP": {
+        "roc_auc": 0.6232,
+        "pr_auc": 0.1491,
+        "tpr_at_10fpr": 0.2667,
+        "roc_auc_ci95": [
+          0.6014,
+          0.6439
+        ],
+        "pr_auc_ci95": [
+          0.1238,
+          0.178
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.235,
+          0.2957
+        ],
+        "roc_diff_vs_ccp": -0.0566,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0831,
+          -0.0294
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "GRASP-v2 zero-shot (MUCH)": {
+        "roc_auc": 0.625,
+        "pr_auc": 0.1181,
+        "tpr_at_10fpr": 0.1862,
+        "roc_auc_ci95": [
+          0.6055,
+          0.6453
+        ],
+        "pr_auc_ci95": [
+          0.1,
+          0.1408
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1612,
+          0.2136
+        ],
+        "roc_diff_vs_ccp": -0.0547,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0895,
+          -0.0166
+        ],
+        "p_diff_le_0": 0.999
+      },
+      "GRASP-v2 zero-shot + rank": {
+        "roc_auc": 0.6388,
+        "pr_auc": 0.1311,
+        "tpr_at_10fpr": 0.2188,
+        "roc_auc_ci95": [
+          0.6172,
+          0.6597
+        ],
+        "pr_auc_ci95": [
+          0.109,
+          0.1575
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1908,
+          0.2535
+        ],
+        "roc_diff_vs_ccp": -0.041,
+        "roc_diff_vs_ccp_ci95": [
+          -0.076,
+          -0.0041
+        ],
+        "p_diff_le_0": 0.9865
+      },
+      "GRASP-v2 (RAGTruth-trained)": {
+        "roc_auc": 0.8266,
+        "pr_auc": 0.3828,
+        "tpr_at_10fpr": 0.5562,
+        "roc_auc_ci95": [
+          0.8031,
+          0.8488
+        ],
+        "pr_auc_ci95": [
+          0.33,
+          0.4366
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.5116,
+          0.6004
+        ],
+        "roc_diff_vs_ccp": 0.1469,
+        "roc_diff_vs_ccp_ci95": [
+          0.1163,
+          0.1798
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 17181,
+        "hallucinated": 1316,
+        "generations": 444
+      }
+    }
+  }
+}
