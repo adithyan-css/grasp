@@ -1,0 +1,665 @@
+{
+  "frozen_key": "ATL|none|gbm_l31",
+  "n_heads": 4,
+  "claim_level": {
+    "CCP": {
+      "roc_auc": 0.6231,
+      "pr_auc": 0.1499,
+      "tpr_at_10fpr": 0.2683,
+      "roc_auc_ci95": [
+        0.6023,
+        0.6435
+      ],
+      "pr_auc_ci95": [
+        0.1255,
+        0.1798
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.2377,
+        0.2967
+      ]
+    },
+    "max surprisal": {
+      "roc_auc": 0.613,
+      "pr_auc": 0.1053,
+      "tpr_at_10fpr": 0.161,
+      "roc_auc_ci95": [
+        0.5923,
+        0.6341
+      ],
+      "pr_auc_ci95": [
+        0.0908,
+        0.1221
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1372,
+        0.1863
+      ],
+      "roc_diff_vs_ccp": -0.0101,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0384,
+        0.0185
+      ],
+      "p_diff_le_0": 0.755
+    },
+    "mean entropy": {
+      "roc_auc": 0.623,
+      "pr_auc": 0.114,
+      "tpr_at_10fpr": 0.1776,
+      "roc_auc_ci95": [
+        0.5997,
+        0.6473
+      ],
+      "pr_auc_ci95": [
+        0.0962,
+        0.1346
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1483,
+        0.2084
+      ],
+      "roc_diff_vs_ccp": -0.0001,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0282,
+        0.03
+      ],
+      "p_diff_le_0": 0.497
+    },
+    "claim length": {
+      "roc_auc": 0.5105,
+      "pr_auc": 0.0807,
+      "tpr_at_10fpr": 0.1156,
+      "roc_auc_ci95": [
+        0.4926,
+        0.5298
+      ],
+      "pr_auc_ci95": [
+        0.0696,
+        0.093
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.0961,
+        0.1352
+      ],
+      "roc_diff_vs_ccp": -0.1127,
+      "roc_diff_vs_ccp_ci95": [
+        -0.1387,
+        -0.0846
+      ],
+      "p_diff_le_0": 1.0
+    },
+    "GRASP-v2-free": {
+      "roc_auc": 0.5948,
+      "pr_auc": 0.0982,
+      "tpr_at_10fpr": 0.1345,
+      "roc_auc_ci95": [
+        0.5731,
+        0.6159
+      ],
+      "pr_auc_ci95": [
+        0.0835,
+        0.1155
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1145,
+        0.1593
+      ],
+      "roc_diff_vs_ccp": -0.0283,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0573,
+        0.0006
+      ],
+      "p_diff_le_0": 0.973
+    },
+    "GRASP-v2 (MUCH-trained, zero-shot)": {
+      "roc_auc": 0.625,
+      "pr_auc": 0.1183,
+      "tpr_at_10fpr": 0.1867,
+      "roc_auc_ci95": [
+        0.606,
+        0.6447
+      ],
+      "pr_auc_ci95": [
+        0.1,
+        0.1404
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1621,
+        0.2137
+      ],
+      "roc_diff_vs_ccp": 0.0019,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0249,
+        0.0285
+      ],
+      "p_diff_le_0": 0.451
+    },
+    "GRASP-v2 (RAGTruth-trained)": {
+      "roc_auc": 0.8266,
+      "pr_auc": 0.3826,
+      "tpr_at_10fpr": 0.5556,
+      "roc_auc_ci95": [
+        0.8033,
+        0.8493
+      ],
+      "pr_auc_ci95": [
+        0.3288,
+        0.4354
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.5086,
+        0.604
+      ],
+      "roc_diff_vs_ccp": 0.2034,
+      "roc_diff_vs_ccp_ci95": [
+        0.1771,
+        0.2327
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 17226,
+      "hallucinated": 1323,
+      "generations": 445
+    }
+  },
+  "by_task": {
+    "Data2txt": {
+      "CCP": {
+        "roc_auc": 0.6238,
+        "pr_auc": 0.1605,
+        "tpr_at_10fpr": 0.2821,
+        "roc_auc_ci95": [
+          0.5979,
+          0.6488
+        ],
+        "pr_auc_ci95": [
+          0.1335,
+          0.1914
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2432,
+          0.3192
+        ]
+      },
+      "max surprisal": {
+        "roc_auc": 0.5507,
+        "pr_auc": 0.0908,
+        "tpr_at_10fpr": 0.1199,
+        "roc_auc_ci95": [
+          0.5237,
+          0.5768
+        ],
+        "pr_auc_ci95": [
+          0.0776,
+          0.1063
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.0921,
+          0.1525
+        ],
+        "roc_diff_vs_ccp": -0.0731,
+        "roc_diff_vs_ccp_ci95": [
+          -0.1095,
+          -0.036
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "mean entropy": {
+        "roc_auc": 0.5588,
+        "pr_auc": 0.0991,
+        "tpr_at_10fpr": 0.147,
+        "roc_auc_ci95": [
+          0.5309,
+          0.5865
+        ],
+        "pr_auc_ci95": [
+          0.0851,
+          0.116
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1071,
+          0.1795
+        ],
+        "roc_diff_vs_ccp": -0.0651,
+        "roc_diff_vs_ccp_ci95": [
+          -0.1033,
+          -0.0242
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "claim length": {
+        "roc_auc": 0.5235,
+        "pr_auc": 0.0964,
+        "tpr_at_10fpr": 0.1368,
+        "roc_auc_ci95": [
+          0.4945,
+          0.5536
+        ],
+        "pr_auc_ci95": [
+          0.0821,
+          0.1126
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1077,
+          0.1691
+        ],
+        "roc_diff_vs_ccp": -0.1003,
+        "roc_diff_vs_ccp_ci95": [
+          -0.1345,
+          -0.0641
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "GRASP-v2-free": {
+        "roc_auc": 0.5112,
+        "pr_auc": 0.0806,
+        "tpr_at_10fpr": 0.0878,
+        "roc_auc_ci95": [
+          0.4834,
+          0.5398
+        ],
+        "pr_auc_ci95": [
+          0.0703,
+          0.0917
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.0677,
+          0.1127
+        ],
+        "roc_diff_vs_ccp": -0.1126,
+        "roc_diff_vs_ccp_ci95": [
+          -0.1517,
+          -0.0702
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "GRASP-v2 (MUCH-trained, zero-shot)": {
+        "roc_auc": 0.5683,
+        "pr_auc": 0.1004,
+        "tpr_at_10fpr": 0.1453,
+        "roc_auc_ci95": [
+          0.5413,
+          0.5962
+        ],
+        "pr_auc_ci95": [
+          0.086,
+          0.1173
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.116,
+          0.1716
+        ],
+        "roc_diff_vs_ccp": -0.0556,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0891,
+          -0.0202
+        ],
+        "p_diff_le_0": 0.9985
+      },
+      "GRASP-v2 (RAGTruth-trained)": {
+        "roc_auc": 0.8531,
+        "pr_auc": 0.4074,
+        "tpr_at_10fpr": 0.6199,
+        "roc_auc_ci95": [
+          0.8232,
+          0.8807
+        ],
+        "pr_auc_ci95": [
+          0.3427,
+          0.4772
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.5621,
+          0.6811
+        ],
+        "roc_diff_vs_ccp": 0.2292,
+        "roc_diff_vs_ccp_ci95": [
+          0.1997,
+          0.2606
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 7348,
+        "hallucinated": 592,
+        "generations": 150
+      }
+    },
+    "QA": {
+      "CCP": {
+        "roc_auc": 0.626,
+        "pr_auc": 0.1433,
+        "tpr_at_10fpr": 0.2716,
+        "roc_auc_ci95": [
+          0.5624,
+          0.6783
+        ],
+        "pr_auc_ci95": [
+          0.0768,
+          0.2326
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1846,
+          0.351
+        ]
+      },
+      "max surprisal": {
+        "roc_auc": 0.6723,
+        "pr_auc": 0.112,
+        "tpr_at_10fpr": 0.1629,
+        "roc_auc_ci95": [
+          0.6406,
+          0.7138
+        ],
+        "pr_auc_ci95": [
+          0.0691,
+          0.1636
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1254,
+          0.226
+        ],
+        "roc_diff_vs_ccp": 0.0463,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0169,
+          0.1218
+        ],
+        "p_diff_le_0": 0.088
+      },
+      "mean entropy": {
+        "roc_auc": 0.6905,
+        "pr_auc": 0.1209,
+        "tpr_at_10fpr": 0.1853,
+        "roc_auc_ci95": [
+          0.6478,
+          0.7362
+        ],
+        "pr_auc_ci95": [
+          0.0668,
+          0.1859
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1232,
+          0.2748
+        ],
+        "roc_diff_vs_ccp": 0.0645,
+        "roc_diff_vs_ccp_ci95": [
+          0.0081,
+          0.1352
+        ],
+        "p_diff_le_0": 0.011
+      },
+      "claim length": {
+        "roc_auc": 0.5038,
+        "pr_auc": 0.0718,
+        "tpr_at_10fpr": 0.0703,
+        "roc_auc_ci95": [
+          0.4681,
+          0.5566
+        ],
+        "pr_auc_ci95": [
+          0.043,
+          0.1067
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.0446,
+          0.1548
+        ],
+        "roc_diff_vs_ccp": -0.1222,
+        "roc_diff_vs_ccp_ci95": [
+          -0.1923,
+          -0.0338
+        ],
+        "p_diff_le_0": 0.9985
+      },
+      "GRASP-v2-free": {
+        "roc_auc": 0.6791,
+        "pr_auc": 0.1229,
+        "tpr_at_10fpr": 0.2013,
+        "roc_auc_ci95": [
+          0.6469,
+          0.7149
+        ],
+        "pr_auc_ci95": [
+          0.074,
+          0.1833
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1555,
+          0.2599
+        ],
+        "roc_diff_vs_ccp": 0.0532,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0067,
+          0.1255
+        ],
+        "p_diff_le_0": 0.042
+      },
+      "GRASP-v2 (MUCH-trained, zero-shot)": {
+        "roc_auc": 0.6775,
+        "pr_auc": 0.1296,
+        "tpr_at_10fpr": 0.246,
+        "roc_auc_ci95": [
+          0.6442,
+          0.7165
+        ],
+        "pr_auc_ci95": [
+          0.0798,
+          0.1871
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1894,
+          0.3067
+        ],
+        "roc_diff_vs_ccp": 0.0515,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0142,
+          0.1319
+        ],
+        "p_diff_le_0": 0.0695
+      },
+      "GRASP-v2 (RAGTruth-trained)": {
+        "roc_auc": 0.8587,
+        "pr_auc": 0.45,
+        "tpr_at_10fpr": 0.623,
+        "roc_auc_ci95": [
+          0.7981,
+          0.9054
+        ],
+        "pr_auc_ci95": [
+          0.3099,
+          0.561
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.5202,
+          0.7114
+        ],
+        "roc_diff_vs_ccp": 0.2327,
+        "roc_diff_vs_ccp_ci95": [
+          0.1575,
+          0.3235
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 4549,
+        "hallucinated": 313,
+        "generations": 150
+      }
+    },
+    "Summary": {
+      "CCP": {
+        "roc_auc": 0.6172,
+        "pr_auc": 0.1444,
+        "tpr_at_10fpr": 0.2201,
+        "roc_auc_ci95": [
+          0.584,
+          0.6505
+        ],
+        "pr_auc_ci95": [
+          0.108,
+          0.1857
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1729,
+          0.279
+        ]
+      },
+      "max surprisal": {
+        "roc_auc": 0.6446,
+        "pr_auc": 0.1216,
+        "tpr_at_10fpr": 0.1818,
+        "roc_auc_ci95": [
+          0.605,
+          0.6809
+        ],
+        "pr_auc_ci95": [
+          0.0913,
+          0.1578
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1354,
+          0.2315
+        ],
+        "roc_diff_vs_ccp": 0.0273,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0122,
+          0.0662
+        ],
+        "p_diff_le_0": 0.085
+      },
+      "mean entropy": {
+        "roc_auc": 0.6564,
+        "pr_auc": 0.1378,
+        "tpr_at_10fpr": 0.2225,
+        "roc_auc_ci95": [
+          0.612,
+          0.6961
+        ],
+        "pr_auc_ci95": [
+          0.0984,
+          0.1852
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1719,
+          0.2757
+        ],
+        "roc_diff_vs_ccp": 0.0392,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0047,
+          0.0803
+        ],
+        "p_diff_le_0": 0.0435
+      },
+      "claim length": {
+        "roc_auc": 0.498,
+        "pr_auc": 0.074,
+        "tpr_at_10fpr": 0.0383,
+        "roc_auc_ci95": [
+          0.4702,
+          0.5277
+        ],
+        "pr_auc_ci95": [
+          0.0576,
+          0.0916
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.0196,
+          0.068
+        ],
+        "roc_diff_vs_ccp": -0.1192,
+        "roc_diff_vs_ccp_ci95": [
+          -0.1545,
+          -0.0825
+        ],
+        "p_diff_le_0": 1.0
+      },
+      "GRASP-v2-free": {
+        "roc_auc": 0.6413,
+        "pr_auc": 0.1163,
+        "tpr_at_10fpr": 0.1651,
+        "roc_auc_ci95": [
+          0.6007,
+          0.6771
+        ],
+        "pr_auc_ci95": [
+          0.0857,
+          0.1537
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1229,
+          0.2039
+        ],
+        "roc_diff_vs_ccp": 0.0241,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0197,
+          0.0648
+        ],
+        "p_diff_le_0": 0.1395
+      },
+      "GRASP-v2 (MUCH-trained, zero-shot)": {
+        "roc_auc": 0.652,
+        "pr_auc": 0.136,
+        "tpr_at_10fpr": 0.2033,
+        "roc_auc_ci95": [
+          0.6149,
+          0.6901
+        ],
+        "pr_auc_ci95": [
+          0.1009,
+          0.1804
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1509,
+          0.2649
+        ],
+        "roc_diff_vs_ccp": 0.0348,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0042,
+          0.0742
+        ],
+        "p_diff_le_0": 0.037
+      },
+      "GRASP-v2 (RAGTruth-trained)": {
+        "roc_auc": 0.765,
+        "pr_auc": 0.3269,
+        "tpr_at_10fpr": 0.4139,
+        "roc_auc_ci95": [
+          0.7183,
+          0.8069
+        ],
+        "pr_auc_ci95": [
+          0.2352,
+          0.4223
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.3359,
+          0.495
+        ],
+        "roc_diff_vs_ccp": 0.1478,
+        "roc_diff_vs_ccp_ci95": [
+          0.1036,
+          0.1887
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 5329,
+        "hallucinated": 418,
+        "generations": 145
+      }
+    }
+  },
+  "response_level": {
+    "CCP": 0.6466,
+    "max surprisal": 0.6328,
+    "mean entropy": 0.7012,
+    "claim length": 0.5765,
+    "GRASP-v2-free": 0.6792,
+    "GRASP-v2 (MUCH-trained, zero-shot)": 0.6192,
+    "GRASP-v2 (RAGTruth-trained)": 0.8323,
+    "_n_responses": 445,
+    "_hallucinated": 248
+  }
+}

@@ -1,0 +1,1 @@
+{"model": "mistralai/Mistral-7B-Instruct-v0.1", "generator": "mistral-7B-instruct", "align": "current", "saliency_norm": "per_later_token", "head_select": "variance_topk", "top_k": 4}

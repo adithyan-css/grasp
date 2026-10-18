@@ -90,12 +90,12 @@ README and report was wrong and is retracted.
    not beat it; it is weaker on PR and TPR.
 2. **This is the second look at the test split.** v1 was the first. All v2 choices were
    frozen on train before the look, and the result (+0.154) is far outside v1's margin
-   (+0.121), but a fully fresh confirmation needs another benchmark (e.g. RAGTruth).
+   (+0.121). **Update:** the RAGTruth check (below) confirms the in-domain-trained result (+0.203) but shows no zero-shot advantage.
 3. **Test labels are GPT-4o's**, on the human-annotated samples, as in MUCH's evaluator.
 4. **Test scores sit above train CV** (0.924 vs about 0.885–0.897). The final model trains on
    100% of train rather than 80% folds, and the test set is small (200 generations), so
    expect some regression on new data. The lower CI bound is 0.896.
-5. **Overhead is not apples-to-apples** with CCP's 124% (different GPU, CCP not re-timed).
+5. **Overhead:** resolved below. CCP re-timed on the same T4 costs 192–430% of generation time, against 33–38% for GRASP-v2.
 
 ## Reproduce
 
@@ -106,3 +106,73 @@ python scripts/12_develop_v2.py --table claims_k4.npz --out develop_v2_k4.json -
 python scripts/13_final_eval_v2.py --candidate claims_v2_1head.npz frozen_v2_1head.json \
                                    --candidate claims_k4.npz frozen_v2_k4.json --out final_eval_v2.json
 ```
+
+---
+
+## Second benchmark — RAGTruth (added 2026-10-18)
+
+Pre-registered in `scripts/16_ragtruth_eval.py` before any RAGTruth feature existed;
+nothing was tuned on RAGTruth. Raw outputs: `results/ragtruth_eval.json`,
+`results/kaggle_run9/out/ragtruth/` (Kaggle run v9, 2x Tesla T4).
+
+**Setup.** RAGTruth (Niu et al., ACL 2024) responses from Mistral-7B-Instruct, the only
+open generator accessible here, replayed through `mistralai/Mistral-7B-Instruct-v0.1`.
+There are 1,475 sampled train responses (59,352 claims) and 445 of the 450 test responses
+(17,226 claims, 1,323 hallucinated). The 5 missing test responses exceeded the pre-set
+2,048-token cap. Claims come from MUCH's own segmenter; a claim is hallucinated if it
+overlaps an annotated span. Heads were chosen with the same label-free rule.
+
+| Method (claim level, test) | Trained on | ROC [95% CI] | PR [95% CI] | TPR@10% | ΔROC vs CCP [95% CI] |
+|---|---|---|---|---|---|
+| CCP (MUCH implementation, δ=24, σ=8) | — | 0.623 [0.602, 0.644] | 0.150 [0.126, 0.180] | 0.268 | — |
+| max token surprisal | — | 0.613 | 0.105 | 0.161 | −0.010 [−0.038, +0.019] |
+| mean token entropy | — | 0.623 | 0.114 | 0.178 | −0.000 [−0.028, +0.030] |
+| GRASP-v2-free | — | 0.595 [0.573, 0.616] | 0.098 | 0.135 | −0.028 [−0.057, +0.001] |
+| **GRASP-v2, zero-shot** | MUCH only | 0.625 [0.606, 0.645] | 0.118 | 0.187 | **+0.002 [−0.025, +0.029]** |
+| **GRASP-v2, same recipe** | RAGTruth train | **0.827** [0.803, 0.849] | **0.383** [0.329, 0.435] | **0.556** | **+0.203 [+0.177, +0.233]** |
+
+**By task (ROC; CCP → zero-shot GRASP-v2 → RAGTruth-trained GRASP-v2):**
+
+- QA: 0.626 → 0.677 → **0.859**
+- Summary: 0.617 → 0.652 → **0.765**
+- Data-to-text: 0.624 → **0.568** (worse than CCP, CI −0.089 to −0.020) → **0.853**
+
+**Response level** (response score = max over its claims; 445 responses, 248 hallucinated):
+CCP 0.647, mean entropy 0.701, GRASP-v2-free 0.679, zero-shot GRASP-v2 0.619,
+**RAGTruth-trained GRASP-v2 0.832**.
+
+**Reading it honestly.**
+
+1. **Trained in-domain, GRASP-v2 beats CCP on a second benchmark by a wide margin**
+   (+0.203 ROC), with the recipe frozen on MUCH and no tuning.
+2. **Zero-shot, it does not.** Trained only on MUCH and moved to a new generator, a new task
+   family (RAG) and a new labelling scheme, it ties CCP overall. It is better on QA and
+   summaries and worse on data-to-text. The detector is supervised and needs in-domain labels.
+3. **The training-free score does not beat CCP** at claim level. At response level it does
+   (0.679 vs 0.647), though plain mean entropy is better still (0.701).
+4. Absolute claim-level numbers on RAGTruth are low for every method: claims from long RAG
+   answers are short, and only 7.7% of test claims are hallucinated.
+
+## CCP timed on the same GPU (resolves the cross-hardware caveat)
+
+MUCH's own CCP code (`ccp_24_8`) on Tesla T4, 30 generations per model. CCP and
+generation timings come from different sample generations, so overheads compare per token.
+
+| Setting | CCP s/token | generation s/token | **CCP overhead** | **GRASP-v2 overhead** |
+|---|---|---|---|---|
+| MUCH, Gemma-3-4B | 0.222 | 0.090 | ~245% | 37% |
+| MUCH, Llama-3.1-8B | 0.228 | 0.095 | ~240% | 36% |
+| MUCH, Llama-3.2-3B | 0.225 | 0.052 | ~430% | 34% |
+| MUCH, Ministral-8B | 0.220 | 0.094 | ~235% | 38% |
+| RAGTruth, Mistral-7B (195-token answers) | 0.204 | 0.106 | **192%** | **33%** |
+
+On the same GPU, GRASP-v2 costs roughly **one-sixth to one-twelfth** of CCP.
+
+## Bottom line after both benchmarks
+
+| Claim | Status |
+|---|---|
+| Supervised GRASP-v2 beats CCP when trained on the target setting's labels | **Yes, on 2 benchmarks** (MUCH +0.154, RAGTruth +0.203; both CIs well above 0) |
+| …at a fraction of CCP's cost | **Yes**: 33–38% vs 192–430% overhead, same GPU |
+| Beats CCP zero-shot on a new benchmark/task | **No**: ties on RAGTruth; better on QA and summaries, worse on data-to-text |
+| Training-free GRASP beats CCP | **No**: ties on MUCH, loses on RAGTruth at claim level |

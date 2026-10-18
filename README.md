@@ -22,10 +22,12 @@ than generating the text did. **GRASP-v2** — a small gradient-boosted classifi
 attention statistics from 4 heads per layer plus the token probabilities MUCH already ships —
 reaches **0.924 ROC-AUC vs CCP's 0.770** on MUCH's human-annotated test split
 (ΔROC +0.154, 95% CI 0.110–0.199), beats CCP on all four models, needs no CCP/NLI model,
-and costs **34–38%** of generation time measured on a T4.
+and costs **33–38%** of generation time on a T4, where CCP measured on the same GPU costs
+**192–430%**. On a second benchmark, RAGTruth, the same recipe retrained on RAGTruth's
+labels reaches **0.827 vs CCP's 0.623**.
 
-It is **supervised** (trained on the train split's labels). The training-free variant ties
-CCP (0.764 vs 0.770) but does not beat it. Full results and limits:
+It is **supervised**. Trained on MUCH and applied unchanged to RAGTruth, it only ties CCP;
+the training-free variant does not beat CCP on either benchmark. Full results and limits:
 [`results/FINAL_RESULTS_v2.md`](results/FINAL_RESULTS_v2.md).
 
 ---
@@ -236,8 +238,9 @@ baseline is apples-to-apples under an identical protocol.
 | Feature extraction | all 8 configs, 4,873 generations, 1 and 4 heads/layer (Kaggle, 2x T4) |
 | v1 evaluation (first test look) | GRASP-probe+CCP 0.891 vs CCP 0.770 — `results/FINAL_RESULTS.md` |
 | v2 evaluation (second test look) | GRASP-v2 0.924 vs CCP 0.770, no CCP needed — `results/FINAL_RESULTS_v2.md` |
-| Runtime overhead | measured: 34–38% of generation time (T4); the old 1–3% claim is retracted |
-| `report.html` / PDF | **stale** — built from the pre-audit run; rewrite from FINAL_RESULTS_v2.md |
+| Runtime overhead | measured on T4: GRASP-v2 33–38%, CCP 192–430% (same GPU); the old 1–3% claim is retracted |
+| Second benchmark (RAGTruth, Mistral-7B) | retrained in-domain: 0.827 vs CCP 0.623; zero-shot from MUCH: ties CCP (0.625) |
+| `report.html` / PDF | rewritten from the audited results (18 Oct 2026) |
 
 Superseded numbers (pre-audit `report.html`, `results/RESULTS.md`) are kept for the record
 and are marked as such.
