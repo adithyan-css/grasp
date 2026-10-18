@@ -330,13 +330,49 @@ print('done')
 ]
 
 
+UHEAD_TRAIN_CELLS = [
+    md("""
+# GRASP — UHeads RETRAINED on the same training data
+
+The authors' claim-head architecture and default recipe, trained per backbone on exactly
+the training claims GRASP uses (MUCH: one head per model; RAGTruth: Mistral), epoch chosen
+on a 10% split of training generations, then scored on the same test claims. Comparison is
+local (`scripts/22_uhead_retrained_compare.py`).
+"""),
+    "SHARED_SETUP",
+    "SHARED_LOGIN",
+    md("## 1. MUCH data, UHeads code, self-test"),
+    code("""
+sh(f'{sys.executable} {PROJECT}/scripts/01_setup_much.py --root {MUCH_PARENT}')
+sh(f'{sys.executable} -m src import-much', cwd=MUCH)
+sh(f'{sys.executable} -m pip install -q omegaconf')
+sh(f'git clone --depth 1 -q https://github.com/IINemo/llm-uncertainty-head.git {MUCH_PARENT}/llm-uncertainty-head')
+sh(f'{sys.executable} {PROJECT}/scripts/17_uhead_extract.py --uhead-src {MUCH_PARENT}/llm-uncertainty-head --self-test')
+sh(f'{sys.executable} {PROJECT}/scripts/21_uhead_train.py --uhead-src {MUCH_PARENT}/llm-uncertainty-head --self-test')
+"""),
+    md("## 2. Train and score: MUCH heads, then the RAGTruth head"),
+    code("""
+UT = RESULTS / 'uhead_retrained'
+sh(f'{sys.executable} {PROJECT}/scripts/21_uhead_train.py --much-root {MUCH} '
+   f'--uhead-src {MUCH_PARENT}/llm-uncertainty-head --out {UT} '
+   f'--ragtruth --rt-data {MUCH_PARENT}/ragtruth --cache-dir {MUCH_PARENT}/rt_cache')
+"""),
+    code("""
+import shutil
+shutil.make_archive(str(WORK / 'grasp_uhead_retrained'), 'zip', RESULTS)
+print('done')
+"""),
+]
+
+
 def main() -> None:
     import sys as _sys
     mode = _sys.argv[1] if len(_sys.argv) > 1 else "much"
     blob = code_zip_b64()
-    if mode in ("ragtruth", "uhead"):
+    if mode in ("ragtruth", "uhead", "uhead_train"):
         cells = []
-        for c in (RAGTRUTH_CELLS if mode == "ragtruth" else UHEAD_CELLS):
+        src_cells = {"ragtruth": RAGTRUTH_CELLS, "uhead": UHEAD_CELLS, "uhead_train": UHEAD_TRAIN_CELLS}[mode]
+        for c in src_cells:
             if c == "SHARED_SETUP":
                 cells.append(dict(CELLS[1]))
             elif c == "SHARED_LOGIN":
