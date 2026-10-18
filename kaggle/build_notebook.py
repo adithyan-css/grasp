@@ -365,13 +365,46 @@ print('done')
 ]
 
 
+AKIMBIO_CELLS = [
+    md("""
+# GRASP — third benchmark: AkimBio (Mistral-7B-v0.2, Gemma-2-9B)
+
+GRASP features, token probabilities and the authors' pre-trained UHead scores for the
+AkimBio biographies the UHeads were trained on, plus CCP on a fixed test subset.
+Evaluation is local (`scripts/27_akimbio_eval.py`).
+"""),
+    "SHARED_SETUP",
+    "SHARED_LOGIN",
+    md("## 1. MUCH code (for CCP), UHeads code"),
+    code("""
+sh(f'{sys.executable} {PROJECT}/scripts/01_setup_much.py --root {MUCH_PARENT}')
+sh(f'{sys.executable} -m pip install -q omegaconf')
+sh(f'git clone --depth 1 -q https://github.com/IINemo/llm-uncertainty-head.git {MUCH_PARENT}/llm-uncertainty-head')
+sh(f'{sys.executable} {PROJECT}/scripts/17_uhead_extract.py --uhead-src {MUCH_PARENT}/llm-uncertainty-head --self-test')
+"""),
+    md("## 2. Extraction (both backbones) and CCP"),
+    code("""
+AK = RESULTS / 'akimbio'
+sh(f'{sys.executable} {PROJECT}/scripts/26_akimbio_extract.py --much-root {MUCH} '
+   f'--uhead-src {MUCH_PARENT}/llm-uncertainty-head --out {AK} --n-train 1000 --calib 100 --ccp-n 50')
+"""),
+    code("""
+import shutil
+shutil.make_archive(str(WORK / 'grasp_akimbio'), 'zip', RESULTS)
+print('done')
+"""),
+]
+
+
 def main() -> None:
     import sys as _sys
     mode = _sys.argv[1] if len(_sys.argv) > 1 else "much"
+    out_dir = Path(_sys.argv[2]) if len(_sys.argv) > 2 else OUT_DIR
     blob = code_zip_b64()
-    if mode in ("ragtruth", "uhead", "uhead_train"):
+    if mode in ("ragtruth", "uhead", "uhead_train", "akimbio"):
         cells = []
-        src_cells = {"ragtruth": RAGTRUTH_CELLS, "uhead": UHEAD_CELLS, "uhead_train": UHEAD_TRAIN_CELLS}[mode]
+        src_cells = {"ragtruth": RAGTRUTH_CELLS, "uhead": UHEAD_CELLS, "uhead_train": UHEAD_TRAIN_CELLS,
+                     "akimbio": AKIMBIO_CELLS}[mode]
         for c in src_cells:
             if c == "SHARED_SETUP":
                 cells.append(dict(CELLS[1]))
@@ -393,8 +426,8 @@ def main() -> None:
         "nbformat": 4,
         "nbformat_minor": 5,
     }
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    out = OUT_DIR / "GRASP_kaggle.ipynb"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out = out_dir / "GRASP_kaggle.ipynb"
     out.write_text(json.dumps(nb, indent=1), encoding="utf-8")
     print(f"wrote {out} ({out.stat().st_size // 1024} KB, code zip {len(blob) // 1024} KB)")
 

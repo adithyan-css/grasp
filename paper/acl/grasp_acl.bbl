@@ -1,0 +1,118 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Azaria and Mitchell(2023)}]{azaria2023internalstatellmknows}
+Amos Azaria and Tom Mitchell. 2023.
+\newblock \href {https://arxiv.org/abs/2304.13734} {The internal state of an
+  llm knows when it's lying}.
+\newblock \emph{Preprint}, arXiv:2304.13734.
+
+\bibitem[{Binkowski et~al.(2026)Binkowski, Adamczewski, and
+  Kajdanowicz}]{binkowski2026attentionsinksinternalsignals}
+Jakub Binkowski, Kamil Adamczewski, and Tomasz Kajdanowicz. 2026.
+\newblock \href {https://arxiv.org/abs/2604.10697} {Attention sinks as internal
+  signals for hallucination detection in large language models}.
+\newblock \emph{Preprint}, arXiv:2604.10697.
+
+\bibitem[{Chen et~al.(2024)Chen, Liu, Chen, Gu, Wu, Tao, Fu, and
+  Ye}]{chen2024insidellmsinternalstates}
+Chao Chen, Kai Liu, Ze~Chen, Yi~Gu, Yue Wu, Mingyuan Tao, Zhihang Fu, and
+  Jieping Ye. 2024.
+\newblock \href {https://arxiv.org/abs/2402.03744} {Inside: Llms' internal
+  states retain the power of hallucination detection}.
+\newblock \emph{Preprint}, arXiv:2402.03744.
+
+\bibitem[{Chuang et~al.(2024)Chuang, Qiu, Hsieh, Krishna, Kim, and
+  Glass}]{chuang2024lookbacklensdetectingmitigating}
+Yung-Sung Chuang, Linlu Qiu, Cheng-Yu Hsieh, Ranjay Krishna, Yoon Kim, and
+  James Glass. 2024.
+\newblock \href {https://arxiv.org/abs/2407.07071} {Lookback lens: Detecting
+  and mitigating contextual hallucinations in large language models using only
+  attention maps}.
+\newblock \emph{Preprint}, arXiv:2407.07071.
+
+\bibitem[{Dentan et~al.(2026)Dentan, Canesse, Buscaldi, Shabou, and
+  Vanier}]{dentan2026muchmultilingualclaimhallucination}
+Jérémie Dentan, Alexi Canesse, Davide Buscaldi, Aymen Shabou, and Sonia
+  Vanier. 2026.
+\newblock \href {https://arxiv.org/abs/2511.17081} {Much: A multilingual claim
+  hallucination benchmark}.
+\newblock \emph{Preprint}, arXiv:2511.17081.
+
+\bibitem[{Fadeeva et~al.(2024)Fadeeva, Rubashevskii, Shelmanov, Petrakov, Li,
+  Mubarak, Tsymbalov, Kuzmin, Panchenko, Baldwin, Nakov, and
+  Panov}]{fadeeva-etal-2024-fact}
+Ekaterina Fadeeva, Aleksandr Rubashevskii, Artem Shelmanov, Sergey Petrakov,
+  Haonan Li, Hamdy Mubarak, Evgenii Tsymbalov, Gleb Kuzmin, Alexander
+  Panchenko, Timothy Baldwin, Preslav Nakov, and Maxim Panov. 2024.
+\newblock \href {https://doi.org/10.18653/v1/2024.findings-acl.558}
+  {Fact-checking the output of large language models via token-level
+  uncertainty quantification}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2024}, pages 9367--9385, Bangkok, Thailand. Association for Computational
+  Linguistics.
+
+\bibitem[{Kuhn et~al.(2023)Kuhn, Gal, and
+  Farquhar}]{kuhn2023semanticuncertaintylinguisticinvariances}
+Lorenz Kuhn, Yarin Gal, and Sebastian Farquhar. 2023.
+\newblock \href {https://arxiv.org/abs/2302.09664} {Semantic uncertainty:
+  Linguistic invariances for uncertainty estimation in natural language
+  generation}.
+\newblock \emph{Preprint}, arXiv:2302.09664.
+
+\bibitem[{Manakul et~al.(2023)Manakul, Liusie, and
+  Gales}]{manakul-etal-2023-selfcheckgpt}
+Potsawee Manakul, Adian Liusie, and Mark Gales. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.557}
+  {{S}elf{C}heck{GPT}: Zero-resource black-box hallucination detection for
+  generative large language models}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 9004--9017, Singapore. Association for
+  Computational Linguistics.
+
+\bibitem[{Min et~al.(2023)Min, Krishna, Lyu, Lewis, Yih, Koh, Iyyer,
+  Zettlemoyer, and Hajishirzi}]{min-etal-2023-factscore}
+Sewon Min, Kalpesh Krishna, Xinxi Lyu, Mike Lewis, Wen-tau Yih, Pang Koh, Mohit
+  Iyyer, Luke Zettlemoyer, and Hannaneh Hajishirzi. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.741}
+  {{FA}ct{S}core: Fine-grained atomic evaluation of factual precision in long
+  form text generation}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 12076--12100, Singapore. Association for
+  Computational Linguistics.
+
+\bibitem[{Niu et~al.(2024)Niu, Wu, Zhu, Xu, Shum, Zhong, Song, and
+  Zhang}]{niu-etal-2024-ragtruth}
+Cheng Niu, Yuanhao Wu, Juno Zhu, Siliang Xu, KaShun Shum, Randy Zhong, Juntong
+  Song, and Tong Zhang. 2024.
+\newblock \href {https://doi.org/10.18653/v1/2024.acl-long.585} {{RAGT}ruth: A
+  hallucination corpus for developing trustworthy retrieval-augmented language
+  models}.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 10862--10878,
+  Bangkok, Thailand. Association for Computational Linguistics.
+
+\bibitem[{Shelmanov et~al.(2025)Shelmanov, Fadeeva, Tsvigun, Tsvigun, Xie,
+  Kiselev, Daheim, Zhang, Vazhentsev, Sachan, Nakov, and
+  Baldwin}]{shelmanov-etal-2025-head}
+Artem Shelmanov, Ekaterina Fadeeva, Akim Tsvigun, Ivan Tsvigun, Zhuohan Xie,
+  Igor Kiselev, Nico Daheim, Caiqi Zhang, Artem Vazhentsev, Mrinmaya Sachan,
+  Preslav Nakov, and Timothy Baldwin. 2025.
+\newblock \href {https://doi.org/10.18653/v1/2025.emnlp-main.1809} {A head to
+  predict and a head to question: Pre-trained uncertainty quantification heads
+  for hallucination detection in {LLM} outputs}.
+\newblock In \emph{Proceedings of the 2025 Conference on Empirical Methods in
+  Natural Language Processing}, pages 35712--35731, Suzhou, China. Association
+  for Computational Linguistics.
+
+\bibitem[{Vazhentsev et~al.(2026)Vazhentsev, Rvanova, Kuzmin, Fadeeva,
+  Lazichny, Panchenko, Panov, Sachan, Nakov, Baldwin, and
+  Shelmanov}]{vazhentsev2026efficienthallucinationdetectionllms}
+Artem Vazhentsev, Lyudmila Rvanova, Gleb Kuzmin, Ekaterina Fadeeva, Ivan
+  Lazichny, Alexander Panchenko, Maxim Panov, Mrinmaya Sachan, Preslav Nakov,
+  Timothy Baldwin, and Artem Shelmanov. 2026.
+\newblock \href {https://arxiv.org/abs/2505.20045} {Efficient hallucination
+  detection for llms using uncertainty-aware attention heads}.
+\newblock \emph{Preprint}, arXiv:2505.20045.
+
+\end{thebibliography}

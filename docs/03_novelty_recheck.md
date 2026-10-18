@@ -50,3 +50,25 @@ UHead transfers to RAGTruth better than MUCH-trained GRASP (0.680 vs 0.639). Sti
 retrained on MUCH's training split, for an identical-data comparison.
 
 Search date: 2026-10-17. Re-run again the week the paper is submitted.
+
+## Re-run — 18 October 2026
+
+Searched again: claim-level detectors claimed to beat CCP; new results on MUCH (now in the
+LREC 2026 proceedings); pre-trained uncertainty heads and attention probes on RAGTruth.
+
+- **No new method on MUCH.** The benchmark paper (LREC 2026) still reports CCP (0.772) as its best
+  baseline; no follow-up claiming to beat it was found.
+- **Lee, Seo & Lim, *The Hallucination Signal Is a Mean Shift: Why Simple Probes Suffice*
+  (arXiv 2608.28930, EMNLP 2026).** In a paired-example setting, simple regularised probes on hidden
+  states match more complex ones. This is consistent with GRASP's small learner. It is not
+  claim-level and does not use MUCH.
+- **Yu et al., RT4CHART (arXiv 2603.27752).** A re-annotation of RAGTruth's evaluation split finds
+  1.68x more hallucination cases than the original labels (many false negatives). Our RAGTruth
+  numbers use the original labels, so absolute scores for every method are likely depressed. State
+  this in the paper.
+- **Other RAGTruth probes** report response- or token-level AUROCs in different setups; none is a
+  claim-level comparison with CCP or UHeads on MUCH-segmented claims.
+
+Verdict unchanged: no published work matches GRASP's combination of results (claim-level, beats
+CCP on MUCH, measured same-GPU cost, head-to-head with UHeads). Re-run once more the week of
+submission.

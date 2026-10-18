@@ -76,16 +76,16 @@ uncertainty-aware heads without labels at sequence level. Closest to us, UHeads
 \citep{shelmanov-etal-2025-head} train a transformer head on attention features and token
 probabilities for claim-level detection. GRASP is in the same family; it differs in using three
 interpretable statistics from a few label-free-selected heads and a small tree model, and in being
-evaluated head-to-head against CCP on MUCH.
+evaluated head-to-head against CCP on MUCH. Consistent with our choice of a small learner, \citet{lee2026meanshift} find that simple regularised probes on hidden states match far more complex ones.
 
 \section{Method}
 \subsection{Per-token attention signals}
 The generated tokens are replayed through the model once. For generated token $t$ and a kept head,
-with attention row $a_t$ over positions $0..t$ (position 0 is the sink, $1..P{-}1$ the prompt):
+with attention row $a_t$ over positions $0..t$ (position 0 is the sink, $1..P{-}1$ the prompt),
+we compute grounding to the prompt $G_t$, sink leakage $S_t$ and dispersion $D_t$:
 \begin{align}
-G_t &= \frac{\sum_{j=1}^{P-1} a_{t,j}}{\sum_{j\ge 1} a_{t,j}} &\text{(grounding to the prompt)}\\
-S_t &= a_{t,0} &\text{(sink leakage)}\\
-D_t &= \frac{-\sum_{j\ge1} \tilde a_{t,j}\log \tilde a_{t,j}}{\log |\{j\ge1\}|} &\text{(dispersion)}
+G_t &= \frac{\sum_{j=1}^{P-1} a_{t,j}}{\sum_{j\ge 1} a_{t,j}}, \qquad S_t = a_{t,0},\\
+D_t &= \frac{-\sum_{j\ge1} \tilde a_{t,j}\log \tilde a_{t,j}}{\log |\{j\ge1\}|},
 \end{align}
 where $\tilde a$ is the non-sink row renormalised. The row used is the one that \emph{produced}
 token $t$. A saliency weight $W_t$ is the attention token $t$ receives from later generated tokens,
@@ -245,7 +245,7 @@ read twice: once by an earlier version and once by GRASP as reported, with all c
 the training split beforehand. Test labels are GPT-4o's, applied to the human-annotated samples, as
 in MUCH's evaluator. CCP and generation were timed on different sample generations, so overheads
 compare per token. RAGTruth responses were replayed through Mistral-7B-Instruct-v0.1, assumed to
-be the generator version.
+be the generator version. RAGTruth's original span labels miss many hallucinations \citep{yu2026rt4chart}, so absolute RAGTruth scores are likely depressed for every method.
 
 \section{Conclusion}
 Reading where the model looked, through a few interpretable attention statistics, plus the

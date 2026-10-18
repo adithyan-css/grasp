@@ -1,0 +1,282 @@
+{
+  "human consensus (an0 = an1)": {
+    "CCP": {
+      "roc_auc": 0.8113,
+      "pr_auc": 0.6646,
+      "tpr_at_10fpr": 0.5771,
+      "roc_auc_ci95": [
+        0.7638,
+        0.8543
+      ],
+      "pr_auc_ci95": [
+        0.5937,
+        0.7338
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.4661,
+        0.6613
+      ]
+    },
+    "GRASP-v2-free": {
+      "roc_auc": 0.777,
+      "pr_auc": 0.4827,
+      "tpr_at_10fpr": 0.3731,
+      "roc_auc_ci95": [
+        0.7279,
+        0.8291
+      ],
+      "pr_auc_ci95": [
+        0.3665,
+        0.6187
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.212,
+        0.5373
+      ],
+      "roc_diff_vs_ccp": -0.0343,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0873,
+        0.0154
+      ],
+      "p_diff_le_0": 0.9065
+    },
+    "GRASP-v2": {
+      "roc_auc": 0.9428,
+      "pr_auc": 0.8617,
+      "tpr_at_10fpr": 0.8358,
+      "roc_auc_ci95": [
+        0.922,
+        0.9612
+      ],
+      "pr_auc_ci95": [
+        0.802,
+        0.9082
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.7633,
+        0.8964
+      ],
+      "roc_diff_vs_ccp": 0.1315,
+      "roc_diff_vs_ccp_ci95": [
+        0.0911,
+        0.1778
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 842,
+      "hallucinated": 201,
+      "generations": 196
+    }
+  },
+  "an0": {
+    "CCP": {
+      "roc_auc": 0.8015,
+      "pr_auc": 0.6427,
+      "tpr_at_10fpr": 0.5327,
+      "roc_auc_ci95": [
+        0.7599,
+        0.8407
+      ],
+      "pr_auc_ci95": [
+        0.5673,
+        0.7156
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.4359,
+        0.6245
+      ]
+    },
+    "GRASP-v2-free": {
+      "roc_auc": 0.7663,
+      "pr_auc": 0.4758,
+      "tpr_at_10fpr": 0.3318,
+      "roc_auc_ci95": [
+        0.7121,
+        0.8172
+      ],
+      "pr_auc_ci95": [
+        0.357,
+        0.6112
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1882,
+        0.4866
+      ],
+      "roc_diff_vs_ccp": -0.0351,
+      "roc_diff_vs_ccp_ci95": [
+        -0.085,
+        0.0127
+      ],
+      "p_diff_le_0": 0.919
+    },
+    "GRASP-v2": {
+      "roc_auc": 0.9275,
+      "pr_auc": 0.8339,
+      "tpr_at_10fpr": 0.7991,
+      "roc_auc_ci95": [
+        0.9015,
+        0.9506
+      ],
+      "pr_auc_ci95": [
+        0.772,
+        0.8847
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.7011,
+        0.8629
+      ],
+      "roc_diff_vs_ccp": 0.126,
+      "roc_diff_vs_ccp_ci95": [
+        0.0885,
+        0.1678
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 867,
+      "hallucinated": 214,
+      "generations": 200
+    }
+  },
+  "an1": {
+    "CCP": {
+      "roc_auc": 0.8077,
+      "pr_auc": 0.6611,
+      "tpr_at_10fpr": 0.5681,
+      "roc_auc_ci95": [
+        0.7652,
+        0.8466
+      ],
+      "pr_auc_ci95": [
+        0.5909,
+        0.7287
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.468,
+        0.6446
+      ]
+    },
+    "GRASP-v2-free": {
+      "roc_auc": 0.7775,
+      "pr_auc": 0.491,
+      "tpr_at_10fpr": 0.3709,
+      "roc_auc_ci95": [
+        0.7268,
+        0.8251
+      ],
+      "pr_auc_ci95": [
+        0.3772,
+        0.622
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.2324,
+        0.5294
+      ],
+      "roc_diff_vs_ccp": -0.0302,
+      "roc_diff_vs_ccp_ci95": [
+        -0.078,
+        0.0158
+      ],
+      "p_diff_le_0": 0.8935
+    },
+    "GRASP-v2": {
+      "roc_auc": 0.9386,
+      "pr_auc": 0.8505,
+      "tpr_at_10fpr": 0.8216,
+      "roc_auc_ci95": [
+        0.9188,
+        0.9562
+      ],
+      "pr_auc_ci95": [
+        0.7946,
+        0.895
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.7302,
+        0.8802
+      ],
+      "roc_diff_vs_ccp": 0.1308,
+      "roc_diff_vs_ccp_ci95": [
+        0.0941,
+        0.1723
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 867,
+      "hallucinated": 213,
+      "generations": 200
+    }
+  },
+  "gpt-4o (as before)": {
+    "CCP": {
+      "roc_auc": 0.7698,
+      "pr_auc": 0.6373,
+      "tpr_at_10fpr": 0.5371,
+      "roc_auc_ci95": [
+        0.7251,
+        0.8171
+      ],
+      "pr_auc_ci95": [
+        0.5647,
+        0.7083
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.4375,
+        0.6098
+      ]
+    },
+    "GRASP-v2-free": {
+      "roc_auc": 0.7637,
+      "pr_auc": 0.5008,
+      "tpr_at_10fpr": 0.3537,
+      "roc_auc_ci95": [
+        0.7129,
+        0.8154
+      ],
+      "pr_auc_ci95": [
+        0.3805,
+        0.6283
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.2329,
+        0.4978
+      ],
+      "roc_diff_vs_ccp": -0.0061,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0552,
+        0.0384
+      ],
+      "p_diff_le_0": 0.5925
+    },
+    "GRASP-v2": {
+      "roc_auc": 0.9238,
+      "pr_auc": 0.8447,
+      "tpr_at_10fpr": 0.7904,
+      "roc_auc_ci95": [
+        0.8962,
+        0.9481
+      ],
+      "pr_auc_ci95": [
+        0.7884,
+        0.8931
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.7165,
+        0.8638
+      ],
+      "roc_diff_vs_ccp": 0.154,
+      "roc_diff_vs_ccp_ci95": [
+        0.1101,
+        0.1972
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 867,
+      "hallucinated": 229,
+      "generations": 200
+    }
+  }
+}

@@ -1,0 +1,29 @@
+
+held-out QA: 4549 claims, 313 hallucinated
+  CCP            ROC=0.6260 [0.5624, 0.6783]  PR=0.1433
+  UHead          ROC=0.6441 [0.5402, 0.729]  PR=0.1787  dROC vs CCP +0.0181 [-0.0694, 0.0836]
+  GRASP-MUCH     ROC=0.7188 [0.6814, 0.7551]  PR=0.1622  dROC vs CCP +0.0929 [0.0312, 0.1694]
+  GRASP-diverse  ROC=0.7949 [0.7466, 0.8446]  PR=0.2993  dROC vs CCP +0.1689 [0.0903, 0.2652]
+  GRASP-diverse vs UHead: +0.1508 [0.0519, 0.2664]
+
+held-out Summary: 5284 claims, 411 hallucinated
+  CCP            ROC=0.6174 [0.5817, 0.6502]  PR=0.1422
+  UHead          ROC=0.6757 [0.6328, 0.7137]  PR=0.2345  dROC vs CCP +0.0583 [0.0185, 0.0934]
+  GRASP-MUCH     ROC=0.6673 [0.625, 0.7061]  PR=0.1524  dROC vs CCP +0.0499 [0.0083, 0.0918]
+  GRASP-diverse  ROC=0.7367 [0.6901, 0.7802]  PR=0.2715  dROC vs CCP +0.1193 [0.073, 0.1602]
+  GRASP-diverse vs UHead: +0.0610 [0.0118, 0.1082]
+
+held-out Data2txt: 7348 claims, 592 hallucinated
+  CCP            ROC=0.6238 [0.5979, 0.6488]  PR=0.1605
+  UHead          ROC=0.7021 [0.6775, 0.7269]  PR=0.1913  dROC vs CCP +0.0783 [0.0488, 0.1069]
+  GRASP-MUCH     ROC=0.5668 [0.5392, 0.5946]  PR=0.1034  dROC vs CCP -0.0570 [-0.095, -0.0174]
+  GRASP-diverse  ROC=0.6788 [0.6493, 0.7058]  PR=0.1790  dROC vs CCP +0.0549 [0.0215, 0.0883]
+  GRASP-diverse vs UHead: -0.0233 [-0.0564, 0.0113]
+
+pooled over held-out tasks:
+  CCP            ROC=0.6232 [0.6014, 0.6439]  PR=0.1491
+  UHead          ROC=0.6798 [0.6493, 0.7079]  PR=0.2021  dROC vs CCP +0.0566 [0.0294, 0.0831]
+  GRASP-MUCH     ROC=0.6388 [0.6172, 0.6597]  PR=0.1311  dROC vs CCP +0.0156 [-0.0121, 0.0425]
+  GRASP-diverse  ROC=0.7225 [0.7, 0.7456]  PR=0.2249  dROC vs CCP +0.0993 [0.0707, 0.1292]
+  vs UHead: {'GRASP-diverse': {'roc_diff_vs_ccp': 0.0427, 'roc_diff_vs_ccp_ci95': [0.0086, 0.077]}, 'GRASP-MUCH': {'roc_diff_vs_ccp': -0.041, 'roc_diff_vs_ccp_ci95': [-0.076, -0.0041]}}
+wrote results\diverse_training.json

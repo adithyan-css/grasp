@@ -93,9 +93,16 @@ def chat_prompt(tok, text: str) -> str:
 @torch.no_grad()
 def teacher_forced(model, tok, prompt_text, out_ids, cfg):
     """One pass: GRASP features (L, H_kept, T, 4) and top-N probabilities per token."""
-    p_ids = tok.encode(prompt_text, add_special_tokens=False, return_tensors="pt")
-    P = p_ids.size(-1)
-    ids = torch.cat([p_ids, torch.tensor([out_ids], dtype=p_ids.dtype)], dim=-1).to(model.device)
+    p_ids = tok.encode(prompt_text, add_special_tokens=False)
+    return teacher_forced_ids(model, list(p_ids) + list(out_ids), len(p_ids), cfg, with_probs=True)
+
+
+@torch.no_grad()
+def teacher_forced_ids(model, all_ids, P, cfg, with_probs=False):
+    """Same as `teacher_forced`, from the full token ids and the prompt length P.
+    Returns feats only, or (feats, top_i, top_p, chosen) with `with_probs`."""
+    ids = torch.tensor([list(all_ids)]).to(model.device)
+    out_ids = list(all_ids)[P:]
     red = _AttentionReducer(model, cfg)
     with red.capture(prompt_len=P):
         out = model(input_ids=ids, output_attentions=True, use_cache=False)
@@ -107,6 +114,8 @@ def teacher_forced(model, tok, prompt_text, out_ids, cfg):
     for i, a in enumerate(stacked):
         if a.size:
             feats[i, : a.shape[0], : a.shape[1]] = a
+    if not with_probs:
+        return feats
     logits = out.logits[0, P - 1 : ids.size(-1) - 1].float()  # row i predicts output token i
     probs = torch.softmax(logits, dim=-1)
     top_p, top_i = probs.topk(TOPN, dim=-1)

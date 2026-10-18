@@ -1,0 +1,413 @@
+{
+  "per_task": {
+    "QA": {
+      "CCP": {
+        "roc_auc": 0.626,
+        "pr_auc": 0.1433,
+        "tpr_at_10fpr": 0.2716,
+        "roc_auc_ci95": [
+          0.5624,
+          0.6783
+        ],
+        "pr_auc_ci95": [
+          0.0768,
+          0.2326
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1846,
+          0.351
+        ]
+      },
+      "UHead": {
+        "roc_auc": 0.6441,
+        "pr_auc": 0.1787,
+        "tpr_at_10fpr": 0.3003,
+        "roc_auc_ci95": [
+          0.5402,
+          0.729
+        ],
+        "pr_auc_ci95": [
+          0.0845,
+          0.3016
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.181,
+          0.4124
+        ],
+        "roc_diff_vs_ccp": 0.0181,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0694,
+          0.0836
+        ],
+        "p_diff_le_0": 0.303
+      },
+      "GRASP-MUCH": {
+        "roc_auc": 0.7188,
+        "pr_auc": 0.1622,
+        "tpr_at_10fpr": 0.3003,
+        "roc_auc_ci95": [
+          0.6814,
+          0.7551
+        ],
+        "pr_auc_ci95": [
+          0.103,
+          0.2278
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2413,
+          0.3649
+        ],
+        "roc_diff_vs_ccp": 0.0929,
+        "roc_diff_vs_ccp_ci95": [
+          0.0312,
+          0.1694
+        ],
+        "p_diff_le_0": 0.001
+      },
+      "GRASP-diverse": {
+        "roc_auc": 0.7949,
+        "pr_auc": 0.2993,
+        "tpr_at_10fpr": 0.4601,
+        "roc_auc_ci95": [
+          0.7466,
+          0.8446
+        ],
+        "pr_auc_ci95": [
+          0.2045,
+          0.3847
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.3929,
+          0.5606
+        ],
+        "roc_diff_vs_ccp": 0.1689,
+        "roc_diff_vs_ccp_ci95": [
+          0.0903,
+          0.2652
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 4549,
+        "hallucinated": 313,
+        "generations": 150
+      },
+      "GRASP-diverse_vs_UHead": {
+        "roc_diff_vs_ccp": 0.1508,
+        "roc_diff_vs_ccp_ci95": [
+          0.0519,
+          0.2664
+        ]
+      }
+    },
+    "Summary": {
+      "CCP": {
+        "roc_auc": 0.6174,
+        "pr_auc": 0.1422,
+        "tpr_at_10fpr": 0.2287,
+        "roc_auc_ci95": [
+          0.5817,
+          0.6502
+        ],
+        "pr_auc_ci95": [
+          0.1056,
+          0.1843
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1671,
+          0.2755
+        ]
+      },
+      "UHead": {
+        "roc_auc": 0.6757,
+        "pr_auc": 0.2345,
+        "tpr_at_10fpr": 0.3114,
+        "roc_auc_ci95": [
+          0.6328,
+          0.7137
+        ],
+        "pr_auc_ci95": [
+          0.174,
+          0.2955
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2362,
+          0.3738
+        ],
+        "roc_diff_vs_ccp": 0.0583,
+        "roc_diff_vs_ccp_ci95": [
+          0.0185,
+          0.0934
+        ],
+        "p_diff_le_0": 0.0025
+      },
+      "GRASP-MUCH": {
+        "roc_auc": 0.6673,
+        "pr_auc": 0.1524,
+        "tpr_at_10fpr": 0.2895,
+        "roc_auc_ci95": [
+          0.625,
+          0.7061
+        ],
+        "pr_auc_ci95": [
+          0.1079,
+          0.2098
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2228,
+          0.3525
+        ],
+        "roc_diff_vs_ccp": 0.0499,
+        "roc_diff_vs_ccp_ci95": [
+          0.0083,
+          0.0918
+        ],
+        "p_diff_le_0": 0.0105
+      },
+      "GRASP-diverse": {
+        "roc_auc": 0.7367,
+        "pr_auc": 0.2715,
+        "tpr_at_10fpr": 0.3698,
+        "roc_auc_ci95": [
+          0.6901,
+          0.7802
+        ],
+        "pr_auc_ci95": [
+          0.1849,
+          0.3686
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2884,
+          0.4541
+        ],
+        "roc_diff_vs_ccp": 0.1193,
+        "roc_diff_vs_ccp_ci95": [
+          0.073,
+          0.1602
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "_n": {
+        "claims": 5284,
+        "hallucinated": 411,
+        "generations": 144
+      },
+      "GRASP-diverse_vs_UHead": {
+        "roc_diff_vs_ccp": 0.061,
+        "roc_diff_vs_ccp_ci95": [
+          0.0118,
+          0.1082
+        ]
+      }
+    },
+    "Data2txt": {
+      "CCP": {
+        "roc_auc": 0.6238,
+        "pr_auc": 0.1605,
+        "tpr_at_10fpr": 0.2821,
+        "roc_auc_ci95": [
+          0.5979,
+          0.6488
+        ],
+        "pr_auc_ci95": [
+          0.1335,
+          0.1914
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2432,
+          0.3192
+        ]
+      },
+      "UHead": {
+        "roc_auc": 0.7021,
+        "pr_auc": 0.1913,
+        "tpr_at_10fpr": 0.3074,
+        "roc_auc_ci95": [
+          0.6775,
+          0.7269
+        ],
+        "pr_auc_ci95": [
+          0.1579,
+          0.2329
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2634,
+          0.3535
+        ],
+        "roc_diff_vs_ccp": 0.0783,
+        "roc_diff_vs_ccp_ci95": [
+          0.0488,
+          0.1069
+        ],
+        "p_diff_le_0": 0.0
+      },
+      "GRASP-MUCH": {
+        "roc_auc": 0.5668,
+        "pr_auc": 0.1034,
+        "tpr_at_10fpr": 0.1655,
+        "roc_auc_ci95": [
+          0.5392,
+          0.5946
+        ],
+        "pr_auc_ci95": [
+          0.0887,
+          0.1208
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.1338,
+          0.2014
+        ],
+        "roc_diff_vs_ccp": -0.057,
+        "roc_diff_vs_ccp_ci95": [
+          -0.095,
+          -0.0174
+        ],
+        "p_diff_le_0": 0.998
+      },
+      "GRASP-diverse": {
+        "roc_auc": 0.6788,
+        "pr_auc": 0.179,
+        "tpr_at_10fpr": 0.2703,
+        "roc_auc_ci95": [
+          0.6493,
+          0.7058
+        ],
+        "pr_auc_ci95": [
+          0.1497,
+          0.2126
+        ],
+        "tpr_at_10fpr_ci95": [
+          0.2327,
+          0.3156
+        ],
+        "roc_diff_vs_ccp": 0.0549,
+        "roc_diff_vs_ccp_ci95": [
+          0.0215,
+          0.0883
+        ],
+        "p_diff_le_0": 0.001
+      },
+      "_n": {
+        "claims": 7348,
+        "hallucinated": 592,
+        "generations": 150
+      },
+      "GRASP-diverse_vs_UHead": {
+        "roc_diff_vs_ccp": -0.0233,
+        "roc_diff_vs_ccp_ci95": [
+          -0.0564,
+          0.0113
+        ]
+      }
+    }
+  },
+  "pooled": {
+    "CCP": {
+      "roc_auc": 0.6232,
+      "pr_auc": 0.1491,
+      "tpr_at_10fpr": 0.2667,
+      "roc_auc_ci95": [
+        0.6014,
+        0.6439
+      ],
+      "pr_auc_ci95": [
+        0.1238,
+        0.178
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.235,
+        0.2957
+      ]
+    },
+    "UHead": {
+      "roc_auc": 0.6798,
+      "pr_auc": 0.2021,
+      "tpr_at_10fpr": 0.3169,
+      "roc_auc_ci95": [
+        0.6493,
+        0.7079
+      ],
+      "pr_auc_ci95": [
+        0.1663,
+        0.2433
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.276,
+        0.358
+      ],
+      "roc_diff_vs_ccp": 0.0566,
+      "roc_diff_vs_ccp_ci95": [
+        0.0294,
+        0.0831
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "GRASP-MUCH": {
+      "roc_auc": 0.6388,
+      "pr_auc": 0.1311,
+      "tpr_at_10fpr": 0.2188,
+      "roc_auc_ci95": [
+        0.6172,
+        0.6597
+      ],
+      "pr_auc_ci95": [
+        0.109,
+        0.1575
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.1908,
+        0.2535
+      ],
+      "roc_diff_vs_ccp": 0.0156,
+      "roc_diff_vs_ccp_ci95": [
+        -0.0121,
+        0.0425
+      ],
+      "p_diff_le_0": 0.1315
+    },
+    "GRASP-diverse": {
+      "roc_auc": 0.7225,
+      "pr_auc": 0.2249,
+      "tpr_at_10fpr": 0.3283,
+      "roc_auc_ci95": [
+        0.7,
+        0.7456
+      ],
+      "pr_auc_ci95": [
+        0.1895,
+        0.2666
+      ],
+      "tpr_at_10fpr_ci95": [
+        0.2958,
+        0.3673
+      ],
+      "roc_diff_vs_ccp": 0.0993,
+      "roc_diff_vs_ccp_ci95": [
+        0.0707,
+        0.1292
+      ],
+      "p_diff_le_0": 0.0
+    },
+    "_n": {
+      "claims": 17181,
+      "hallucinated": 1316,
+      "generations": 444
+    }
+  },
+  "pooled_vs_UHead": {
+    "GRASP-diverse": {
+      "roc_diff_vs_ccp": 0.0427,
+      "roc_diff_vs_ccp_ci95": [
+        0.0086,
+        0.077
+      ]
+    },
+    "GRASP-MUCH": {
+      "roc_diff_vs_ccp": -0.041,
+      "roc_diff_vs_ccp_ci95": [
+        -0.076,
+        -0.0041
+      ]
+    }
+  }
+}

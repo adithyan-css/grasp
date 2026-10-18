@@ -1,0 +1,11 @@
+C:\Users\adith\grasp_env\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+== error types
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+  number/date   n= 105 rate=0.562  CCP=0.8668  GRASP-v2=0.9595
+  named entity  n= 338 rate=0.296  CCP=0.7791  GRASP-v2=0.9374
+  other         n= 424 rate=0.165  CCP=0.6594  GRASP-v2=0.8646
+== signal profile
+== importance
+importance (ROC drop): {'token probabilities': 0.1297, 'sink|b5': 0.0335, 'grounding|b2': 0.0097, 'sink|b6': 0.0082, 'grounding|b3': 0.0071, 'sink|b4': 0.0063, 'grounding|b6': 0.0058, 'sink|b1': 0.0042} {'grounding': 0.0368, 'sink': 0.0628, 'dispersion': 0.0141}
+== variance
