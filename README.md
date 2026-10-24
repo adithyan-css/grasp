@@ -219,14 +219,17 @@ Three rules that protect the result from the most common reviewer objections:
 ## Using GRASP inside MUCH's own harness
 
 Copy `src/grasp/sig_grasp.py` into the MUCH repo at `src/signals/sig_grasp.py`, add
-`SignalGRASP` to `src/signals/__init__.py`, then:
+`SignalGRASP` to `src/signals/__init__.py`, set `GRASP_SRC` to this project's `src/`
+directory (the plugin imports the `grasp` package from there), then:
 
 ```bash
-python -m src evaluate-signal grasp_gsd_t8 --lang en
+GRASP_SRC=/path/to/ai_project/src python -m src evaluate-signal grasp_gsd_corpus --lang en
 ```
 
-This routes GRASP through the benchmark's own evaluator, so the comparison against every
-baseline is apples-to-apples under an identical protocol.
+This routes GRASP's per-token signal through the benchmark's own evaluator and
+aggregators, so the comparison against every baseline is apples-to-apples under an
+identical protocol. The saliency-weighted soft-min claim score is not available this way;
+`scripts/03_score_and_eval.py` reports it.
 
 ---
 

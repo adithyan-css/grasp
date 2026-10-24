@@ -228,31 +228,39 @@ def run_full_analysis(records: list[dict], out_path: Path | None = None) -> dict
 
     out: dict = {"overall": {}, "by_language": {}, "by_model": {}, "within_gen": {}, "length_confound": {}, "abstention": {}}
 
+    def scored(rows, sk):
+        """Rows with a finite value for sk (fused_score is NaN where fusion skipped a claim)."""
+        return [r for r in rows if r.get(sk) not in (None, "") and np.isfinite(float(r[sk]))]
+
     for sk in score_keys:
-        ys = np.array([float(r[sk]) for r in records])
-        out["overall"][sk] = compute_metrics_with_ci(y_true, ys)
-        out["within_gen"][sk] = within_generation_roc(records, sk)
-        out["length_confound"][sk] = length_confound_analysis(records, sk)
-        out["abstention"][sk] = abstention_evaluation(y_true, ys)
+        rs = scored(records, sk)
+        yt = np.array([int(r["label"]) for r in rs])
+        ys = np.array([float(r[sk]) for r in rs])
+        out["overall"][sk] = compute_metrics_with_ci(yt, ys)
+        out["within_gen"][sk] = within_generation_roc(rs, sk)
+        out["length_confound"][sk] = length_confound_analysis(rs, sk)
+        out["abstention"][sk] = abstention_evaluation(yt, ys)
 
     # Disaggregate by Language
     langs = sorted(list(set(r.get("lang", "unknown") for r in records if r.get("lang"))))
     for l in langs:
         sub = [r for r in records if r.get("lang") == l]
-        yt_sub = np.array([int(r["label"]) for r in sub])
         out["by_language"][l] = {}
         for sk in score_keys:
-            ys_sub = np.array([float(r[sk]) for r in sub])
+            rs = scored(sub, sk)
+            yt_sub = np.array([int(r["label"]) for r in rs])
+            ys_sub = np.array([float(r[sk]) for r in rs])
             out["by_language"][l][sk] = compute_metrics_with_ci(yt_sub, ys_sub)
 
     # Disaggregate by Model
     models = sorted(list(set(r.get("model", "unknown") for r in records if r.get("model"))))
     for m in models:
         sub = [r for r in records if r.get("model") == m]
-        yt_sub = np.array([int(r["label"]) for r in sub])
         out["by_model"][m] = {}
         for sk in score_keys:
-            ys_sub = np.array([float(r[sk]) for r in sub])
+            rs = scored(sub, sk)
+            yt_sub = np.array([int(r["label"]) for r in rs])
+            ys_sub = np.array([float(r[sk]) for r in rs])
             out["by_model"][m][sk] = compute_metrics_with_ci(yt_sub, ys_sub)
 
     # Print clean summary

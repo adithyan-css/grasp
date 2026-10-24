@@ -9,16 +9,17 @@ Rationale: a head that returns roughly the same grounding value for every token
 cannot discriminate anything, however high or low its mean sits. Variance is a
 pure signal-quality criterion and needs no ground truth.
 
-Two alternatives are implemented for the ablation table:
+Selection rules implemented (`select_heads` dispatches on the name):
 
-  variance   ours          argmax_h Var_t[G]
-  prev_token RAUQ's rule   argmax_h mean_t[ attention to the immediately
-                           preceding token ]
-  random     control       uniformly sampled head
+  variance       ours      argmax_h Var_t[G], one head per layer
+  variance_topk  ours      the k highest-variance heads per layer, in variance
+                           order (rank 0 is the `variance` choice)
+  random         control   uniformly sampled head per layer
+  fixed          control   the same head index in every layer
+  all_heads      no selection (returns None; every head is kept)
 
-`prev_token` is approximated here from the dispersion/saliency statistics we
-already store; run `select_heads_prev_token_exact` if you want the exact rule,
-which needs a second calibration pass that keeps the raw diagonal.
+RAUQ's previous-token rule is not implemented: it needs the raw attention
+diagonal, which the reduced features do not store.
 """
 
 from __future__ import annotations

@@ -536,7 +536,7 @@ def main() -> int:
             print(line(f"{args.fuse_with}/{base_agg}", results["baseline_alone"]))
 
             # re-score both on the identical claim set so the fusion is aligned
-            yb, sg, sb = [], [], []
+            yb, sg, sb, cid = [], [], [], []
             for annot in annotations:
                 gen = annot.generation
                 if args.lang and gen.lang != args.lang:
@@ -587,6 +587,7 @@ def main() -> int:
                     yb.append(1 if label == HALLUCINATION_LABEL else 0)
                     sg.append(float(cs[i]))
                     sb.append(aggregate(ov[start:stop], base_agg))
+                    cid.append(f"{gen.id}_chunk_{i}")
             if yb:
                 fused = 0.5 * (rank(np.array(sg)) + rank(np.array(sb)))
                 results["grasp_alone_aligned"] = metrics(yb, sg)
@@ -596,9 +597,12 @@ def main() -> int:
                 print(line("baseline (aligned)", results["baseline_aligned"]))
                 print(line("FUSED", results["grasp_fuse"]))
 
-                # Update records with fused score if matching
-                for r, f_val in zip(records, fused):
-                    r["fused_score"] = float(f_val)
+                # The fusion loop filters claims differently from score_corpus
+                # (baseline signal present, chunk inside it), so match by claim id;
+                # claims without a fused score get NaN rather than a neighbour's.
+                fused_by_id = dict(zip(cid, fused))
+                for r in records:
+                    r["fused_score"] = float(fused_by_id.get(r["claim_id"], float("nan")))
 
     if args.export_csv:
         export_csv(records, args.export_csv)

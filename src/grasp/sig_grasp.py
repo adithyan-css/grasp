@@ -1,21 +1,28 @@
 """
 GRASP as a MUCH `UQSignal`.
 
-Drop this file into the MUCH repository at `src/signals/sig_grasp.py` and add
-`SignalGRASP` to `src/signals/__init__.py`. It then evaluates through the
-benchmark's own protocol:
+Drop this file into the MUCH repository at `src/signals/sig_grasp.py`, add
+`SignalGRASP` to `src/signals/__init__.py`, and point `GRASP_SRC` at this
+project's `src/` directory so the `grasp` package can be imported. It then
+evaluates through the benchmark's own protocol:
 
-    python -m src evaluate-signal grasp --lang en
+    GRASP_SRC=/path/to/ai_project/src python -m src evaluate-signal grasp_gsd_corpus --lang en
 
 Because attention is not shipped with MUCH, extraction has to run once per
 generation config on a GPU. `scripts/02_extract_attention.py` does that and
 writes a cache; this class reads the cache, so scoring itself is CPU-only and
 takes seconds.
+
+MUCH aggregates the per-token signal over each claim with its own aggregators,
+so this plugin emits token-level values only. GRASP's saliency-weighted soft-min
+claim aggregator is not available through this route; use
+`scripts/03_score_and_eval.py` for the native claim score.
 """
 
 from __future__ import annotations
 
 import os
+import sys
 import typing as t
 from functools import cached_property
 from pathlib import Path
@@ -33,7 +40,19 @@ except ImportError:  # standalone use
             self._all_signal_values_cache = []
 
 
-from .score import CorpusNormaliser, apply_boundary_reset, token_signal
+try:  # imported as part of the grasp package
+    from .score import CorpusNormaliser, apply_boundary_reset, token_signal
+except ImportError:  # copied into MUCH's src/signals/: load grasp from GRASP_SRC
+    _grasp_src = os.getenv("GRASP_SRC")
+    if _grasp_src and _grasp_src not in sys.path:
+        sys.path.insert(0, _grasp_src)
+    try:
+        from grasp.score import CorpusNormaliser, apply_boundary_reset, token_signal
+    except ImportError as exc:
+        raise ImportError(
+            "sig_grasp.py needs the grasp package. Set GRASP_SRC to the project's "
+            "src/ directory (the one containing grasp/)."
+        ) from exc
 
 DEFAULT_CACHE = os.getenv("GRASP_CACHE", "output/grasp_cache")
 
@@ -44,40 +63,38 @@ class SignalGRASP(UQSignal):
 
     Parameters
     ----------
-    tau
-        Sharpness of the saliency-weighted soft-min claim aggregator. Swept on
-        the training split and then frozen.
     alpha
         Weight of the current token in the within-claim recurrence. Set
         `reset=False` to disable the recurrence entirely (ablation).
     use_signals
         (grounding, sink, dispersion) toggles for the ablation table.
+    norm_mode
+        Token risk normalisation passed to `token_signal`: "corpus" (corpus
+        z-scores, as in the GRASP-0 column of scripts/08_claim_table.py) or the
+        legacy "per_gen_rank".
     """
 
     def __init__(
         self,
-        tau: float = 8.0,
         alpha: float = 0.6,
         reset: bool = True,
-        use_saliency: bool = True,
         use_signals: tuple[bool, bool, bool] = (True, True, True),
+        norm_mode: str = "corpus",
         cache_dir: str = DEFAULT_CACHE,
     ):
         super().__init__()
-        self.tau = tau
         self.alpha = alpha
         self.reset = reset
-        self.use_saliency = use_saliency
         self.use_signals = use_signals
+        self.norm_mode = norm_mode
         self.cache_dir = Path(cache_dir)
 
     @classmethod
     def from_env(cls) -> "SignalGRASP":
         return cls(
-            tau=float(os.getenv("PARAM_TAU", 8.0)),
             alpha=float(os.getenv("PARAM_ALPHA", 0.6)),
             reset=os.getenv("PARAM_RESET", "1") == "1",
-            use_saliency=os.getenv("PARAM_SALIENCY", "1") == "1",
+            norm_mode=os.getenv("PARAM_NORM", "corpus"),
         )
 
     @property
@@ -85,11 +102,9 @@ class SignalGRASP(UQSignal):
         flags = "".join(
             c for c, on in zip("gsd", self.use_signals) if on
         ) or "none"
-        bits = [f"grasp_{flags}", f"t{self.tau:g}"]
+        bits = [f"grasp_{flags}", self.norm_mode]
         if not self.reset:
             bits.append("noreset")
-        if not self.use_saliency:
-            bits.append("nosal")
         return "_".join(bits)
 
     # -- cache -------------------------------------------------------------
@@ -119,7 +134,7 @@ class SignalGRASP(UQSignal):
     def compute_signal_value(self, generation) -> list:
         feats = self._features(generation.id)  # (L, 1, T, 4)
         scores = token_signal(
-            feats, self.normaliser, use_signals=self.use_signals
+            feats, self.normaliser, use_signals=self.use_signals, norm_mode=self.norm_mode
         )  # (T,)
 
         n_tokens = len(generation.output_tokens)

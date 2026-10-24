@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-GRASP stage 4 — Inference Overhead and Runtime Profiler.
+GRASP stage 4 — runtime profiler for GRASP itself.
 
-Benchmarks the execution time of:
-1. Native LLM generation (autoregressive decoding).
-2. Teacher-forced forward pass with eager attention hooks (GRASP feature extraction).
-3. Post-processing and claim scoring (GRASP CPU scoring).
+Measures the execution time of:
+1. Teacher-forced forward pass with eager attention hooks (GRASP feature extraction).
+2. Post-processing and claim scoring (GRASP CPU scoring).
 
-Calculates exact overhead percentages and latency per generation / per token.
+Generation is not timed here, so this script reports no overhead percentage.
+For overhead against real generation on the same GPU, use scripts/11_overhead.py.
 
 Usage:
     python scripts/07_timing.py --much-root /content/much --config <cfg> --n-samples 50 --out results/timing_profile.json
@@ -48,7 +48,7 @@ def benchmark_runtime(
     gens: list,
     n_samples: int = 50,
     sink_size: int = 1,
-    selected_heads: dict[int, int] | None = None,
+    selected_heads: dict[int, int] | dict[int, list[int]] | None = None,
 ) -> dict:
     """Measures precise time for forward pass extraction vs CPU scoring."""
     sample_gens = gens[: min(n_samples, len(gens))]
@@ -111,12 +111,6 @@ def benchmark_runtime(
     avg_total_grasp = avg_extract_per_gen + avg_score_per_gen
     avg_tokens_per_gen = total_tokens / n
 
-    # Typical autoregressive generation time benchmark (estimated or measured)
-    # LLaMA 3.2 3B autoregressive generation on T4 runs at ~25-35 tokens/s (approx 1.5 - 2.5s per 60 token generation)
-    est_gen_time_per_token = 0.030  # ~30ms per token
-    est_total_gen_time = avg_tokens_per_gen * est_gen_time_per_token
-    overhead_pct = (avg_total_grasp / max(est_total_gen_time, 1e-6)) * 100.0
-
     return {
         "n_samples": n,
         "total_tokens": total_tokens,
@@ -127,8 +121,7 @@ def benchmark_runtime(
         "cpu_score_seconds_total": total_score_time,
         "cpu_score_seconds_per_gen": avg_score_per_gen,
         "total_grasp_latency_per_gen": avg_total_grasp,
-        "estimated_autoregressive_gen_time_per_gen": est_total_gen_time,
-        "measured_overhead_pct": overhead_pct,
+        "grasp_seconds_per_token": avg_total_grasp / max(avg_tokens_per_gen, 1e-6),
         "throughput_gens_per_sec": 1.0 / max(avg_total_grasp, 1e-6),
         "throughput_tokens_per_sec": total_tokens / max(total_extract_time, 1e-6),
     }
@@ -164,7 +157,11 @@ def main() -> int:
     selected_heads = None
     if args.heads_file and args.heads_file.is_file():
         data = json.loads(args.heads_file.read_text(encoding="utf-8"))
-        selected_heads = {int(k): int(v) for k, v in data.items()}
+        # 1-head files map layer -> head; top-k files map layer -> [heads]
+        selected_heads = {
+            int(k): [int(h) for h in v] if isinstance(v, list) else int(v)
+            for k, v in data.items()
+        }
 
     profile = benchmark_runtime(
         model,
@@ -184,7 +181,7 @@ def main() -> int:
     print(f"Scoring (CPU) per gen:     {profile['cpu_score_seconds_per_gen']*1000:.2f} ms")
     print(f"Total GRASP per gen:       {profile['total_grasp_latency_per_gen']*1000:.2f} ms")
     print(f"Throughput:                {profile['throughput_tokens_per_sec']:.1f} tokens/s")
-    print(f"Estimated overhead:        {profile['measured_overhead_pct']:.2f}% of generation time")
+    print("Overhead vs generation:    not measured here; run scripts/11_overhead.py")
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(profile, indent=2), encoding="utf-8")
