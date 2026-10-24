@@ -17,7 +17,7 @@
 - Gap table: G1-G9, each with counts.
 
 ## What you still have to do
-1. Put your name and register number on the title page; it currently shows `[Author name], [Register number]`.
+1. Name and register number are on the title page (done).
 2. Check the Screening_Sheet decisions marked "AI-assisted; confirm" and replace that with your initials once you agree with them. The professor asked for screening decisions you made yourself.
 3. Check these items, which I could not fully confirm:
    - S30 FAVA venue: the manuscript says COLM 2024, but Semantic Scholar lists the paper as arXiv only.
