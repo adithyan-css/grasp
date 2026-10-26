@@ -16,7 +16,8 @@ UHeads are model-specific, so one head is trained per backbone:
             backbone v0.1 as for GRASP); scored on its test claims.
 Teacher-forced features use the band capture verified against the authors'
 extractor (scripts/17_uhead_extract.py). Per-claim test logits are saved;
-comparison is local (scripts/22_uhead_retrained_compare.py).
+comparison is local (scripts/22_uhead_retrained_compare.py — NOT YET WRITTEN; see
+README "Open items").
 
     python scripts/21_uhead_train.py --much-root /kaggle/tmp/much \
         --uhead-src /kaggle/tmp/llm-uncertainty-head --out /kaggle/working/results/uhead_rt \

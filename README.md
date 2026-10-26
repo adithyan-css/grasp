@@ -41,7 +41,8 @@ limits:
 ai_project/
 ├── docs/
 │   ├── 01_concept.md            problem, prior work, method, novelty check
-│   └── 02_reading_list.md       33 papers with direct PDF links, by tier
+│   ├── 02_reading_list.md       33 papers with direct PDF links, by tier
+│   └── 03_novelty_recheck.md    novelty search re-run
 ├── src/
 │   ├── grasp/
 │   │   ├── features.py          teacher-forced attention extraction (G, S, P, W)
@@ -65,14 +66,35 @@ ai_project/
 │   ├── 10_final_eval.py         v1 single-shot test evaluation
 │   ├── 11_overhead.py           measured overhead vs real generation, same GPU
 │   ├── 12_develop_v2.py         v2 development + frozen config, train split only
-│   └── 13_final_eval_v2.py      v2 single-shot test evaluation
+│   ├── 13_final_eval_v2.py      v2 single-shot test evaluation
+│   ├── 14_abstention_v2.py      abstention curves (Topic 16) + per-claim test scores
+│   ├── 15_ragtruth_extract.py   RAGTruth GPU extraction (second benchmark)
+│   ├── 16_ragtruth_eval.py      RAGTruth evaluation of the frozen v2 recipe
+│   ├── 17_uhead_extract.py      authors' pre-trained UHeads on identical claims (GPU)
+│   ├── 18_uhead_compare.py      GRASP vs pre-trained UHeads
+│   ├── 19_response_level.py     response-level detection on MUCH
+│   ├── 20_domain_adapt.py       label-free domain adaptation for zero-shot transfer
+│   ├── 21_uhead_train.py        UHeads retrained on GRASP's training data (GPU)
+│   ├── 23_diverse_training.py   held-out-task transfer on RAGTruth
+│   ├── 24_human_labels.py       MUCH test scored against the human annotators
+│   ├── 25_analysis.py           variance, error types, importance, figures
+│   └── 26_akimbio_extract.py    third benchmark (AkimBio) GPU extraction
 ├── kaggle/
-│   ├── build_notebook.py        builds the self-contained Kaggle notebook
-│   └── grasp-full-run/          notebook + kernel-metadata.json (Kaggle CLI push)
+│   ├── build_notebook.py        builds the self-contained Kaggle notebooks
+│   ├── grasp-full-run/          notebook + kernel-metadata.json (Kaggle CLI push)
+│   └── grasp-akimbio/           AkimBio extraction notebook
 ├── notebooks/
 │   └── GRASP_colab.ipynb        original Colab runner (superseded by kaggle/)
-└── results/                     FINAL_RESULTS.md, run outputs, dev tables
+├── results/                     FINAL_RESULTS_v2.md, run outputs, dev tables, figures
+├── paper/                       grasp_long.tex (current draft), grasp_paper.tex (short),
+│                                acl/ (ACL format, built by make_acl.py)
+├── presentation/                15-slide deck
+├── review/                      systematic-review manuscript, workbook, figures
+├── report.html, GRASP_Project_Report.pdf   project report (rewritten 18 Oct 2026)
+└── audit_report.md              8 Oct 2026 audit, superseded (see its header)
 ```
+
+Script 22 is not in the repo; see *Open items* below.
 
 ## Verify the maths locally (no GPU, no data)
 
@@ -248,11 +270,25 @@ identical protocol. The saliency-weighted soft-min claim score is not available 
 | Second benchmark (RAGTruth, Mistral-7B) | retrained in-domain: 0.827 vs CCP 0.623; zero-shot from MUCH: ties CCP (0.625) |
 | UHeads head-to-head (pre-trained heads, same claims) | in-domain GRASP wins on both; zero-shot, UHeads transfer better to RAGTruth |
 | Label-free adaptation / response level | rank normalisation 0.625 → 0.639 zero-shot (n.s.); response level GRASP 0.911 vs CCP 0.762 |
-| Paper draft / slides | `paper/grasp_paper.pdf` (6 pp.), `presentation/` (15-slide deck) |
+| Human-label evaluation | GRASP-v2 0.943 vs CCP 0.811 on human-consensus labels — `results/human_labels.json` |
+| Diverse training (held-out RAGTruth task) | pooled 0.723 vs CCP 0.623 and UHead 0.680 — `results/diverse_training.json` |
+| Analyses (variance, error types, importance, RAGTruth ablation) | done — `results/analysis.json`, `results/figures/` |
+| UHeads retrained on the same data | script written (`21_uhead_train.py`); **no results yet** |
+| Third benchmark (AkimBio) | extraction script + Kaggle notebook written; **no results yet** |
+| Paper drafts / slides | `paper/grasp_long.pdf` (current), `paper/grasp_paper.pdf` and `paper/acl/` (short), `presentation/` (15-slide deck) |
 | `report.html` / PDF | rewritten from the audited results (18 Oct 2026) |
+| Systematic review | `review/` — remaining manual steps in `review/NEXT_STEPS.md` |
 
-Superseded numbers (pre-audit `report.html`, `results/RESULTS.md`) are kept for the record
-and are marked as such.
+Superseded numbers (pre-audit `report.html`, `results/RESULTS.md`, `audit_report.md`) are
+kept for the record and are marked as such.
+
+### Open items
+
+- **`scripts/22_uhead_retrained_compare.py` is missing.** `21_uhead_train.py` saves per-claim
+  test logits and says the comparison is done by script 22, which was never added.
+- **`paper/grasp_long.tex` has four `[pending]` markers**: AkimBio as the third benchmark
+  (setup, line 130; limitations, line 249) and retrained UHeads (baselines, line 141; UHeads
+  comparison, line 235). Both depend on Kaggle runs whose outputs are not in `results/`.
 
 ---
 

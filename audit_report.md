@@ -1,5 +1,11 @@
 # GRASP Project Audit Report
 
+> **Superseded.** This audit describes the repository as it was on 8 October 2026, before
+> the Kaggle runs. Several findings no longer hold. For example, it reports that no result
+> files exist, but `results/` now holds every run output. Its corrections (the retracted 1–3%
+> overhead, the re-run CCP reproduction) were applied. For current results see
+> `results/FINAL_RESULTS_v2.md`. This file is kept for the record.
+
 **Audit Date:** 2026-10-08  
 **Scope:** Independent audit of the GRASP repository, implementation, evaluation methodology, and reported empirical claims.  
 **Auditor Policy:** Strict evidence-based evaluation. Claims cite exact file paths, line numbers, and raw command execution outputs. Unverifiable items are explicitly designated `NOT VERIFIED`.

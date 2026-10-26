@@ -11,5 +11,12 @@ results/**/features/
 # paper PDFs: copyrighted, ~49 MB; fetch with scripts/05_download_papers.py
 papers/*.pdf
 
+# LaTeX build files (rebuild with pdflatex + bibtex; the PDFs stay tracked)
+paper/**/*.aux
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.log
+paper/**/*.out
+
 # Kaggle CLI kernel logs (large; run_log.txt keeps the useful part)
 results/**/grasp-full-run.log
