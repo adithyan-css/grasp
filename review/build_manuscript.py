@@ -260,7 +260,7 @@ para(f"OpenAlex (four queries) and the arXiv API (two queries) were searched on 
 para(f"Of {ND} detectors, attention-based ({sig['Attention']}), sampled-consistency "
      f"({sig['Sampled consistency']}) and hidden-state ({sig['Hidden states']}) methods were "
      f"the largest groups. {gran['Response']} of {ND} scored whole responses and "
-     f"{gran['Claim']} scored individual claims; only {len(tf_single_claim)} claim-level "
+     f"{gran['Claim']} scored individual claims. Only {len(tf_single_claim)} claim-level "
      f"detector was both training-free and single-pass, and it needs an auxiliary NLI model. "
      f"Code was linked by {pct(code)} studies and own data released by {pct(data)}. Variance or "
      f"significance tests were reported by {pct(var)}, transfer to new data, models or languages "
@@ -270,8 +270,8 @@ para(f"Of {ND} detectors, attention-based ({sig['Attention']}), sampled-consiste
      bold_lead="Results: ", align="j")
 para("Detection methods are numerous but their evidence is hard to compare, so no ranking "
      "across papers is given. Shared claim-level benchmarks, cost reported against generation "
-     "time, interval estimates and multilingual test sets are the main needs; nine gaps with "
-     "counts and proposed studies are listed.",
+     "time, interval estimates and multilingual test sets are the main needs. Nine gaps are "
+     "listed, each with counts and a proposed study.",
      bold_lead="Conclusion: ", align="j")
 para("hallucination detection; large language models; uncertainty quantification; "
      "claim-level verification; attention; evaluation methodology; structured review",
@@ -328,7 +328,7 @@ body(f"The contributions are: (i) a documented search and screening ledger whose
 h1("2. Existing reviews and how this review differs")
 body("Five recent reviews [55-59] were compared on scope, period, taxonomy, evaluation analysis "
      "and what they leave out (Table 1). Huang et al. [57] give the broadest account of "
-     "hallucination, covering causes, detection, benchmarks and mitigation; detection is one "
+     "hallucination, covering causes, detection, benchmarks and mitigation, with detection as one "
      "section among many. Shorinwa et al. [58] and Geng et al. [59] sort uncertainty and "
      "confidence methods into white-box and black-box classes. Geng et al. appeared before most "
      "attention-based and claim-level detectors, which in this set date from 2024 onward. Wen "
@@ -349,7 +349,7 @@ table(["Review", "Year", "Scope and period", "Taxonomy", "Evaluation analysis",
 # ---------------------------------------------------------------- 3 background
 
 h1("3. Background and terminology")
-body("This section fixes the terms used in the rest of the review.")
+body("The terms below are used in the same sense throughout.")
 for lead, text in (
         ("Hallucination. ", "Generated content that is false with respect to world knowledge "
          "(a factuality error) or not supported by a given source such as a retrieved passage "
@@ -400,8 +400,8 @@ body("The review follows the reporting items of PRISMA 2020 [60] where they appl
 h2("4.2 Sources and search")
 body(f"OpenAlex [61], an open index that covers ACL Anthology, IEEE, ACM, Springer and arXiv "
      f"records, and the arXiv API were searched on 24 October 2026. Scopus and Web of Science "
-     f"were not available to the author through an automatable interface; this is listed as a "
-     f"limitation. OpenAlex queries searched title and abstract from 1 January 2020 to the "
+     f"were not available to the author through an automatable interface, which is listed as "
+     f"a limitation. OpenAlex queries searched title and abstract from 1 January 2020 to the "
      f"search date. Table 2 gives the exact strings and record counts. For each OpenAlex query "
      f"the 200 most relevant records were exported; "
      f"{prisma['Records not exported (ranked below the top 200 of a query; not screened)']} "
@@ -470,11 +470,11 @@ body(f"After merging the exports and removing {prisma['Duplicates removed']} dup
      f"Of {prisma['Full texts sought']} records eligible for full-text reading, "
      f"{prisma['Full texts assessed for eligibility']} were retrieved and assessed. The other "
      f"{prisma['Full texts not retrieved']} were not retrieved because one reviewer could not "
-     f"read them all; the retrieved set was chosen by relevance rank, peer-review status and "
+     f"read them all. The retrieved set was chosen by relevance rank, peer-review status and "
      f"coverage of method families that were thin in the prior collection. Two full texts were "
      f"excluded (one off-topic, one secondary study used in Section 2), leaving {N} included "
      f"primary studies. Title and abstract decisions were proposed with keyword rules for E1-E4 "
-     f"and checked by hand; the rules and every decision are in the Screening_Sheet.")
+     f"and checked by hand. The rules and every decision are in the Screening_Sheet.")
 figure(FIG / "fig1_flow.png", 13.5, "Figure 1.",
        "Flow of records through identification, screening and inclusion. All counts come from "
        "the PRISMA_Counts sheet of the review workbook.")
@@ -492,10 +492,10 @@ body("For each study 31 fields were extracted: bibliographic data, task, method 
      "opened only to check a specific item, so the workbook marks every study as read "
      "'Partly'. On 26 October 2026, 19 quality ratings first made from HTML versions were "
      "checked again against the PDFs. Every DOI was resolved at doi.org and its registered "
-     "title compared with the cited title (all 61 matched); studies without a publisher DOI "
+     "title compared with the cited title (all 61 matched). Studies without a publisher DOI "
      "are cited with their arXiv DOI.")
 body("Quality was judged with the eight questions in Table 3. The answers describe reporting "
-     "quality; they are not added into a score and studies are not ranked by them.")
+     "quality. They are not added into a score, and studies are not ranked by them.")
 caption("Table 4.", f"Quality appraisal of the {N} included studies (number of studies per "
                     f"answer).")
 qnames = ["Q1 Objective clear", "Q2 Method described", "Q3 Dataset described",
@@ -573,7 +573,7 @@ body(f"Attention ({sig['Attention']} detectors {refs(attn)}) is the largest fami
      f"high-frequency energy [48]. Sampled consistency ({sig['Sampled consistency']} "
      f"{refs(fam_ids('Sampled consistency'))}) is the oldest family and is mostly "
      f"training-free. Hidden-state methods ({sig['Hidden states']} "
-     f"{refs(fam_ids('Hidden states'))}) train probes on activations; recent work moves from "
+     f"{refs(fam_ids('Hidden states'))}) train probes on activations. Recent work moves from "
      f"single layer-token pairs to full activation tensors [37] or residual-stream dynamics "
      f"[36]. External verifiers ({sig['External verifier / LLM judge']} "
      f"{refs(fam_ids('External verifier / LLM judge'))}) are used mainly for RAG and "
@@ -597,7 +597,7 @@ h2("5.4 Cost class")
 body(f"Single-pass detectors ({cost['Single pass']}, plus "
      f"{cost['Single pass + auxiliary model']} with an auxiliary model) reuse the forward pass "
      f"that produced the text. Multi-pass detectors ({cost['Multi-pass']}) need extra "
-     f"generations or passes; semantic entropy, for example, uses about ten samples [54]. "
+     f"generations or passes (semantic entropy, for example, uses about ten samples [54]). "
      f"{cost['External model']} detectors call an external model. Cost class is not the same as "
      f"measured cost, which Section 7.3 discusses.")
 h2("5.5 Least-studied combinations and limits of the taxonomy")
@@ -620,13 +620,12 @@ body(f"Table A1 (Appendix A) lists all {N} studies with author, year, problem or
      f"protocol that allows direct comparison with other studies (for example the RAGTruth "
      f"split [24, 40], the LM-Polygraph protocol [28, 43] or MUCH [1]), {comp['Conditional']} "
      f"are comparable only under conditions (same dataset but different models, labels or "
-     f"splits) and {comp['Non-comparable']} are not comparable. For this reason families are "
-     f"compared by design trade-offs and within-paper results, and no cross-paper leaderboard "
-     f"is built. Numbers from different datasets, settings or hardware are never ranked against "
-     f"each other.")
+     f"splits) and {comp['Non-comparable']} are not comparable. So families are compared "
+     f"by design trade-offs and within-paper results, and numbers from different datasets, "
+     f"settings or hardware are never ranked against each other.")
 h2("6.1 Single-pass internal signals versus sampling")
-body("Within-paper comparisons repeatedly show that cheap internal-signal probes can match or "
-     "beat sampling methods on the data they were trained on. Semantic entropy probes recover "
+body("In several within-paper comparisons, cheap internal-signal probes match or beat sampling "
+     "methods on the data they were trained on. Semantic entropy probes recover "
      "much of semantic entropy's performance from one forward pass [16]. TOHA reports results "
      "competitive with SelfCheckGPT and semantic entropy at much lower cost [33]. LettuceDetect, "
      "a 150-400M parameter encoder, reports 79.22% example-level F1 on RAGTruth at 30 to 60 "
@@ -692,9 +691,9 @@ body(f"Figure 5 summarises how the {N} studies report evidence. Code is linked b
      f"other studies.")
 figure(FIG / "fig5_evaluation.png", 14.5, "Figure 5.",
        f"Evaluation and reproducibility indicators across the {N} included studies.")
-body("The pattern in Figure 5 is that what is cheap to report (a code link, a peer-reviewed "
-     "venue) is common, while what costs extra experiments (repeated runs, transfer tests, "
-     "timing, other languages) is rare.")
+body("Figure 5 splits into two groups. Things that cost nothing extra to report, such as a "
+     "code link or a peer-reviewed venue, are common. Things that need extra experiments "
+     "(repeated runs, transfer tests, timing, other languages) are rare.")
 
 # ---------------------------------------------------------------- 8 challenges
 
@@ -703,7 +702,7 @@ body("Each challenge below is backed by counts from the extraction matrix and by
      "example studies.")
 bullet(f" {len(whitebox)} of {ND} detectors read attention, hidden states or token "
        f"probabilities and so need open weights. Attention methods also need eager attention, "
-       f"which is slower than fused kernels [5]; LapEigvals works only on open LLMs [32] and "
+       f"which is slower than fused kernels [5]. LapEigvals works only on open LLMs [32] and "
        f"semantic density needs token probabilities that some APIs hide [11]. Closed models "
        f"allow only sampling or external verifiers.", "Access to model internals.")
 bullet(f" {sup['Supervised']} of {ND} detectors are supervised and need labelled "
@@ -725,7 +724,7 @@ bullet(f" {comp['Conditional']} studies are comparable only under conditions and
        f"ranked across papers.", "Comparability.")
 bullet(f" Only {len(transfer)} of {N} test transfer. Probes trained on one model's output lose "
        f"accuracy on another's (AUROC 0.726 in-domain vs 0.625 out of domain for a 3B model "
-       f"[27]); heads chosen for one architecture do not carry over [32, 33].",
+       f"[27]). Heads chosen for one architecture do not carry over [32, 33].",
        "Generalisation.")
 
 # ---------------------------------------------------------------- 9 gaps
@@ -751,15 +750,15 @@ body("Three directions follow from the gaps. First, claim-level evaluation of ch
 h1("10. Limitations of this review")
 body(f"One reviewer screened and extracted all records. Screening decisions were proposed with "
      f"keyword rules and software assistance and are marked in the workbook for confirmation "
-     f"by the author; no second reviewer checked them. Scopus and Web of Science were not "
+     f"by the author. No second reviewer checked them. Scopus and Web of Science were not "
      f"searched. Only the top 200 records per OpenAlex query were exported, and "
      f"{prisma['Full texts not retrieved']} eligible records were not retrieved in full text, "
      f"so the included set is a prioritised sample of the eligible literature and the counts "
      f"describe that sample. Appendices were not read in full, so some variance or cost "
-     f"reporting placed only in appendices may be missed; the counts in Section 7.3 are "
-     f"therefore lower bounds for those items. Taxonomy codes are the reviewer's judgments from "
+     f"reporting placed only in appendices may be missed, and the counts in Section 7.3 are "
+     f"lower bounds for those items. Taxonomy codes are the reviewer's judgments from "
      f"method descriptions. {N - peer} of {N} studies are preprints. Finally, the author "
-     f"develops a claim-level attention detector as a separate course project; that work is not "
+     f"develops a claim-level attention detector as a separate course project. That work is not "
      f"among the included studies, and gap G2 was derived from the counts, not from that "
      f"project.")
 
@@ -782,9 +781,9 @@ body(f"RQ4. Transfer is tested by {pct(len(transfer))} studies and non-English e
      f"their training data [27, 43], while multi-LLM training helps [37].")
 body(f"RQ5. Code is often released ({pct(code)}), data less often ({pct(data)}), and "
      f"statistical uncertainty is reported by only {pct(var)}.")
-body(f"The largest gap is in evaluation rather than in method design: only {comp['Direct']} "
-     f"of {N} studies can be compared directly and only {var} report uncertainty, so most "
-     f"reported improvements cannot be confirmed across papers. The most useful next step is "
+body(f"The largest gap is in evaluation. Only {comp['Direct']} of {N} studies can be compared "
+     f"directly and only {var} report uncertainty, so most reported improvements cannot be "
+     f"confirmed across papers. The most useful next step is "
      f"to re-run existing detectors, including cheap single-pass ones, at claim level on a "
      f"shared multilingual harness such as MUCH, reporting overhead against generation time and "
      f"bootstrap intervals for every comparison.")
