@@ -1,0 +1,667 @@
+{
+ "query": "abs:\"hallucination detection\" AND (abs:claim OR abs:\"fine-grained\" OR abs:\"long-form\" OR abs:\"token-level\")",
+ "retrieved": "2026-10-26",
+ "totalResults": "132",
+ "results": [
+  {
+   "id": "http://arxiv.org/abs/2606.31033v1",
+   "title": "CORTEX: Token-Level Hallucination Detection in RAG via Comparative Internal Representations",
+   "published": "2026-06-30T02:04:24Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2507.20836v4",
+   "title": "First Hallucination Tokens Are Different from Conditional Ones",
+   "published": "2025-07-28T13:44:21Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.17431v2",
+   "title": "Fine-Grained Uncertainty Quantification for Long-Form Language Model Outputs: A Comparative Study",
+   "published": "2026-02-19T15:02:29Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.04863v1",
+   "title": "Beyond the Global Scores: Fine-Grained Token Grounding as a Robust Detector of LVLM Hallucinations",
+   "published": "2026-04-06T17:07:11Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2104.08704v2",
+   "title": "A Token-level Reference-free Hallucination Detection Benchmark for Free-form Text Generation",
+   "published": "2021-04-18T04:09:48Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2407.00488v1",
+   "title": "PFME: A Modular Approach for Fine-grained Hallucination Detection and Editing of Large Language Models",
+   "published": "2024-06-29T16:35:57Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2407.13702v1",
+   "title": "ANHALTEN: Cross-Lingual Transfer for German Token-Level Reference-Free Hallucination Detection",
+   "published": "2024-07-18T17:01:38Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2411.12713v1",
+   "title": "CATCH: Complementary Adaptive Token-level Contrastive Decoding to Mitigate Hallucinations in LVLMs",
+   "published": "2024-11-19T18:27:31Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2401.06855v4",
+   "title": "Fine-grained Hallucination Detection and Editing for Language Models",
+   "published": "2024-01-12T19:02:48Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.11244v1",
+   "title": "OmniHallu: Unified Hallucination Detection for Cross-Modal Comprehension and Generation in Multimodal Large Language Models",
+   "published": "2026-09-10T08:41:12Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.03531v2",
+   "title": "Real-Time Detection of Hallucinated Entities in Long-Form Generation",
+   "published": "2025-08-26T01:51:41Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2410.06304v3",
+   "title": "FG-PRM: Fine-grained Hallucination Detection and Mitigation in Language Model Mathematical Reasoning",
+   "published": "2024-10-08T19:25:26Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2405.14486v1",
+   "title": "RefChecker: Reference-based Fine-grained Hallucination Checker and Benchmark for Large Language Models",
+   "published": "2024-05-23T12:18:11Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2407.15975v1",
+   "title": "Multilingual Fine-Grained News Headline Hallucination Detection",
+   "published": "2024-07-22T18:37:53Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.17687v1",
+   "title": "Mixture-of-Expert Blocks Contain Strong Hallucination Detection Signals",
+   "published": "2026-08-18T12:00:20Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.17125v1",
+   "title": "ToolHACE: A Dataset for Detecting Hallucinations in Tool-Based LLM Responses",
+   "published": "2026-10-12T17:15:43Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2503.20504v2",
+   "title": "UniVRSE: Unified Vision-conditioned Response Semantic Entropy for Hallucination Detection in Medical Vision-Language Models",
+   "published": "2025-03-26T12:45:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2403.04696v2",
+   "title": "Fact-Checking the Output of Large Language Models via Token-Level Uncertainty Quantification",
+   "published": "2024-03-07T17:44:17Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.00581v2",
+   "title": "Enoki: Efficient Multi-Level Hallucination Detection",
+   "published": "2026-09-01T02:21:28Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.15945v1",
+   "title": "RAGognizer: Hallucination-Aware Fine-Tuning via Detection Head Integration",
+   "published": "2026-04-17T11:07:32Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.04849v1",
+   "title": "When Models Lie, We Learn: Multilingual Span-Level Hallucination Detection with PsiloQA",
+   "published": "2025-10-06T14:36:30Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2301.04449v1",
+   "title": "Diving Deep into Modes of Fact Hallucinations in Dialogue Systems",
+   "published": "2023-01-11T13:08:57Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.13130v2",
+   "title": "ZINA: Multimodal Fine-grained Hallucination Detection and Editing",
+   "published": "2025-06-16T06:27:59Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.19310v1",
+   "title": "JointCQ: Improving Factual Hallucination Detection with Joint Claim and Query Generation",
+   "published": "2025-10-22T07:15:37Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2412.15264v3",
+   "title": "ReXTrust: A Model for Fine-Grained Hallucination Detection in AI-Generated Radiology Reports",
+   "published": "2024-12-17T02:07:33Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.07863v3",
+   "title": "Robust Hallucination Detection in LLMs via Adaptive Token Selection",
+   "published": "2025-04-10T15:39:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2406.11277v1",
+   "title": "Small Agent Can Also Rock! Empowering Small Language Models as Hallucination Detector",
+   "published": "2024-06-17T07:30:05Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.08048v1",
+   "title": "TDGNet: Hallucination Detection in Diffusion Language Models via Temporal Dynamic Graphs",
+   "published": "2026-02-08T16:35:30Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.01850v2",
+   "title": "MoDA: Modulation Adapter for Fine-Grained Visual Grounding in Instructional MLLMs",
+   "published": "2025-06-02T16:38:50Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2603.27752v2",
+   "title": "Retromorphic Testing with Hierarchical Verification for Hallucination Detection in RAG",
+   "published": "2026-03-29T16:12:18Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.20772v2",
+   "title": "VIHD: Visual Intervention-based Hallucination Detection for Medical Visual Question Answering",
+   "published": "2026-05-20T06:14:45Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2601.16397v2",
+   "title": "From Attribution to Abstention: Training-Free Attention-Based Auditing for Clinical Summarization",
+   "published": "2026-01-23T02:01:43Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2308.06394v3",
+   "title": "Detecting and Preventing Hallucinations in Large Vision Language Models",
+   "published": "2023-08-11T21:35:20Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2502.17125v1",
+   "title": "LettuceDetect: A Hallucination Detection Framework for RAG Applications",
+   "published": "2025-02-24T13:11:47Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.09953v1",
+   "title": "Improving Cross-Lingual Token Representations by Adding a Pinch of SALT",
+   "published": "2026-09-09T09:43:41Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.12265v1",
+   "title": "Learning Auxiliary Tasks Improves Reference-Free Hallucination Detection in Open-Domain Long-Form Generation",
+   "published": "2025-05-18T07:10:03Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.04492v2",
+   "title": "Learned Hallucination Detection in Black-Box LLMs using Token-level Entropy Production Rate",
+   "published": "2025-09-01T13:34:21Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2603.21693v2",
+   "title": "Deterministic Hallucination Detection in Medical VQA via Confidence-Evidence Bayesian Gain",
+   "published": "2026-03-23T08:29:53Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.02066v1",
+   "title": "External Observers May See More Clearly: Cross-Model Span-Level Hallucination Detection in Large Language Models via Hidden State Probing",
+   "published": "2026-10-01T17:06:53Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.18639v1",
+   "title": "Span-Level Hallucination Detection for LLM-Generated Answers",
+   "published": "2025-04-25T18:35:25Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.10286v1",
+   "title": "HalLoc: Token-level Localization of Hallucinations for Vision Language Models",
+   "published": "2025-06-12T01:50:35Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.09700v2",
+   "title": "Cross-Layer Attention Probing for Fine-Grained Hallucination Detection",
+   "published": "2025-09-04T14:37:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2511.17946v1",
+   "title": "Measuring the Impact of Lexical Training Data Coverage on Hallucination Detection in Large Language Models",
+   "published": "2025-11-22T06:59:55Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2404.14233v2",
+   "title": "Detecting and Mitigating Hallucination in Large Vision Language Models via Fine-Grained AI Feedback",
+   "published": "2024-04-22T14:46:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.10168v1",
+   "title": "HalluSearch at SemEval-2025 Task 3: A Search-Enhanced RAG Pipeline for Hallucination Detection",
+   "published": "2025-04-14T12:22:30Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2508.14314v2",
+   "title": "Zero-knowledge LLM hallucination detection and mitigation through fine-grained cross-model consistency",
+   "published": "2025-08-19T23:45:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2404.14715v2",
+   "title": "FINEMATCH: Aspect-based Fine-grained Image and Text Mismatch Detection and Correction",
+   "published": "2024-04-23T03:42:14Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.11738v1",
+   "title": "OptArgus: A Multi-Agent System to Detect Hallucinations in LLM-based Optimization Modeling",
+   "published": "2026-05-12T08:19:14Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.21105v2",
+   "title": "HalluScope: Fine-grained Hallucination Diagnosis for Multimodal Large Language Models",
+   "published": "2026-07-23T09:35:32Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2507.04137v3",
+   "title": "Detecting Token-Level Hallucinations Using Variance Signals: A Reference-Free Approach",
+   "published": "2025-07-05T19:20:59Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.24198v1",
+   "title": "SKstars at SHROOM: Visions Agreement-Guided Ensembling of Zero-Shot and LoRA-Adapted Vision--Language Models",
+   "published": "2026-09-21T07:13:24Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.24115v1",
+   "title": "A Benchmark for Hallucination Detection in VLMs for Gastrointestinal Endoscopy",
+   "published": "2026-06-23T04:04:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2503.17229v3",
+   "title": "FactSelfCheck: Fact-Level Black-Box Hallucination Detection for LLMs",
+   "published": "2025-03-21T15:32:24Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.20949v1",
+   "title": "Neural Probe-Based Hallucination Detection for Large Language Models",
+   "published": "2025-12-24T05:10:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2603.16459v2",
+   "title": "DynHD: Hallucination Detection for Diffusion Large Language Models via Denoising Dynamics Deviation Learning",
+   "published": "2026-03-17T12:40:29Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.00301v1",
+   "title": "FLaG: Fine-Grained Latent Grouping for Hallucination Detection",
+   "published": "2026-05-29T19:30:39Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.22661v1",
+   "title": "TRE: Training-Free Hallucination Detection for Diffusion Language Models",
+   "published": "2026-06-29T00:47:48Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2310.09044v1",
+   "title": "KCTS: Knowledge-Constrained Tree Search Decoding with Token-Level Hallucination Detection",
+   "published": "2023-10-13T12:12:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2502.11948v3",
+   "title": "HalluEntity: Benchmarking and Understanding Entity-Level Hallucination Detection",
+   "published": "2025-02-17T16:01:41Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2502.16842v1",
+   "title": "Exploring Causes and Mitigation of Hallucinations in Large Vision Language Models",
+   "published": "2025-02-24T05:00:52Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.07069v1",
+   "title": "HalluciNot: Hallucination Detection Through Context and Common Knowledge Verification",
+   "published": "2025-04-09T17:39:41Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.03107v1",
+   "title": "Detecting AI Hallucinations in Finance: An Information-Theoretic Method Cuts Hallucination Rate by 92%",
+   "published": "2025-12-02T05:25:48Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.20375v1",
+   "title": "The Impact of Negated Text on Hallucination with Large Language Models",
+   "published": "2025-10-23T09:20:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.06920v1",
+   "title": "Halluverse-M^3: A multitask multilingual benchmark for hallucination in LLMs",
+   "published": "2026-02-06T18:16:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.05243v1",
+   "title": "CLATTER: Comprehensive Entailment Reasoning for Hallucination Detection",
+   "published": "2025-06-05T17:02:52Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2310.18344v1",
+   "title": "Chainpoll: A high efficacy method for LLM hallucination detection",
+   "published": "2023-10-22T14:45:14Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.29523v1",
+   "title": "K-FinHallu: A Hallucination Detection Benchmark for Multi-Turn RAG in Korean Finance",
+   "published": "2026-05-28T07:40:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.03165v3",
+   "title": "Efficient Dynamic Clustering-Based Document Compression for Retrieval-Augmented-Generation",
+   "published": "2025-04-04T04:43:13Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2503.16541v2",
+   "title": "Poly-FEVER: A Multilingual Fact Verification Benchmark for Hallucination Detection in Large Language Models",
+   "published": "2025-03-19T01:46:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.11389v1",
+   "title": "Fact over Fiction: Detection of Pathological Hallucinations in Sinhala-to-English Neural Machine Translation",
+   "published": "2026-10-08T07:19:51Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.13038v2",
+   "title": "HKD4VLM: A Progressive Hybrid Knowledge Distillation Framework for Robust Multimodal Hallucination and Factuality Detection in VLMs",
+   "published": "2025-06-16T02:03:41Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.13836v1",
+   "title": "Diving into Mitigating Hallucinations from a Vision Perspective for Large Vision-Language Models",
+   "published": "2025-09-17T09:08:05Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.28264v1",
+   "title": "Entropy Distribution as a Fingerprint for Hallucinations in Generative Models",
+   "published": "2026-05-27T10:12:44Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.15607v1",
+   "title": "ASK-NN: An Asymmetric Nearest-Neighbor Test that detects Distribution Drifts in Natural Language",
+   "published": "2026-07-17T04:06:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.27706v1",
+   "title": "Chain-based Adaptive Reconfiguration Over Lattices for Hallucination Reduction",
+   "published": "2026-05-26T21:28:51Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.08705v1",
+   "title": "Analyzing the Correlation Between Hallucinations and Knowledge Conflicts in Large Language Models",
+   "published": "2026-06-07T16:03:14Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.18145v1",
+   "title": "Detecting Contextual Hallucinations in LLMs with Frequency-Aware Attention",
+   "published": "2026-02-20T11:18:45Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.10835v1",
+   "title": "UniProbe: A Learnable Token-Level Hallucination Detector for Large VLMs using Multi-Structural Internal Representations",
+   "published": "2026-08-11T12:01:59Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.24183v1",
+   "title": "CoHalLo: code hallucination localization via probing hidden layer vector",
+   "published": "2025-12-30T12:36:31Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2406.03075v1",
+   "title": "Towards Detecting LLMs Hallucination via Markov Chain-based Multi-agent Debate Framework",
+   "published": "2024-06-05T08:59:45Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.17671v1",
+   "title": "Turk-LettuceDetect: A Hallucination Detection Models for Turkish RAG Applications",
+   "published": "2025-09-22T12:14:11Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.08863v3",
+   "title": "Max-pooling Network Revisited: Analyzing the Role of Semantic Probability in Multiple Instance Learning for Hallucination Detection",
+   "published": "2026-05-09T10:30:30Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2601.03052v1",
+   "title": "Detecting Hallucinations in Retrieval-Augmented Generation via Semantic-level Internal Reasoning Graph",
+   "published": "2026-01-06T14:35:20Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2407.04693v2",
+   "title": "ANAH-v2: Scaling Analytical Hallucination Annotation of Large Language Models",
+   "published": "2024-07-05T17:56:38Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.05823v1",
+   "title": "Decomposed Entailment for Factuality Checking and Hallucination Detection",
+   "published": "2026-08-06T09:52:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.23912v2",
+   "title": "LoVeC: Reinforcement Learning for Better Verbalized Confidence in Long-Form Generations",
+   "published": "2025-05-29T18:05:20Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.15386v3",
+   "title": "RePPL: Recalibrating Perplexity by Uncertainty in Semantic Propagation and Language Generation for Explainable QA Hallucination Detection",
+   "published": "2025-05-21T11:23:05Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2401.00396v2",
+   "title": "RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models",
+   "published": "2023-12-31T04:43:45Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2508.05782v2",
+   "title": "FineDialFact: A benchmark for Fine-grained Dialogue Fact Verification",
+   "published": "2025-08-07T18:51:03Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.18321v1",
+   "title": "Beyond Single Models: Mitigating Multimodal Hallucinations via Adaptive Token Ensemble Decoding",
+   "published": "2025-10-21T06:11:24Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.08158v1",
+   "title": "Constrained Paraphrase Consistency for LLM Hallucination Detection",
+   "published": "2026-06-06T13:14:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.11236v1",
+   "title": "HALDETECT at ImageEval 2026 Shared Tasks: Answer-First Contrastive Grounding with QLoRA",
+   "published": "2026-09-10T08:35:29Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.00166v2",
+   "title": "Disentangled Safety Adapters Enable Efficient Guardrails and Flexible Inference-Time Alignment",
+   "published": "2025-05-30T19:11:52Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.01956v1",
+   "title": "Efficient Epistemic Uncertainty Estimation for Large Language Models via Knowledge Distillation",
+   "published": "2026-02-02T11:03:37Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.24919v1",
+   "title": "MultiHaluDet: Multilingual Hallucination Detection via LLM Hidden State Probing",
+   "published": "2026-05-24T07:50:03Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.11878v1",
+   "title": "Domain-Specific Hallucination Detection in Large Language Models",
+   "published": "2026-09-10T17:45:36Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.00243v1",
+   "title": "More Debate, Same Evidence: Structural Limits of Homogeneous Multi-Agent Groundedness",
+   "published": "2026-07-31T19:40:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2511.09539v1",
+   "title": "SynClaimEval: A Framework for Evaluating the Utility of Synthetic Data in Long-Context Claim Verification",
+   "published": "2025-11-12T18:36:59Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.20045v3",
+   "title": "Efficient Hallucination Detection for LLMs Using Uncertainty-Aware Attention Heads",
+   "published": "2025-05-26T14:28:37Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.01367v4",
+   "title": "MMD-Flagger: Leveraging Maximum Mean Discrepancy to Detect Hallucinations",
+   "published": "2025-06-02T06:50:58Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.27052v5",
+   "title": "VISTA: Verification In Sequential Turn-based Assessment",
+   "published": "2025-10-30T23:45:13Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.31483v4",
+   "title": "BenHalluEval: A Multi-Task Hallucination Evaluation Framework for Large Language Models on Bengali",
+   "published": "2026-05-29T16:07:33Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2502.12769v4",
+   "title": "How Much Do LLMs Hallucinate across Languages? On Realistic Multilingual Estimation of LLM Hallucination",
+   "published": "2025-02-18T11:32:43Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.03617v1",
+   "title": "DEPICT: Scoring Text-to-Image Alignment by Answer Agreement",
+   "published": "2026-10-02T17:13:49Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.15771v3",
+   "title": "ORION Grounded in Context: Retrieval-Based Method for Hallucination Detection",
+   "published": "2025-04-22T10:28:23Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.20219v3",
+   "title": "HalluTruthQA: A Fine-Grained Benchmark for Hallucination Detection, Localization, and Explanation in Arabic Question Answering",
+   "published": "2026-07-22T14:37:25Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.04841v1",
+   "title": "SoK: a Comprehensive Causality Analysis Framework for Large Language Model Security",
+   "published": "2025-12-04T14:25:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.06748v2",
+   "title": "Evidence Graph Consistency in Retrieval-Augmented Generation: A Model-Dependent Analysis of Hallucination Detection",
+   "published": "2026-06-04T22:19:39Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.25591v1",
+   "title": "Walking Through Uncertainty: An Empirical Study of Uncertainty Estimation for Audio-Aware Large Language Models",
+   "published": "2026-04-28T12:56:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.13702v1",
+   "title": "DSCC-HS: A Dynamic Self-Reinforcing Framework for Hallucination Suppression in Large Language Models",
+   "published": "2025-09-17T05:09:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.22892v1",
+   "title": "Bengali Hallucination Detection with Retrieval and Programs: A System Study",
+   "published": "2026-10-16T03:46:27Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.34330v3",
+   "title": "MiCo: Mutual Information Coverage Optimization through Semantic Erasure Modeling for Efficient MLLM Inference",
+   "published": "2026-09-28T05:09:20Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.21072v5",
+   "title": "Faithfulness-Aware Uncertainty Quantification for Fact-Checking the Output of Retrieval Augmented Generation",
+   "published": "2025-05-27T11:56:59Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.22963v1",
+   "title": "Graph Alignment Topology as an Inductive Bias for Grounding Detection",
+   "published": "2026-05-21T18:49:32Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.12436v1",
+   "title": "CAAFC: Chronological Actionable Automated Fact-Checker for misinformation / non-factual hallucination detection and correction",
+   "published": "2026-05-12T17:32:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.18439v3",
+   "title": "Grounding or Guessing? Visual Signals for Detecting Hallucinations in Sign Language Translation",
+   "published": "2025-10-21T09:13:46Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.08200v1",
+   "title": "A Head to Predict and a Head to Question: Pre-trained Uncertainty Quantification Heads for Hallucination Detection in LLM Outputs",
+   "published": "2025-05-13T03:30:26Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2603.05308v4",
+   "title": "Med-V1: Small Language Models for Zero-shot and Scalable Biomedical Evidence Attribution",
+   "published": "2026-03-05T15:48:43Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.16320v1",
+   "title": "StreamOPD: A Post-Training Recipe with Spatio-Temporal Cue Gating for Streaming Video Understanding",
+   "published": "2026-08-17T09:25:36Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.24492v2",
+   "title": "When Do Supervised UQ Ensembles Improve LLM Hallucination Detection? A Robustness Study",
+   "published": "2026-08-25T12:43:07Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.05802v1",
+   "title": "AtomCite: Verification and Correction of Supplied Page-Level Citations in Multi-Page Documents",
+   "published": "2026-09-05T01:31:50Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.03534v2",
+   "title": "SURE-RAG: Sufficiency and Uncertainty-Aware Evidence Verification for Selective Retrieval-Augmented Generation",
+   "published": "2026-05-05T09:05:40Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.03482v3",
+   "title": "Single-Pass Uncertainty Heads for Claim-Level Hallucination Detection in Persian Medical Language Models",
+   "published": "2026-10-02T15:50:46Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2406.07735v1",
+   "title": "REAL Sampling: Boosting Factuality and Diversity of Open-Ended Generation via Asymptotic Entropy",
+   "published": "2024-06-11T21:44:49Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2402.11622v2",
+   "title": "Logical Closed Loop: Uncovering Object Hallucinations in Large Vision-Language Models",
+   "published": "2024-02-18T15:28:39Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.13143v3",
+   "title": "Auditing Meta-Cognitive Hallucinations in Reasoning Large Language Models",
+   "published": "2025-05-19T14:11:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.24830v3",
+   "title": "Improving Reliability and Explainability of Medical Question Answering through Atomic Fact Checking in Retrieval-Augmented LLMs",
+   "published": "2025-05-30T17:33:07Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2603.24579v1",
+   "title": "MARCH: Multi-Agent Reinforced Self-Check for LLM Hallucination",
+   "published": "2026-03-25T17:54:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.30467v1",
+   "title": "Where Does Retrieval-Based Open-Ended Evaluation Fail? Automatic Taxonomy Induction from Long-Form Medical Answer Factuality Verification",
+   "published": "2026-09-24T19:04:23Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.09360v2",
+   "title": "MetaRAG: Metamorphic Testing for Hallucination Detection in RAG Systems",
+   "published": "2025-09-11T11:18:23Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.29055v2",
+   "title": "Hallucination Mitigation with Agentic AI, Nested Learning, and AI Sustainability via Semantic Caching",
+   "published": "2026-05-27T20:01:08Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.08969v1",
+   "title": "CARE: A Conformal Safety Layer for Medical Summarization",
+   "published": "2026-06-08T03:10:45Z"
+  }
+ ]
+}

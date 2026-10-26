@@ -1,0 +1,1291 @@
+{
+ "query": "(abstention OR \"selective generation\" OR \"selective prediction\" OR conformal) AND (\"large language model\" OR LLM) AND (hallucination OR factuality)",
+ "filter": "title_and_abstract.search:(abstention OR \"selective generation\" OR \"selective prediction\" OR conformal) AND (\"large language model\" OR LLM) AND (hallucination OR factuality),from_publication_date:2020-01-01,to_publication_date:2026-10-24",
+ "retrieved": "2026-10-26",
+ "meta": {
+  "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+  "count": 409,
+  "db_response_time_ms": 46,
+  "page": 1,
+  "per_page": 200,
+  "groups_count": null,
+  "x_query": {
+   "oql": "get works from 2020-01-01 through 2026-10-24 with ((LLM OR stemmed \"large language model\") AND (stemmed \"selective generation\" OR stemmed \"selective prediction\" OR abstention OR conformal) AND (factuality OR hallucination)) in the title or abstract",
+   "x_new_oql": "get works from 2020-01-01 through 2026-10-24 with ((LLM OR stemmed \"large language model\") AND (stemmed \"selective generation\" OR stemmed \"selective prediction\" OR abstention OR conformal) AND (factuality OR hallucination)) in the title or abstract",
+   "oqo": {
+    "get_rows": "works",
+    "filter_rows": [
+     {
+      "column_id": "from_publication_date",
+      "value": "2020-01-01"
+     },
+     {
+      "column_id": "to_publication_date",
+      "value": "2026-10-24"
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "LLM",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"large language model\"",
+        "operator": "has"
+       }
+      ]
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"selective generation\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"selective prediction\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "abstention",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "conformal",
+        "operator": "has"
+       }
+      ]
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "factuality",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "hallucination",
+        "operator": "has"
+       }
+      ]
+     }
+    ]
+   },
+   "url": "/works?filter=from_publication_date:2020-01-01,to_publication_date:2026-10-24,title_and_abstract.search:LLM|%22large language model%22,title_and_abstract.search:%22selective generation%22|%22selective prediction%22|abstention|conformal,title_and_abstract.search:factuality|hallucination&per_page=200",
+   "order": "best matches first",
+   "order_default": true
+  },
+  "cost_usd": 0.001
+ },
+ "results": [
+  {
+   "id": "https://openalex.org/W4396763774",
+   "doi": "https://doi.org/10.48550/arxiv.2405.01563",
+   "title": "Mitigating LLM Hallucinations via Conformal Abstention",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7203623838",
+   "doi": "https://doi.org/10.1109/gcon69192.2026.11648944",
+   "title": "LAVENDER: Lightweight Abstention-Aware Verification for Behavioural and Factual Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7171741414",
+   "doi": "https://doi.org/10.13140/rg.2.2.29602.18882",
+   "title": "The Factuality\u2013Abstention Frontier: Sharp Limits on Hallucination Detection, Calibration Guarantees, and Certifiable Mitigation in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4389519585",
+   "doi": "https://doi.org/10.18653/v1/2023.findings-emnlp.182",
+   "title": "Sources of Hallucination by Large Language Models on Inference Tasks",
+   "year": 2023
+  },
+  {
+   "id": "https://openalex.org/W7154571449",
+   "doi": "https://doi.org/10.48550/arxiv.2604.13991",
+   "title": "Adaptive Conformal Prediction for Improving Factuality of Generations by Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7212000303",
+   "doi": "https://doi.org/10.5281/zenodo.22675397",
+   "title": "MadaFactBench: A Benchmark for Evaluating Factual Reliability and Hallucination in Large Language Models for Malagasy",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4411934268",
+   "doi": "https://doi.org/10.1162/tacl_a_00754",
+   "title": "Know Your Limits: A Survey of Abstention in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7223505344",
+   "doi": null,
+   "title": "Research on Factual Hallucination Detection and Mitigation in Large Language Models Based on Retrieval-Augmented",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4411127335",
+   "doi": "https://doi.org/10.22399/ijcesen.2471",
+   "title": "Understanding and Mitigating Strategies for Large Language Model (LLMs) Hallucinations in HR Chatbots",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7155359046",
+   "doi": "https://doi.org/10.48550/arxiv.2604.20098",
+   "title": "Differentiable Conformal Training for LLM Reasoning Factuality",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164050526",
+   "doi": "https://doi.org/10.48550/arxiv.2606.08831",
+   "title": "Inference-Time Conformal Reasoning with Valid Factuality Control for Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4412945130",
+   "doi": "https://doi.org/10.18653/v1/2025.acl-long.1199",
+   "title": "Alleviating Hallucinations from Knowledge Misalignment in Large Language Models via Selective Abstention Learning",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7223304185",
+   "doi": "https://doi.org/10.5281/zenodo.23588151",
+   "title": "Research on Factual Hallucination Detection and Mitigation in Large Language Models Based on Retrieval-Augmented Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7222889512",
+   "doi": "https://doi.org/10.17605/osf.io/2xqg5",
+   "title": "Does Stated Confidence Track Correctness in Azerbaijani? A Parallel Evaluation of Factuality, Calibration, and Abstention in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4394947099",
+   "doi": "https://doi.org/10.48550/arxiv.2404.10960",
+   "title": "Uncertainty-Based Abstention in LLMs Improves Safety and Reduces Hallucinations",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W4396786040",
+   "doi": "https://doi.org/10.48550/arxiv.2405.02228",
+   "title": "Abstention vs. Hallucination: Benchmarking LLM Source Attribution for Scientific Citations",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7161713999",
+   "doi": "https://doi.org/10.48550/arxiv.2605.17029",
+   "title": "Task Abstention for Large Language Models in Code Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155201584",
+   "doi": "https://doi.org/10.1038/s41586-026-10549-w",
+   "title": "Evaluating large language models for accuracy incentivizes hallucinations",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7216338642",
+   "doi": "https://doi.org/10.64388/irev10i4-1723870",
+   "title": "Retrieval Quality, Evidence, and Appropriate Abstention in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7172020802",
+   "doi": "https://doi.org/10.61424/ka6yps02",
+   "title": "Distribution-Free Selective Prediction for LLM-RAG Hallucination Detection: Word-Level Conformal Risk Control under Domain Shift",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4394646487",
+   "doi": "https://doi.org/10.48550/arxiv.2404.04287",
+   "title": "CONFLARE: CONFormal LArge language model REtrieval",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W4415044773",
+   "doi": "https://doi.org/10.20944/preprints202510.0540.v1",
+   "title": "A Survey on Hallucination in Large Language Models: Definitions, Detection, and Mitigation",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7213935844",
+   "doi": "https://doi.org/10.5281/zenodo.22879332",
+   "title": "Reducing Hallucinations in Large Language Models: Abstention, Grounding, Failure-Driven Correction, and Evidence from a Small-Model Pilot Study",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7147370540",
+   "doi": "https://doi.org/10.48550/arxiv.2603.27403",
+   "title": "Conditional Factuality Controlled LLMs with Generalization Certificates via Conformal Sampling",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4406611712",
+   "doi": "https://doi.org/10.1109/smc54092.2024.10831438",
+   "title": "Confidence Elicitation Improves Selective Generation in Black-Box Large Language Models",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7161479856",
+   "doi": "https://doi.org/10.5281/zenodo.20259303",
+   "title": "Truthfulness Assurance for Large Language Models: An End-to-End Architecture for Hallucination-Risk Governance, Calibrated Abstention and Safe-Default Routing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168151092",
+   "doi": "https://doi.org/10.2139/ssrn.7090958",
+   "title": "Mitigating Hallucination and Confabulation in Large Language Models (LLMs) and Multi-Agent Systems (MASs): Is Simplicity the Ultimate Sophistication?",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168035881",
+   "doi": "https://doi.org/10.1007/978-981-92-2856-0_39",
+   "title": "MedConf-RAG: Reliable Medical LLMs with Gated Graph Integration and Conformal Factuality Guarantees",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7115980278",
+   "doi": null,
+   "title": "Mitigation of hallucination in response to mental health counseling by large language models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7165913192",
+   "doi": "https://doi.org/10.5281/zenodo.20880634",
+   "title": "Mitigating Hallucination and Confabulation in Large Language Models (LLMs) and Multi-Agent Systems (MASs): Is Simplicity the Ultimate Sophistication?",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7128682825",
+   "doi": "https://doi.org/10.48448/kcr8-bg56",
+   "title": "Hallucinate Less by Thinking More: Aspect-Based Causal Abstention for Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7138330167",
+   "doi": "https://doi.org/10.1609/aaai.v40i38.40532",
+   "title": "Hallucinate Less by Thinking More: Aspect-Based Causal Abstention for Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7138880392",
+   "doi": "https://doi.org/10.48550/arxiv.2603.16817",
+   "title": "Is Conformal Factuality for RAG-based LLMs Robust? Novel Metrics and Systematic Insights",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7202274287",
+   "doi": "https://doi.org/10.1109/ichi69079.2026.00243",
+   "title": "TRACE-Med: Policy-based Abstention to Mitigate Hallucinations in LLM-Generated Clinical Case Analysis",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164163087",
+   "doi": "https://doi.org/10.48550/arxiv.2606.10198",
+   "title": "Density Ridge Selective Prediction for LLM and VLM Hallucination Detection under Calibration Label Scarcity",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416595860",
+   "doi": "https://doi.org/10.48550/arxiv.2511.17170",
+   "title": "Hallucinate Less by Thinking More: Aspect-Based Causal Abstention for Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7154007245",
+   "doi": "https://doi.org/10.2139/ssrn.6450939",
+   "title": "Mechanistic Steering of Low-Variance Subspaces for Improved Factual Calibration in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165559832",
+   "doi": "https://doi.org/10.1109/ic3it69043.2026.11567549",
+   "title": "Trustworthy LLM-based Recommenders: Uncertainty, Conformal Prediction, and Hallucination Mitigation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7127397047",
+   "doi": "https://doi.org/10.48550/arxiv.2602.01637",
+   "title": "Chance-Constrained Inference for Hallucination Risk Control in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203868161",
+   "doi": "https://doi.org/10.5281/zenodo.22048080",
+   "title": "Evidence-Calibrated Multi-Signal Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163595098",
+   "doi": "https://doi.org/10.1007/978-3-032-33260-8_14",
+   "title": "Towards Lightweight Reliability: Using Soft Prompts for Hallucination Mitigation in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7169762052",
+   "doi": "https://doi.org/10.1007/978-3-032-33260-8_14",
+   "title": "Towards Lightweight Reliability: Using Soft Prompts for Hallucination Mitigation in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166866233",
+   "doi": "https://doi.org/10.18653/v1/2026.findings-acl.1705",
+   "title": "Principled Detection of Hallucinations in Large Language Models via Multiple Testing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214126784",
+   "doi": "https://doi.org/10.67698/pjpcr.2026.005",
+   "title": "A Draft-Ground-Verify-Revise Framework for Reducing Hallucination in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155830295",
+   "doi": "https://doi.org/10.5281/zenodo.19818806",
+   "title": "AKRM An Inference-Time Control Framework for Hallucination Reduction in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214069106",
+   "doi": "https://doi.org/10.20944/preprints202609.1923.v1",
+   "title": "Hallucination Mitigation in Large Language Models: A Review and Exploratory Small-Model Pilot",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168644678",
+   "doi": "https://doi.org/10.48448/49c3-gy48",
+   "title": "Principled Detection of Hallucinations in Large Language Models via Multiple Testing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414977715",
+   "doi": "https://doi.org/10.48550/arxiv.2510.05566",
+   "title": "Domain-Shift-Aware Conformal Prediction for Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4404970290",
+   "doi": "https://doi.org/10.1007/978-3-031-78498-9_4",
+   "title": "Mitigating Hallucination in Large Language Model by Leveraging Decoder Layer Contrasting",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7140166157",
+   "doi": "https://doi.org/10.48550/arxiv.2603.21172",
+   "title": "Entropy Alone is Insufficient for Safe Selective Prediction in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7172298726",
+   "doi": "https://doi.org/10.21203/rs.3.rs-10408506/v1",
+   "title": "A Trust-Aware Framework for Hallucination Detection and Accuracy Paradox Analysis in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7106445040",
+   "doi": "https://doi.org/10.48550/arxiv.2511.15005",
+   "title": "Mathematical Analysis of Hallucination Dynamics in Large Language Models: Uncertainty Quantification, Advanced Decoding, and Principled Mitigation",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7160850926",
+   "doi": "https://doi.org/10.69987/aimlr.2025.60401",
+   "title": "Hallucination Detection and Confidence Calibration for Large Language Model Outputs: Reproducible Experiments on HaluEval",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4412599253",
+   "doi": "https://doi.org/10.12688/openreseurope.20839.1",
+   "title": "Comparison of explainability methods for hallucination analysis in LLMs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7117973400",
+   "doi": "https://doi.org/10.13140/rg.2.2.23948.78726",
+   "title": "Benchmarking Hallucination Evaluation for RAG Under an Abstention Policy: A Controlled 30-Query Study with RAGAS, DeepEval, and LLM-as-Judge",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221748792",
+   "doi": "https://doi.org/10.48550/arxiv.2610.16318",
+   "title": "Strong yet Controllable LLM Abstention without Learning to Abstain",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162403791",
+   "doi": "https://doi.org/10.48550/arxiv.2605.25850",
+   "title": "TIAR: Trajectory-Informed Advantage Reweighting for LLM Abstention Learning",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7125492999",
+   "doi": "https://doi.org/10.5281/zenodo.18352249",
+   "title": "Hallucination as Geometric Overflow under v43: Boundary-Condition Failure in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7152741207",
+   "doi": "https://doi.org/10.48550/arxiv.2604.06195",
+   "title": "Hallucination as output-boundary misclassification: a composite abstention architecture for language models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4412888248",
+   "doi": "https://doi.org/10.18653/v1/2025.findings-acl.723",
+   "title": "CausalAbstain: Enhancing Multilingual LLMs with Causal Reasoning for Trustworthy Abstention",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7149874168",
+   "doi": null,
+   "title": "Answering the Wrong Question: Reasoning Trace Inversion for Abstention in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7161276139",
+   "doi": "https://doi.org/10.1016/j.jdent.2026.106754",
+   "title": "Accuracy and hallucination behaviors of artificial intelligence\u2013based large language models for dental implant identification on radiographs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7212054405",
+   "doi": "https://doi.org/10.2139/ssrn.7412291",
+   "title": "A Dual Layer Approach for LLM Hallucination Reduction",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214651727",
+   "doi": "https://doi.org/10.56975/ijrti.v11i9.300739",
+   "title": "Proactive Trust Calibration for Large Language Models: A Systematic Framework for Hallucination Detection, Uncertainty Estimation, and Reliability Assessment",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7127399149",
+   "doi": "https://doi.org/10.48550/arxiv.2602.01285",
+   "title": "Multi-LLM Adaptive Conformal Inference for Reliable LLM Responses",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7148867011",
+   "doi": "https://doi.org/10.48550/arxiv.2604.02230",
+   "title": "Answering the Wrong Question: Reasoning Trace Inversion for Abstention in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165669919",
+   "doi": "https://doi.org/10.48550/arxiv.2606.21917",
+   "title": "Pre-Generation Hallucination Detection in Large Language Models via Soft-Target Attention Probing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168359689",
+   "doi": "https://doi.org/10.48448/q9w4-fc44",
+   "title": "Answering the Wrong Question: Reasoning Trace Inversion for Abstention in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163036475",
+   "doi": "https://doi.org/10.48550/arxiv.2605.30641",
+   "title": "COFT: Counterfactual-Conformal Decoding for Fair Chain-of-Thought Reasoning in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7127381609",
+   "doi": "https://doi.org/10.48550/arxiv.2602.02018",
+   "title": "Do I Really Know? Learning Factual Self-Verification for Hallucination Reduction",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7213102711",
+   "doi": "https://doi.org/10.20944/preprints202510.1827.v2",
+   "title": "All We Also Need Is ABSTAIN: Reducing Hallucinations via an Explicit Abstention Token",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7151573731",
+   "doi": "https://doi.org/10.48550/arxiv.2604.03904",
+   "title": "I-CALM: Incentivizing Confidence-Aware Abstention for LLM Selective Answering",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162784072",
+   "doi": "https://doi.org/10.21203/rs.3.rs-9707462/v1",
+   "title": "ConfidentNeuro: Conformal Prediction-Based Uncertainty Quantification for Hallucination Risk Scoring in LLM-Assisted Alzheimer's Clinical Decision Support",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7160939293",
+   "doi": "https://doi.org/10.17605/osf.io/qfgjt",
+   "title": "Citation-Cutoff Hallucination Experiment in Frontier LLMs (preregistered)",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7154728684",
+   "doi": "https://doi.org/10.5281/zenodo.19631128",
+   "title": "Mitigating Large Language Model Hallucinations for Clinical Data Extraction: A Retrieval-Augmented Framework With Structured Output Enforcement",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7215064265",
+   "doi": "https://doi.org/10.48550/arxiv.2609.38222",
+   "title": "Conformal Factuality Control for Multi-Hop Retrieval-Augmented Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165738798",
+   "doi": "https://doi.org/10.48550/arxiv.2606.24790",
+   "title": "Grad Detect: Gradient-Based Hallucination Detection in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7207687373",
+   "doi": "https://doi.org/10.2139/ssrn.7397258",
+   "title": "AI Hallucination as Operational Trust Failure: Evidence from MetaTruth and the Confidence Gap in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7223069741",
+   "doi": "https://doi.org/10.5281/zenodo.23496696",
+   "title": "When Fluent AI Gets Facts Wrong: A Critical Review of Hallucination, Verification, and Retrieval-Augmented Generation in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221539578",
+   "doi": "https://doi.org/10.1145/3805696.3847298",
+   "title": "Exploring the Abstention Ability of LLMs using Scientific Reasoning in Critical Fields",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168279185",
+   "doi": "https://doi.org/10.48550/arxiv.2607.10738",
+   "title": "To Answer or to Abstain: Mitigating Search-Agent Hallucinations via Abstention-Aware Reinforcement Learning",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203443742",
+   "doi": "https://doi.org/10.5281/zenodo.21939542",
+   "title": "Predicting and Controlling Hallucination Onset in Large Language Models: A Belief-State Framework for Prospective Risk, Optimal Intervention, and Recoverability",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164322186",
+   "doi": "https://doi.org/10.5281/zenodo.20646181",
+   "title": "Knowing the Form, Not the Function: Measuring Wild Institutional Hallucination in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155007046",
+   "doi": "https://doi.org/10.1007/978-3-032-18480-1_57",
+   "title": "Divergence-Aware Selective Data-to-Text Generation with LLMs for Factual Consistency",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4407028609",
+   "doi": "https://doi.org/10.1145/3715964",
+   "title": "Automating Research Synthesis with Domain-Specific Large Language Model Fine-Tuning",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4416354545",
+   "doi": "https://doi.org/10.1145/3839525",
+   "title": "Reducing Hallucinations in LLM-Generated Code via Semantic Triangulation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7135306689",
+   "doi": null,
+   "title": "Towards Trustworthy Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4407422998",
+   "doi": "https://doi.org/10.48550/arxiv.2502.06884",
+   "title": "Learning Conformal Abstention Policies for Adaptive Risk Management in Large Language and Vision-Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4412378237",
+   "doi": "https://doi.org/10.1145/3726302.3730244",
+   "title": "Response Quality Assessment for Retrieval-Augmented Generation via Conditional Conformal Factuality",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7213367176",
+   "doi": "https://doi.org/10.48550/arxiv.2609.14839",
+   "title": "Efficiency Hallucination: Formalizing and Measuring Behavioral Calibration in LLM-Based Code Optimization",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221470147",
+   "doi": "https://doi.org/10.1609/aies.v9i4.43343",
+   "title": "Safer On-Premise Medical AI: A Hybrid Framework for Hallucination Detection in Local LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7156841883",
+   "doi": "https://doi.org/10.48550/arxiv.2604.22779",
+   "title": "KARL: Mitigating Hallucinations in LLMs via Knowledge-Boundary-Aware Reinforcement Learning",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7212167203",
+   "doi": "https://doi.org/10.64388/irev9i3-1722951",
+   "title": "Hallucination-Aware and Trustworthy LLMs for High-Stakes Supply Chain Decision Support",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7212127160",
+   "doi": "https://doi.org/10.1016/j.compeleceng.2026.111514",
+   "title": "Uncertainty-guided claim-level verification with adaptive retrieval for hallucination mitigation in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221727405",
+   "doi": "https://doi.org/10.20944/preprints202610.1224.v1",
+   "title": "Calib-Abstain: Uncertainty-Calibrated Self-Checking to Reduce Hallucinations in LLM Reasoning",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7140423911",
+   "doi": "https://doi.org/10.5281/zenodo.19231111",
+   "title": "Structured Protocols Achieve Universal Hallucination Suppression Across Commercial LLM Families",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155398118",
+   "doi": "https://doi.org/10.48448/2bkc-e172",
+   "title": "Over-Searching in Retrieval-Augmented Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7123248562",
+   "doi": "https://doi.org/10.48550/arxiv.2601.05503",
+   "title": "Over-Searching in Search-Augmented Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7154486263",
+   "doi": "https://doi.org/10.5281/zenodo.19599244",
+   "title": "BioGemma-Guard: Enhancing Calibrated Abstention in Clinical LLMs through Group Relative Policy Optimization (GRPO)",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7143427045",
+   "doi": "https://doi.org/10.2139/ssrn.6470460",
+   "title": "Measuring Faithfulness and Abstention: An Automated Pipeline for Evaluating LLM-Generated 3-ply Case-Based Legal Arguments",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4415331743",
+   "doi": "https://doi.org/10.48550/arxiv.2509.23002",
+   "title": "Unsupervised Conformal Inference: Bootstrapping and Alignment to Control LLM Uncertainty",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4415331722",
+   "doi": "https://doi.org/10.48550/arxiv.2509.23007",
+   "title": "Taming Variability: Randomized and Bootstrapped Conformal Risk Control for LLMs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7221134337",
+   "doi": "https://doi.org/10.1177/20552076261490808",
+   "title": "Evaluating large language models for selected public health research and practice tasks: A 100-question benchmark of reliability, workflow-assisted recoverability, and correct source-grounded abstention",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7223298731",
+   "doi": "https://doi.org/10.5281/zenodo.23593108",
+   "title": "Does Asking an LLM to Answer Only from a Given Text Reduce Hallucinations? A Research Protocol",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4389519987",
+   "doi": "https://doi.org/10.18653/v1/2023.findings-emnlp.351",
+   "title": "Exploring Large Language Models for Multi-Modal Out-of-Distribution Detection",
+   "year": 2023
+  },
+  {
+   "id": "https://openalex.org/W4415182789",
+   "doi": "https://doi.org/10.48550/arxiv.2510.12829",
+   "title": "Mathematics with large language models as provers and verifiers",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7126053219",
+   "doi": "https://doi.org/10.48550/arxiv.2601.20126",
+   "title": "Rewarding Intellectual Humility Learning When Not To Answer In Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155373544",
+   "doi": "https://doi.org/10.48448/ny68-m866",
+   "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7139956413",
+   "doi": "https://doi.org/10.5281/zenodo.19125800",
+   "title": "Causal Transformer: Toward Deductive Reasoning in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7140103421",
+   "doi": "https://doi.org/10.18653/v1/2026.findings-eacl.206",
+   "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7131320417",
+   "doi": null,
+   "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7131416903",
+   "doi": "https://doi.org/10.48550/arxiv.2602.19643",
+   "title": "KGHaluBench: A Knowledge Graph-Based Hallucination Benchmark for Evaluating the Breadth and Depth of LLM Knowledge",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7106842991",
+   "doi": "https://doi.org/10.48448/f9fz-xx24",
+   "title": "Unconditional Truthfulness: Learning Unconditional Uncertainty of Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7196966880",
+   "doi": "https://doi.org/10.1007/978-3-032-27754-1_37",
+   "title": "Reducing Hallucinations in Retrieval-Augmented LLM Question Answering for Indian Code-Mixed Queries",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4410176449",
+   "doi": "https://doi.org/10.1007/s10515-025-00518-4",
+   "title": "Knowledge-guided large language models are trustworthy API recommenders",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7203944957",
+   "doi": "https://doi.org/10.52088/ijesty.v6i3.1908",
+   "title": "Architecting Reliable Knowledge Retrieval Systems Using Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7223283443",
+   "doi": "https://doi.org/10.2139/ssrn.7658700",
+   "title": "Mitigating Causal Hallucination in LLM-Based Nuclear Event Analysis via Retrieval-Augmented Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7147133480",
+   "doi": "https://doi.org/10.1109/icarc68737.2026.11453821",
+   "title": "Mitigating Bias and Hallucinations in LLMs Through Prompt Engineering and Knowledge-Grounded Approaches in Healthcare Domain",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203750475",
+   "doi": "https://doi.org/10.48550/arxiv.2608.17084",
+   "title": "Uncertainty-Aware Decision Making in Multimodal Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204913093",
+   "doi": "https://doi.org/10.48550/arxiv.2608.29934",
+   "title": "Compression-Aware Abstention: Teaching LLMs to Refuse When KV-Compression Masks Remove Answer Evidence",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4395051554",
+   "doi": "https://doi.org/10.1002/cpt.3279",
+   "title": "Unlocking the Capabilities of Large Language Models for Accelerating Drug Development",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7204537419",
+   "doi": "https://doi.org/10.48550/arxiv.2608.26121",
+   "title": "Can a Model Catch Its Own Hallucinations for Free?: Label-Free Doubt Signals Hold Their Own Against a Labelled Dataset for Abstention",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7140091238",
+   "doi": "https://doi.org/10.48550/arxiv.2603.19281",
+   "title": "URAG: A Benchmark for Uncertainty Quantification in Retrieval-Augmented Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203476651",
+   "doi": "https://doi.org/10.26434/chemrxiv.15007436/v1",
+   "title": "SafeChem: A Benchmark Dataset for Multi-Label Chemical Hazard Prediction and LLM Safety Hallucination Evaluation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7167889813",
+   "doi": "https://doi.org/10.5281/zenodo.21294606",
+   "title": "Beyond Correctness: A Controlled Evaluation of Evidence-Boundary Compliance in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7211911321",
+   "doi": "https://doi.org/10.5281/zenodo.22644391",
+   "title": "Measuring Prompt-Induced Instability in Large Language Model\u2013Based Fact Verification.",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416361213",
+   "doi": "https://doi.org/10.48550/arxiv.2511.13029",
+   "title": "AA-Omniscience: Evaluating Cross-Domain Knowledge Reliability in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7221685014",
+   "doi": "https://doi.org/10.20944/preprints202610.1225.v1",
+   "title": "Confidence-Aware Explainable AI for Reliable Large Language Model Decision Support",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4411233577",
+   "doi": "https://doi.org/10.1109/i-coste63786.2024.11024841",
+   "title": "Erect: Evidence Refinement Enhanced Complex Claim Verification With Large Language Models",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7212167790",
+   "doi": "https://doi.org/10.48550/arxiv.2609.09696",
+   "title": "When Auditors Fabricate: Batch-Size Degradation and Confident Hallucination in LLM Detection of Planted Document Contamination",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204553625",
+   "doi": "https://doi.org/10.48550/arxiv.2608.26295",
+   "title": "MemToC: Benchmarking Memory-Tool Conflict Resolution in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163985952",
+   "doi": "https://doi.org/10.48550/arxiv.2606.08948",
+   "title": "NutriMLLM: Multimodal Large Language Models for Dietary Micronutrient Analysis",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203467924",
+   "doi": "https://doi.org/10.5281/zenodo.21939087",
+   "title": "When Auditors Fabricate: Batch-Size Degradation and Confident Hallucination in LLM Detection of Planted Document Contamination",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7167932174",
+   "doi": "https://doi.org/10.5281/zenodo.21283930",
+   "title": "From Tokens to Trust: Understanding Uncertainty in Autoregressive Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416251416",
+   "doi": "https://doi.org/10.1109/ijcnn64981.2025.11228570",
+   "title": "CoT-Planner: Chain-of-Thoughts as the Content Planner for Few-shot Table-to-Text Generation Reduces the Hallucinations from LLMs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7170277873",
+   "doi": "https://doi.org/10.48550/arxiv.2608.13591",
+   "title": "Stable Miscalibration in Large Language Models: A Practical View of High-Confidence Errors",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7131235862",
+   "doi": "https://doi.org/10.1109/bigcomp68355.2026.00029",
+   "title": "Knowledge Graph Enhanced Large Language Models for Traditional Chinese Medicine Question-Answering",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7220398035",
+   "doi": "https://doi.org/10.1038/s41746-026-03332-8",
+   "title": "EyeSeek: a large language model for screening and improving health literacy in primary eye care",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214520912",
+   "doi": "https://doi.org/10.55041/ijsrem67534",
+   "title": "Multimodal Scientific Claim Verification Using Large Language Models and Retrieval-Augmented Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7212388204",
+   "doi": "https://doi.org/10.2139/ssrn.7451269",
+   "title": "SIMURG: Zero-Leak Online Detection of LLM Decoding Corruption via Conformally Calibrated Sensor Fusion",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7213462694",
+   "doi": "https://doi.org/10.64643/ijirt.208549-459",
+   "title": "CEGI-S: A Counterfactual Evidence-Gated Intelligence Framework for Reliable and Self-Correcting Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416692608",
+   "doi": "https://doi.org/10.48550/arxiv.2509.01455",
+   "title": "Trusted Uncertainty in Large Language Models: A Unified Framework for Confidence Calibration and Risk-Controlled Refusal",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7143510439",
+   "doi": "https://doi.org/10.21203/rs.3.rs-9240163/v1",
+   "title": "The Scoring Problem in Multi-Model LLM Benchmarks: How Unreported Methodological Choices Change Hallucination Measurement by 3.5\u00d7",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7215051510",
+   "doi": "https://doi.org/10.1007/s42452-026-09566-1",
+   "title": "COSMES: an inference-time reliability framework for spatial reasoning in multimodal large language models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7171786602",
+   "doi": "https://doi.org/10.48550/arxiv.2607.26102",
+   "title": "A Reference-Free Score for Detecting Silent Reasoning Failures in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7172519303",
+   "doi": "https://doi.org/10.1002/widm.70122",
+   "title": "Retrieval\u2010Augmented Generation for Large Language Models: Evolution, Architectures, Applications, and Challenges (2020\u20132025)",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4417050666",
+   "doi": "https://doi.org/10.48550/arxiv.2503.23687",
+   "title": "MKA: Leveraging Cross-Lingual Consensus for Model Abstention",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7220739982",
+   "doi": "https://doi.org/10.36994/2788-5518-2026-01-11-28",
+   "title": "INTERPRETATION AND VERIFICATION OF LARGE LANGUAGE MODEL DECISIONS: TAXONOMY OF METHODS, TRUST METRICS,AND EVALUATION PROTOCOLS",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7169844738",
+   "doi": "https://doi.org/10.1016/j.jamda.2026.106379",
+   "title": "Large Language Models in Post-Acute and Long-Term Care: Bridging Promise and Practice",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221754888",
+   "doi": "https://doi.org/10.5281/zenodo.23364532",
+   "title": "Human Oversight in LLM-Powered Workflow Automation: A Focused Narrative Review of Hallucination Mitigation, Confidence-Based Routing, and Operational Trade-offs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4417426836",
+   "doi": "https://doi.org/10.48550/arxiv.2507.14367",
+   "title": "Hallucination Score: Towards Mitigating Hallucinations in Generative Image Super-Resolution",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7219797962",
+   "doi": "https://doi.org/10.71465/jcphs73",
+   "title": "Task-Difficulty-Aware Reliability Evaluation of Large Language Models for Clinical Decision Support",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7169873478",
+   "doi": "https://doi.org/10.48550/arxiv.2607.17883",
+   "title": "Zero Hallucination, by Construction: Hallucination-Aware Layered Oversight for Trustworthy Enterprise AI",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4407342448",
+   "doi": "https://doi.org/10.1089/aipo.2024.0043",
+   "title": "Large Language Model Extraction of PD-L1 Biomarker Testing Details From Electronic Health Records",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7169652763",
+   "doi": "https://doi.org/10.1007/978-981-92-3563-6_21",
+   "title": "Prescription Generation for Traditional Chinese Medicine Using Hybrid Retrieval and Re-ranking Enhanced Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7125587982",
+   "doi": "https://doi.org/10.7759/cureus.102219",
+   "title": "Enabling Episode-Level Transparency in Value-Based Care Through Large Language Model-Driven Provider Directories",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7215034827",
+   "doi": "https://doi.org/10.5281/zenodo.23074521",
+   "title": "Dynamic Cognitive Gating: Separating Epistemic Rigor from Interaction Style in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168395370",
+   "doi": "https://doi.org/10.48550/arxiv.2607.12650",
+   "title": "Evidence-Grounded Verified Agentic Reasoning: A Path Toward Eliminating LLM Hallucination in Empirical Inference via Tool-Attested Kernel Proofs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7206167632",
+   "doi": "https://doi.org/10.48550/arxiv.2609.01352",
+   "title": "CHARM: Character Hallucination for Multicultural Role Play Benchmark",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166536078",
+   "doi": "https://doi.org/10.5281/zenodo.21018679",
+   "title": "Neither Player nor Tool: Large Language Models as Quasi-Participatory Linguistic Devices in Asymmetric Human\u2013AI Language-Games",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7171700009",
+   "doi": "https://doi.org/10.2139/ssrn.6668638",
+   "title": "Neural Arbitration Framework (NAF) A Conceptual Architecture and Research Agenda for Epistemic Arbitration in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204575837",
+   "doi": "https://doi.org/10.48550/arxiv.2608.26167",
+   "title": "Refusal Is Not Robustness: Auditing Confident Fabrication in Large Language Models on a Provably Uninformative Clinical Pain Speech Transcript",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7117707685",
+   "doi": "https://doi.org/10.48550/arxiv.2512.22886",
+   "title": "Theory and Algorithms for Learning with Multi-Class Abstention and Multi-Expert Deferral",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7172383429",
+   "doi": "https://doi.org/10.5281/zenodo.21786634",
+   "title": "FROM PLAUSIBLE ANSWERS TO AUDITABLE KNOWLEDGE: AN EVIDENCE-GROUNDED LIFECYCLE FOR LARGE LANGUAGE MODELS IN KNOWLEDGE-INTENSIVE ORGANISATIONS",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165528670",
+   "doi": "https://doi.org/10.26434/chemrxiv.15004999/v1",
+   "title": "Large Language Models for Small-Molecule Chemical Discovery: From Chemical Language Representation to Closed-Loop Experimental Validation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7133553044",
+   "doi": "https://doi.org/10.5281/zenodo.18863438",
+   "title": "Epistemic Compression and Evidence-Status Collapse in Large Language Models: A Failure-Mode Taxonomy, Risk Model, and Evidence-First Mitigation Specification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155084279",
+   "doi": "https://doi.org/10.1016/j.aei.2026.104709",
+   "title": "Intelligent defect\u2011detection framework integrating a modified YOLO algorithm, a domain knowledge graph, and RAG\u2011enabled large language model",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7208783465",
+   "doi": "https://doi.org/10.2196/91809",
+   "title": "Multimodal Large Language Models for Dental Chart Image Interpretation: Cross-Sectional Benchmarking Study With Students and Clinicians",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4413189585",
+   "doi": "https://doi.org/10.3390/jcm14165697",
+   "title": "How Accurate Is AI? A Critical Evaluation of Commonly Used Large Language Models in Responding to Patient Concerns About Incidental Kidney Tumors",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7172095167",
+   "doi": "https://doi.org/10.1007/978-3-032-31666-0_4",
+   "title": "When Not to Answer: Evaluating Prompts on Reasoning Models for Effective Abstention in Unanswerable Math Word Problems",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7125683050",
+   "doi": "https://doi.org/10.48550/arxiv.2601.16397",
+   "title": "From Attribution to Abstention: Training-Free Attention-Based Auditing for Clinical Summarization",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7125834251",
+   "doi": "https://doi.org/10.21203/rs.3.rs-8589677/v1",
+   "title": "Self-Aware Language Models: A Taxonomy and Evaluation of Epistemic Uncertainty and Hallucination Mitigation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4403579057",
+   "doi": "https://doi.org/10.48550/arxiv.2410.13029",
+   "title": "When Not to Answer: Evaluating Prompts on GPT Models for Effective Abstention in Unanswerable Math Word Problems",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W4404609187",
+   "doi": "https://doi.org/10.1162/tacl_a_00715",
+   "title": "Conformal Prediction for Natural Language Processing: A Survey",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7158548416",
+   "doi": "https://doi.org/10.5281/zenodo.19913605",
+   "title": "Calibrated Abstention and Clinical Deferral in Small Language Models via RLVR and GRPO",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163124191",
+   "doi": "https://doi.org/10.1016/j.procs.2026.04.114",
+   "title": "A Hallucination-Resistant RAG System for Software Update Queries",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7116105968",
+   "doi": "https://doi.org/10.48550/arxiv.2512.14801",
+   "title": "Incentives or Ontology? A Structural Rebuttal to OpenAI's Hallucination Thesis",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7221760670",
+   "doi": "https://doi.org/10.1007/978-3-032-28469-3_19",
+   "title": "E$$^3$$: Unified Architecture for Hallucination-Resistant Language Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162795496",
+   "doi": "https://doi.org/10.48550/arxiv.2605.29523",
+   "title": "K-FinHallu: A Hallucination Detection Benchmark for Multi-Turn RAG in Korean Finance",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4396600908",
+   "doi": "https://doi.org/10.48550/arxiv.2404.19708",
+   "title": "Harmonic LLMs are Trustworthy",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7107953766",
+   "doi": "https://doi.org/10.5281/zenodo.17756906",
+   "title": "Hallucination as Input-Geometry Mismatch: A Protiform Framework for Stable Language Reasoning",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7154453268",
+   "doi": "https://doi.org/10.48550/arxiv.2604.12046",
+   "title": "Think Through Uncertainty: Improving Long-Form Generation Factuality via Reasoning Calibration",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4415311864",
+   "doi": "https://doi.org/10.48550/arxiv.2506.14387",
+   "title": "SEAT: Sparse Entity-Aware Tuning for Knowledge Adaptation while Preserving Epistemic Abstention",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7202277855",
+   "doi": "https://doi.org/10.59261/jmef.v4i2.203",
+   "title": "Hybrid Retrieval-Augmented Generation with Hallucination Mitigation for Indonesian MSME Financial Advisory",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164012435",
+   "doi": "https://doi.org/10.48550/arxiv.2606.08969",
+   "title": "CARE: A Conformal Safety Layer for Medical Summarization",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162470200",
+   "doi": "https://doi.org/10.48550/arxiv.2605.24299",
+   "title": "LLMs Show No Signs Of Individuated Metacognition",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7223031830",
+   "doi": "https://doi.org/10.48550/arxiv.2610.24851",
+   "title": "MisleadQA: Diagnosing LLM Failures under Misleading Context",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7160635805",
+   "doi": "https://doi.org/10.48550/arxiv.2605.05244",
+   "title": "Towards Dependable Retrieval-Augmented Generation Using Factual Confidence Prediction",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7196937200",
+   "doi": "https://doi.org/10.1145/3770855.3817850",
+   "title": "Rejectors in the Wild: Deployment Barriers for LLM Rejectors",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163396943",
+   "doi": "https://doi.org/10.48550/arxiv.2606.03731",
+   "title": "Conformal Language Modeling via Posterior Sampling",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162784138",
+   "doi": "https://doi.org/10.5281/zenodo.20441999",
+   "title": "TRIAGE: Trustworthy Retrieval-based Interpretability with Abstention for Grounded Explanations in Clinical Decision Support System",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7115679497",
+   "doi": "https://doi.org/10.6084/m9.figshare.30898436",
+   "title": "The Participation Problem: Why Hallucination Persists When Language Models Are Required to Always Generate Output",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4414427738",
+   "doi": "https://doi.org/10.48550/arxiv.2507.16951",
+   "title": "Harnessing RLHF for Robust Unanswerability Recognition and Trustworthy Response Generation in LLMs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7115584422",
+   "doi": "https://doi.org/10.48550/arxiv.2512.11614",
+   "title": "Bounding Hallucinations: Merlin-Arthur Protocols for Mutual-Information Bounds in Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7115731709",
+   "doi": "https://doi.org/10.5281/zenodo.17956197",
+   "title": "The Participation Problem: Why Hallucination Persists When Language Models Are Required to Always Generate Output",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7212458627",
+   "doi": "https://doi.org/10.70267/aitia.2026370377",
+   "title": "Mitigating Hallucinations in Natural Language Generation through Prompt Engineering: A Mechanism- Oriented Narrative Review",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414698920",
+   "doi": "https://doi.org/10.1177/29498732261479053",
+   "title": "Sound and Complete Neurosymbolic Reasoning With LLM-Grounded Interpretations",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7156853946",
+   "doi": "https://doi.org/10.48550/arxiv.2604.23333",
+   "title": "Process Supervision of Confidence Margin for Calibrated LLM Reasoning",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7167929356",
+   "doi": "https://doi.org/10.1145/3805712.3808357",
+   "title": "Faithful LLM-Assisted Question Answering for Technical and Academic Search",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4401043055",
+   "doi": "https://doi.org/10.18653/v1/2024.naacl-long.210",
+   "title": "TRAQ: Trustworthy Retrieval Augmented Question Answering via Conformal Prediction",
+   "year": 2024
+  }
+ ]
+}

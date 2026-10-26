@@ -1,0 +1,61 @@
+[1] Dentan, J., Canesse, A., Buscaldi, D., et al. (2026). MUCH: A multilingual claim hallucination benchmark. In Proc. LREC 2026. arXiv:2511.17081. https://doi.org/10.48550/arXiv.2511.17081
+[2] Fadeeva, E., et al. (2024). Fact-checking the output of large language models via token-level uncertainty quantification. In Findings of ACL 2024. https://doi.org/10.18653/v1/2024.findings-acl.558
+[3] Vazhentsev, A., Rvanova, L., Kuzmin, G., et al. (2026). Efficient hallucination detection for LLMs using uncertainty-aware attention heads. In Proc. ICML 2026 (PMLR 306). https://doi.org/10.48550/arXiv.2505.20045
+[4] Shelmanov, A., et al. (2025). A head to predict and a head to question: Pre-trained uncertainty quantification heads for hallucination detection in LLM outputs. In Proc. EMNLP 2025. https://doi.org/10.18653/v1/2025.emnlp-main.1809
+[5] Binkowski, J., Adamczewski, K., & Kajdanowicz, T. (2026). Attention sinks as internal signals for hallucination detection in large language models. In Proc. ICML 2026 (PMLR 306). https://doi.org/10.48550/arXiv.2604.10697
+[6] Kuhn, L., Gal, Y., & Farquhar, S. (2023). Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation. In Proc. ICLR 2023. https://doi.org/10.48550/arXiv.2302.09664
+[7] Manakul, P., Liusie, A., & Gales, M. J. F. (2023). SelfCheckGPT: Zero-resource black-box hallucination detection for generative large language models. In Proc. EMNLP 2023. https://doi.org/10.18653/v1/2023.emnlp-main.557
+[8] Kadavath, S., Conerly, T., Askell, A., et al. (2022). Language models (mostly) know what they know. arXiv preprint. https://doi.org/10.48550/arXiv.2207.05221
+[9] Duan, J., Cheng, H., Wang, S., et al. (2024). Shifting attention to relevance: Towards the predictive uncertainty quantification of free-form large language models. In Proc. ACL 2024. https://doi.org/10.18653/v1/2024.acl-long.276
+[10] Nikitin, A., Kossen, J., Gal, Y., & Marttinen, P. (2024). Kernel language entropy: Fine-grained uncertainty quantification for LLMs from semantic similarities. In Advances in NeurIPS 37. https://doi.org/10.52202/079017-0283
+[11] Qiu, X., & Miikkulainen, R. (2024). Semantic density: Uncertainty quantification for large language models through confidence measurement in semantic space. In Advances in NeurIPS 37. https://doi.org/10.52202/079017-4274
+[12] Vashurin, R., Goloburda, M., Ilina, A., et al. (2025). Uncertainty quantification for LLMs through minimum Bayes risk: Bridging confidence and consistency. In Proc. NeurIPS 2025. https://doi.org/10.48550/arXiv.2502.04964
+[13] Azaria, A., & Mitchell, T. (2023). The internal state of an LLM knows when it's lying. In Findings of EMNLP 2023. https://doi.org/10.18653/v1/2023.findings-emnlp.68
+[14] Chen, C., Liu, K., Chen, Z., et al. (2024). INSIDE: LLMs' internal states retain the power of hallucination detection. In Proc. ICLR 2024. https://doi.org/10.48550/arXiv.2402.03744
+[15] Chuang, Y.-S., Qiu, L., Hsieh, C.-Y., et al. (2024). Lookback Lens: Detecting and mitigating contextual hallucinations in large language models using only attention maps. In Proc. EMNLP 2024. https://doi.org/10.18653/v1/2024.emnlp-main.84
+[16] Kossen, J., Han, J., Razzak, M., et al. (2024). Semantic entropy probes: Robust and cheap hallucination detection in LLMs. arXiv preprint. https://doi.org/10.48550/arXiv.2406.15927
+[17] Wu, W., Wang, Y., Xiao, G., Peng, H., & Fu, Y. (2025). Retrieval head mechanistically explains long-context factuality. In Proc. ICLR 2025. https://doi.org/10.48550/arXiv.2404.15574
+[18] Sun, Z., Zang, X., Zheng, K., et al. (2025). ReDeEP: Detecting hallucination in retrieval-augmented generation via mechanistic interpretability. In Proc. ICLR 2025. https://doi.org/10.48550/arXiv.2410.11414
+[19] Ogasa, Y., & Arase, Y. (2025). Hallucinated span detection with multi-view attention features. arXiv preprint. https://doi.org/10.48550/arXiv.2504.04335
+[20] Obeso, O., Arditi, A., Ferrando, J., et al. (2026). Real-time detection of hallucinated entities in long-form generation. arXiv preprint. https://doi.org/10.48550/arXiv.2509.03531
+[21] van Dijk, G. (2026). Detecting hallucinations in large language models via internal attention divergence signals. arXiv preprint. https://doi.org/10.48550/arXiv.2605.05025
+[22] Min, S., Krishna, K., Lyu, X., et al. (2023). FActScore: Fine-grained atomic evaluation of factual precision in long form text generation. In Proc. EMNLP 2023. https://doi.org/10.18653/v1/2023.emnlp-main.741
+[23] Zhang, C., et al. (2024). LUQ: Long-text uncertainty quantification for LLMs. In Proc. EMNLP 2024. https://doi.org/10.18653/v1/2024.emnlp-main.299
+[24] Niu, C., Wu, Y., Zhu, J., et al. (2024). RAGTruth: A hallucination corpus for developing trustworthy retrieval-augmented language models. In Proc. ACL 2024. https://doi.org/10.18653/v1/2024.acl-long.585
+[25] Bouchard, D., Chauhan, M. S., Bajaj, V., et al. (2026). Fine-grained uncertainty quantification for long-form language model outputs: A comparative study. Transactions on Machine Learning Research. https://doi.org/10.48550/arXiv.2602.17431
+[26] Sawczyn, A., et al. (2026). FactSelfCheck: Fact-level black-box hallucination detection for LLMs. In Findings of EACL 2026. https://doi.org/10.18653/v1/2026.findings-eacl.296
+[27] Han, J., et al. (2025). Simple factuality probes detect hallucinations in long-form natural language generation. In Findings of EMNLP 2025. https://doi.org/10.18653/v1/2025.findings-emnlp.880
+[28] Vashurin, R., et al. (2025). Benchmarking uncertainty quantification methods for large language models with LM-Polygraph. Transactions of the ACL, 13. https://doi.org/10.1162/tacl_a_00737
+[29] Abbasi-Yadkori, Y., Kuzborskij, I., Stutz, D., et al. (2024). Mitigating LLM hallucinations via conformal abstention. arXiv preprint. https://doi.org/10.48550/arXiv.2405.01563
+[30] Mishra, A., Asai, A., et al. (2024). Fine-grained hallucination detection and editing for language models. In Proc. COLM 2024. https://doi.org/10.48550/arXiv.2401.06855
+[31] Zhang, C., Yang, R., Zhang, Z., et al. (2025). Atomic calibration of LLMs in long-form generations. In Findings of IJCNLP-AACL 2025. https://doi.org/10.18653/v1/2025.findings-ijcnlp.9
+[32] Binkowski, J., Janiak, D., Sawczyn, A., Gabrys, B., & Kajdanowicz, T. (2025). Hallucination detection in LLMs using spectral features of attention maps. In Proc. EMNLP 2025. https://doi.org/10.18653/v1/2025.emnlp-main.1239
+[33] Bazarova, A., Volodichev, A., et al. (2026). Hallucination detection in LLMs with topological divergence on attention graphs. In Proc. ACL 2026. https://doi.org/10.18653/v1/2026.acl-long.704
+[34] Matys, P., Eliasz, J., et al. (2025). AggTruth: Contextual hallucination detection using aggregated attention scores in LLMs. In Computational Science, ICCS 2025 (LNCS). Springer. https://doi.org/10.1007/978-3-031-97570-7_18
+[35] Liu, Q., Chen, X., et al. (2025). Attention-guided self-reflection for zero-shot hallucination detection in large language models. In Proc. EMNLP 2025. https://doi.org/10.18653/v1/2025.emnlp-main.1063
+[36] Zhang, Z., Hu, X., et al. (2025). ICR Probe: Tracking hidden state dynamics for reliable hallucination detection in LLMs. In Proc. ACL 2025. https://doi.org/10.18653/v1/2025.acl-long.880
+[37] Bar-Shalom, G., Frasca, F., et al. (2025). Beyond token probes: Hallucination detection via activation tensors with ACT-ViT. In Advances in NeurIPS 38. https://doi.org/10.52202/085713-2865
+[38] Gu, Y., Ji, Z., et al. (2024). ANAH-v2: Scaling analytical hallucination annotation of large language models. In Advances in NeurIPS 37. https://doi.org/10.52202/079017-1916
+[39] Rykov, E., Petrushina, K., et al. (2025). When models lie, we learn: Multilingual span-level hallucination detection with PsiloQA. In Findings of EMNLP 2025. https://doi.org/10.18653/v1/2025.findings-emnlp.626
+[40] Kovacs, A., & Recski, G. (2025). LettuceDetect: A hallucination detection framework for RAG applications. arXiv preprint. https://doi.org/10.48550/arXiv.2502.17125
+[41] Hu, X., Ru, D., et al. (2024). RefChecker: Reference-based fine-grained hallucination checker and benchmark for large language models. arXiv preprint. https://doi.org/10.48550/arXiv.2405.14486
+[42] Yeh, M.-H., Kamachee, M., et al. (2025). HalluEntity: Benchmarking and understanding entity-level hallucination detection. Transactions on Machine Learning Research. https://doi.org/10.48550/arXiv.2502.11948
+[43] Vazhentsev, A., Rvanova, L., et al. (2025). Token-level density-based uncertainty quantification methods for eliciting truthfulness of large language models. In Proc. NAACL 2025. https://doi.org/10.18653/v1/2025.naacl-long.113
+[44] Choi, S., Fang, T., et al. (2023). KCTS: Knowledge-constrained tree search decoding with token-level hallucination detection. In Proc. EMNLP 2023. https://doi.org/10.18653/v1/2023.emnlp-main.867
+[45] Snyder, B., Moisescu, M., et al. (2024). On early detection of hallucinations in factual question answering. In Proc. KDD 2024. https://doi.org/10.1145/3637528.3671796
+[46] Goel, A., Schwartz, D., et al. (2025). Zero-knowledge LLM hallucination detection and mitigation through fine-grained cross-model consistency. In Proc. EMNLP 2025 (Industry Track). https://doi.org/10.18653/v1/2025.emnlp-industry.139
+[47] Zimmerman, I., Tredup, J., et al. (2024). Two-tiered encoder-based hallucination detection for retrieval-augmented generation in the wild. In Proc. EMNLP 2024 (Industry Track). https://doi.org/10.18653/v1/2024.emnlp-industry.2
+[48] Qi, S., et al. (2026). Detecting contextual hallucinations in LLMs with frequency-aware attention. arXiv preprint. https://doi.org/10.48550/arXiv.2602.18145
+[49] More, S., & Pawar, T. S. (2026). Attention dispersion as a diagnostic signal for hallucination in large language models. arXiv preprint. https://doi.org/10.48550/arXiv.2609.18320
+[50] Chen, K., Chen, Q., et al. (2025). Enhancing uncertainty modeling with semantic graph for hallucination detection. In Proc. AAAI 2025. https://doi.org/10.1609/aaai.v39i22.34528
+[51] Liu, T., & Wu, Z. S. (2024). Multi-group uncertainty quantification for long-form text generation. arXiv preprint. https://doi.org/10.48550/arXiv.2407.21057
+[52] Zollicoffer, G., Vu, M. N., et al. (2026). Sanity checks for long-form hallucination detection. arXiv preprint. https://doi.org/10.48550/arXiv.2605.08346
+[53] Srey, P., Wu, X., et al. (2025). Unsupervised hallucination detection by inspecting reasoning processes. In Proc. EMNLP 2025. https://doi.org/10.18653/v1/2025.emnlp-main.1124
+[54] Farquhar, S., Kossen, J., Kuhn, L., & Gal, Y. (2024). Detecting hallucinations in large language models using semantic entropy. Nature, 630, 625-630. https://doi.org/10.1038/s41586-024-07421-0
+[55] Wen, B., Yao, J., Feng, S., et al. (2025). Know your limits: A survey of abstention in large language models. Transactions of the ACL. https://doi.org/10.48550/arXiv.2407.18418
+[56] Kang, S., Bakman, Y. F., Yaldiz, D. N., et al. (2025). Uncertainty quantification for hallucination detection in large language models: Foundations, methodology, and future directions. arXiv preprint. https://doi.org/10.48550/arXiv.2510.12040
+[57] Huang, L., Yu, W., et al. (2025). A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions. ACM Transactions on Information Systems, 43(2). https://doi.org/10.1145/3703155
+[58] Shorinwa, O., Mei, Z., et al. (2025). A survey on uncertainty quantification of large language models: Taxonomy, open research challenges, and future directions. ACM Computing Surveys. https://doi.org/10.1145/3744238
+[59] Geng, J., Cai, F., et al. (2024). A survey of confidence estimation and calibration in large language models. In Proc. NAACL 2024. https://doi.org/10.18653/v1/2024.naacl-long.366
+[60] Page, M. J., McKenzie, J. E., Bossuyt, P. M., et al. (2021). The PRISMA 2020 statement: An updated guideline for reporting systematic reviews. BMJ, 372, n71. https://doi.org/10.1136/bmj.n71
+[61] Priem, J., Piwowar, H., & Orr, R. (2022). OpenAlex: A fully-open index of scholarly works, authors, venues, institutions, and concepts. arXiv preprint. https://doi.org/10.48550/arXiv.2205.01833

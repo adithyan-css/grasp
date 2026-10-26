@@ -1,0 +1,1301 @@
+{
+ "query": "(\"hallucination detection\" OR \"uncertainty quantification\" OR \"confidence estimation\") AND (\"large language model\" OR LLM) AND (claim OR \"fine-grained\" OR \"long-form\" OR \"token-level\" OR \"atomic fact\")",
+ "filter": "title_and_abstract.search:(\"hallucination detection\" OR \"uncertainty quantification\" OR \"confidence estimation\") AND (\"large language model\" OR LLM) AND (claim OR \"fine-grained\" OR \"long-form\" OR \"token-level\" OR \"atomic fact\"),from_publication_date:2020-01-01,to_publication_date:2026-10-24",
+ "retrieved": "2026-10-26",
+ "meta": {
+  "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+  "count": 391,
+  "db_response_time_ms": 86,
+  "page": 1,
+  "per_page": 200,
+  "groups_count": null,
+  "x_query": {
+   "oql": "get works from 2020-01-01 through 2026-10-24 with ((LLM OR stemmed \"large language model\") AND (stemmed \"atomic fact\" OR stemmed \"fine-grained\" OR stemmed \"long-form\" OR stemmed \"token-level\" OR claim) AND (stemmed \"confidence estimation\" OR stemmed \"hallucination detection\" OR stemmed \"uncertainty quantification\")) in the title or abstract",
+   "x_new_oql": "get works from 2020-01-01 through 2026-10-24 with ((LLM OR stemmed \"large language model\") AND (stemmed \"atomic fact\" OR stemmed \"fine-grained\" OR stemmed \"long-form\" OR stemmed \"token-level\" OR claim) AND (stemmed \"confidence estimation\" OR stemmed \"hallucination detection\" OR stemmed \"uncertainty quantification\")) in the title or abstract",
+   "oqo": {
+    "get_rows": "works",
+    "filter_rows": [
+     {
+      "column_id": "from_publication_date",
+      "value": "2020-01-01"
+     },
+     {
+      "column_id": "to_publication_date",
+      "value": "2026-10-24"
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "LLM",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"large language model\"",
+        "operator": "has"
+       }
+      ]
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"atomic fact\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"fine-grained\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"long-form\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"token-level\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "claim",
+        "operator": "has"
+       }
+      ]
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"confidence estimation\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"hallucination detection\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"uncertainty quantification\"",
+        "operator": "has"
+       }
+      ]
+     }
+    ]
+   },
+   "url": "/works?filter=from_publication_date:2020-01-01,to_publication_date:2026-10-24,title_and_abstract.search:LLM|%22large language model%22,title_and_abstract.search:%22atomic fact%22|%22fine-grained%22|%22long-form%22|%22token-level%22|claim,title_and_abstract.search:%22confidence estimation%22|%22hallucination detection%22|%22uncertainty quantification%22&per_page=200",
+   "order": "best matches first",
+   "order_default": true
+  },
+  "cost_usd": 0.001
+ },
+ "results": [
+  {
+   "id": "https://openalex.org/W7161053567",
+   "doi": "https://doi.org/10.48550/arxiv.2605.12384",
+   "title": "Scalable Token-Level Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4402670143",
+   "doi": "https://doi.org/10.18653/v1/2024.findings-acl.558",
+   "title": "Fact-Checking the Output of Large Language Models via Token-Level Uncertainty Quantification",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7138950689",
+   "doi": "https://doi.org/10.59543/comdem.v3i.17665",
+   "title": "Hallucination Detection in Large Language Models via Multi-Granular Uncertainty Quantification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4392617635",
+   "doi": "https://doi.org/10.48550/arxiv.2403.04696",
+   "title": "Fact-Checking the Output of Large Language Models via Token-Level Uncertainty Quantification",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7130323398",
+   "doi": "https://doi.org/10.48448/he5s-m650",
+   "title": "Fine-grained Confidence Estimation for Spurious Correctness Detection in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4400267492",
+   "doi": "https://doi.org/10.48550/arxiv.2407.00488",
+   "title": "PFME: A Modular Approach for Fine-grained Hallucination Detection and Editing of Large Language Models",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7137814967",
+   "doi": "https://doi.org/10.18653/v1/2025.ijcnlp-long.68",
+   "title": "Fine-grained Confidence Estimation for Spurious Correctness Detection in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7168367487",
+   "doi": "https://doi.org/10.48448/gsq3-w043",
+   "title": "IUQ: Interrogative Uncertainty Quantification for Long-Form Large Language Model Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7154865537",
+   "doi": null,
+   "title": "IUQ: Interrogative Uncertainty Quantification for Long-Form Large Language Model Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7154686420",
+   "doi": "https://doi.org/10.48550/arxiv.2604.15109",
+   "title": "IUQ: Interrogative Uncertainty Quantification for Long-Form Large Language Model Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166875226",
+   "doi": "https://doi.org/10.18653/v1/2026.acl-long.606",
+   "title": "IUQ: Interrogative Uncertainty Quantification for Long-Form Large Language Model Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7130718223",
+   "doi": "https://doi.org/10.48550/arxiv.2602.17431",
+   "title": "Fine-Grained Uncertainty Quantification for Long-Form Language Model Outputs: A Comparative Study",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203916394",
+   "doi": "https://doi.org/10.5281/zenodo.22021557",
+   "title": "Sequential Hallucination Detection for Long-Form LLM Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4411119523",
+   "doi": "https://doi.org/10.18653/v1/2025.naacl-long.113",
+   "title": "Token-Level Density-Based Uncertainty Quantification Methods for Eliciting Truthfulness of Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7162697509",
+   "doi": "https://doi.org/10.48550/arxiv.2605.28740",
+   "title": "Reverse Probing: Supervised Token-level Uncertainty Quantification for Large Language Models in Clinical Text",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4415709332",
+   "doi": "https://doi.org/10.1109/icaiet65052.2025.11211393",
+   "title": "Integrating Token-Level Uncertainty, Bidirectional NLI, and Semantic Entropy for Robust Hallucination Detection in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4403507530",
+   "doi": "https://doi.org/10.1145/3689090.3689388",
+   "title": "Fine-grained Structural Hallucination Detection for Unified Visual Comprehension and Generation in Multimodal LLM",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7160045299",
+   "doi": "https://doi.org/10.5281/zenodo.20025987",
+   "title": "Framework for Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414460147",
+   "doi": "https://doi.org/10.48550/arxiv.2508.12040",
+   "title": "Mind the Generation Process: Fine-Grained Confidence Estimation During LLM Generation",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7214749355",
+   "doi": "https://doi.org/10.5281/zenodo.23038175",
+   "title": "When Does Claim Decomposition Help? Fine-Grained vs. Single-Prompt LLM Judges for RAG Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204466892",
+   "doi": "https://doi.org/10.5281/zenodo.22119364",
+   "title": "Adaptive Hierarchical Confidence Estimation for Claim-Level Hallucination Detection in Retrieval-Augmented Generation Systems",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163595167",
+   "doi": null,
+   "title": "FLaG: Fine-Grained Latent Grouping for Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4391013695",
+   "doi": "https://doi.org/10.48550/arxiv.2401.06855",
+   "title": "Fine-grained Hallucination Detection and Editing for Language Models",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W4399252779",
+   "doi": "https://doi.org/10.48550/arxiv.2405.20003",
+   "title": "Kernel Language Entropy: Fine-grained Uncertainty Quantification for LLMs from Semantic Similarities",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7197028486",
+   "doi": "https://doi.org/10.1145/3770855.3818137",
+   "title": "FLaG: Fine-Grained Latent Grouping for Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7140082075",
+   "doi": "https://doi.org/10.1007/978-3-032-21289-4_8",
+   "title": "Learned Hallucination Detection in Black-Box LLMs Using Token-Level Entropy Production Rate",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163208534",
+   "doi": "https://doi.org/10.48550/arxiv.2606.00301",
+   "title": "FLaG: Fine-Grained Latent Grouping for Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4412638552",
+   "doi": "https://doi.org/10.1007/978-981-95-0014-7_37",
+   "title": "Towards Reliable Large Language Models: A Survey on Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4415799082",
+   "doi": "https://doi.org/10.52202/079017-0283",
+   "title": "Kernel Language Entropy: Fine-grained Uncertainty Quantification for LLMs from Semantic Similarities",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7212275998",
+   "doi": "https://doi.org/10.48550/arxiv.2609.11878",
+   "title": "Domain-Specific Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416037193",
+   "doi": "https://doi.org/10.18653/v1/2025.emnlp-industry.139",
+   "title": "Zero-knowledge LLM hallucination detection and mitigation through fine-grained cross-model consistency",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7106822109",
+   "doi": "https://doi.org/10.48448/r592-tr74",
+   "title": "Zero-knowledge LLM hallucination detection and mitigation through fine-grained cross-model consistency",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7221763629",
+   "doi": "https://doi.org/10.48550/arxiv.2610.14214",
+   "title": "Embedding Graph Kernel Entropy (EGKE): Fine-grained Hallucination Detection for LLMs from Embeddings",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4412888873",
+   "doi": "https://doi.org/10.18653/v1/2025.findings-acl.211",
+   "title": "Long-form Hallucination Detection with Self-elicitation",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7214054205",
+   "doi": "https://doi.org/10.1109/ciacon70148.2026.11689445",
+   "title": "HalluXAI: A Claim-Level Multi-Agent Framework for Explainable Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4404782510",
+   "doi": "https://doi.org/10.18653/v1/2024.findings-emnlp.461",
+   "title": "Multilingual Fine-Grained News Headline Hallucination Detection",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7106835619",
+   "doi": "https://doi.org/10.48448/epf6-z722",
+   "title": "A Head to Predict and a Head to Question: Pre-trained Uncertainty Quantification Heads for Hallucination Detection in LLM Outputs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4415108101",
+   "doi": "https://doi.org/10.48550/arxiv.2506.13130",
+   "title": "ZINA: Multimodal Fine-grained Hallucination Detection and Editing",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7117316826",
+   "doi": "https://doi.org/10.48550/arxiv.2512.20949",
+   "title": "Neural Probe-Based Hallucination Detection for Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4414591368",
+   "doi": "https://doi.org/10.48550/arxiv.2509.09700",
+   "title": "Cross-Layer Attention Probing for Fine-Grained Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7125513103",
+   "doi": "https://doi.org/10.48550/arxiv.2601.15645",
+   "title": "Towards Reliable Medical LLMs: Benchmarking and Enhancing Confidence Estimation of Large Language Models in Medical Consultation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416033875",
+   "doi": "https://doi.org/10.18653/v1/2025.findings-emnlp.1184",
+   "title": "Evaluating Uncertainty Quantification Methods in Argumentative Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7117319847",
+   "doi": "https://doi.org/10.1016/j.eswa.2025.130857",
+   "title": "HaluGNN: Hallucination detection in large language models using graph neural network",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7126097375",
+   "doi": "https://doi.org/10.3929/ethz-c-000794706",
+   "title": "A head to predict and a head to question: Pre-trained uncertainty quantification heads for hallucination detection in llm outputs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7106802115",
+   "doi": "https://doi.org/10.48448/trt9-6v81",
+   "title": "Evaluating Uncertainty Quantification Methods in Argumentative Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4389519596",
+   "doi": "https://doi.org/10.18653/v1/2023.emnlp-main.867",
+   "title": "KCTS: Knowledge-Constrained Tree Search Decoding with Token-Level Hallucination Detection",
+   "year": 2023
+  },
+  {
+   "id": "https://openalex.org/W7215080598",
+   "doi": "https://doi.org/10.2139/ssrn.7549417",
+   "title": "Hallucination Detection in Arabic Scientific Content Generated by Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7160901180",
+   "doi": "https://doi.org/10.48550/arxiv.2605.08346",
+   "title": "Sanity Checks for Long-Form Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203868161",
+   "doi": "https://doi.org/10.5281/zenodo.22048080",
+   "title": "Evidence-Calibrated Multi-Signal Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7125486835",
+   "doi": "https://doi.org/10.48550/arxiv.2601.15652",
+   "title": "Predictive Coding and Information Bottleneck for Hallucination Detection in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166815818",
+   "doi": "https://doi.org/10.48550/arxiv.2606.31033",
+   "title": "CORTEX: Token-Level Hallucination Detection in RAG via Comparative Internal Representations",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221716526",
+   "doi": "https://doi.org/10.5281/zenodo.23350085",
+   "title": "Detect and Correct: A Survey of Hallucination Detection and Mitigation in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204783019",
+   "doi": "https://doi.org/10.1109/insect68872.2026.11663745",
+   "title": "A Hybrid Approach for Hallucination Detection in Large Language Models Using Semantic Uncertainty, Self-Consistency, and Claim Decomposition",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214100310",
+   "doi": "https://doi.org/10.48550/arxiv.2609.26060",
+   "title": "ChainUQ: Reasoning Consistency-Aware Uncertainty Quantification for Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7167742306",
+   "doi": "https://doi.org/10.48550/arxiv.2607.05721",
+   "title": "SpanUQ: Span-Level Uncertainty Quantification for Large Language Model Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165671873",
+   "doi": "https://doi.org/10.48550/arxiv.2606.22792",
+   "title": "The Origins of Stochasticity: Comprehensive Investigations on Uncertainty Quantification for Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7158877168",
+   "doi": "https://doi.org/10.48550/arxiv.2604.26139",
+   "title": "HIVE: Hidden-Evidence Verification for Hallucination Detection in Diffusion Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7220656103",
+   "doi": "https://doi.org/10.1109/aic70896.2026.11717234",
+   "title": "Adaptive Claim Level Hallucination Detection and Mitigation for BlackBox LLMs on Amazon Bedrock",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204891465",
+   "doi": "https://doi.org/10.5281/zenodo.22238966",
+   "title": "Explainable Hallucination Detection in Large Language Models Using Evidence-Grounded Verification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4398811333",
+   "doi": "https://doi.org/10.48550/arxiv.2405.14486",
+   "title": "RefChecker: Reference-based Fine-grained Hallucination Checker and Benchmark for Large Language Models",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7140108042",
+   "doi": "https://doi.org/10.18653/v1/2026.eacl-srw.15",
+   "title": "Constructing a Dataset for Hallucination Detection in Japanese Summarization with Fine-grained Faithfulness Labels",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155398831",
+   "doi": "https://doi.org/10.48448/cnmd-7a04",
+   "title": "Constructing a Dataset for Hallucination Detection in Japanese Summarization with Fine-grained Faithfulness Labels",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7170412296",
+   "doi": "https://doi.org/10.48550/arxiv.2607.21105",
+   "title": "HalluScope: Fine-grained Hallucination Diagnosis for Multimodal Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7204176886",
+   "doi": "https://doi.org/10.48550/arxiv.2608.22506",
+   "title": "Kernel Token Contradiction: a Fast and Principled Approach for LLM Claim Uncertainty Quantification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166848328",
+   "doi": "https://doi.org/10.18653/v1/2026.findings-acl.1673",
+   "title": "Hallucination Detection in Long-Form Text Generated by LLMs: A Benchmark and a Hyper-Relational Knowledge Graph Approach",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155071087",
+   "doi": "https://doi.org/10.1109/icassp55912.2026.11462457",
+   "title": "Hallucination Detection Via Internal States and Structured Reasoning Consistency in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7223505344",
+   "doi": null,
+   "title": "Research on Factual Hallucination Detection and Mitigation in Large Language Models Based on Retrieval-Augmented",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166859575",
+   "doi": "https://doi.org/10.18653/v1/2026.acl-long.1665",
+   "title": "DUD: Decoupled Update Dynamics for Reliable Uncertainty Quantification in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7106712567",
+   "doi": "https://doi.org/10.48550/arxiv.2511.17946",
+   "title": "Measuring the Impact of Lexical Training Data Coverage on Hallucination Detection in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7114794533",
+   "doi": "https://doi.org/10.5167/uzh-280545",
+   "title": "UZH at SemEval-2025 Task 3: Token-Level Self-Consistency for Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7169054032",
+   "doi": "https://doi.org/10.48448/b1nk-bf11",
+   "title": "DUD: Decoupled Update Dynamics for Reliable Uncertainty Quantification in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7197054085",
+   "doi": null,
+   "title": "DUD: Decoupled Update Dynamics for Reliable Uncertainty Quantification in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7172529309",
+   "doi": "https://doi.org/10.48550/arxiv.2608.03411",
+   "title": "DUD: Decoupled Update Dynamics for Reliable Uncertainty Quantification in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4415060499",
+   "doi": "https://doi.org/10.48550/arxiv.2503.16541",
+   "title": "Poly-FEVER: A Multilingual Fact Verification Benchmark for Hallucination Detection in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4401306282",
+   "doi": "https://doi.org/10.48550/arxiv.2407.21057",
+   "title": "Multi-group Uncertainty Quantification for Long-form Text Generation",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W4400341514",
+   "doi": "https://doi.org/10.48550/arxiv.2407.00994",
+   "title": "LLM Uncertainty Quantification through Directional Entailment Graph and Claim Level Response Augmentation",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7106807200",
+   "doi": "https://doi.org/10.48448/k313-tp74",
+   "title": "FG-PRM: Fine-grained Hallucination Detection and Mitigation in Language Model Mathematical Reasoning",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7155032570",
+   "doi": "https://doi.org/10.1109/icassp55912.2026.11462617",
+   "title": "Constrained Paraphrase Consistency for LLM Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164046048",
+   "doi": "https://doi.org/10.48550/arxiv.2606.08158",
+   "title": "Constrained Paraphrase Consistency for LLM Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416035882",
+   "doi": "https://doi.org/10.18653/v1/2025.findings-emnlp.228",
+   "title": "FG-PRM: Fine-grained Hallucination Detection and Mitigation in Language Model Mathematical Reasoning",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7164234269",
+   "doi": null,
+   "title": "Constrained Paraphrase Consistency for LLM Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7131314049",
+   "doi": "https://doi.org/10.1109/dsis67228.2025.11390158",
+   "title": "TGRV: Triple Graph-Based Retrieval and Verification for Hallucination Detection in Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7170180213",
+   "doi": "https://doi.org/10.48550/arxiv.2607.20219",
+   "title": "HalluTruthQA: A Fine-Grained Benchmark for Hallucination Detection, Localization, and Explanation in Arabic Question Answering",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7127454394",
+   "doi": "https://doi.org/10.48550/arxiv.2602.00977",
+   "title": "Trust in One Round: Confidence Estimation for Large Language Models via Structural Signals",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4388092399",
+   "doi": "https://doi.org/10.48550/arxiv.2310.18344",
+   "title": "Chainpoll: A high efficacy method for LLM hallucination detection",
+   "year": 2023
+  },
+  {
+   "id": "https://openalex.org/W7147452906",
+   "doi": "https://doi.org/10.1109/icarc68737.2026.11454122",
+   "title": "Prioritized Cross-Model Verification System for Hallucination Detection in Black-Box Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7223304185",
+   "doi": "https://doi.org/10.5281/zenodo.23588151",
+   "title": "Research on Factual Hallucination Detection and Mitigation in Large Language Models Based on Retrieval-Augmented Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7139098629",
+   "doi": "https://doi.org/10.48550/arxiv.2603.16459",
+   "title": "DynHD: Hallucination Detection for Diffusion Large Language Models via Denoising Dynamics Deviation Learning",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7212321417",
+   "doi": "https://doi.org/10.48550/arxiv.2609.11244",
+   "title": "OmniHallu: Unified Hallucination Detection for Cross-Modal Comprehension and Generation in Multimodal Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7106265057",
+   "doi": "https://doi.org/10.48550/arxiv.2511.16275",
+   "title": "SeSE: Black-Box Uncertainty Quantification for Large Language Models Based on Structural Information Theory",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7171842375",
+   "doi": "https://doi.org/10.2139/ssrn.7200222",
+   "title": "Multi-Method Ensemble Framework for LLM Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203717763",
+   "doi": "https://doi.org/10.1016/j.neucom.2026.134859",
+   "title": "Confidence-weighted semantic entropy: A robust framework for hallucination detection and uncertainty estimation in large language models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7172457243",
+   "doi": "https://doi.org/10.48550/arxiv.2608.00417",
+   "title": "SymboUQ: Symbolic Uncertainty Quantification for Spatial Reasoning in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164160074",
+   "doi": "https://doi.org/10.48550/arxiv.2606.09875",
+   "title": "Integrating Local and Global Entropy for Uncertainty Quantification in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163546646",
+   "doi": "https://doi.org/10.48550/arxiv.2606.04727",
+   "title": "EviRank: Evidence-Based Confidence Estimation for LLM-Based Ranking",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163881738",
+   "doi": "https://doi.org/10.1007/978-981-92-1465-5_37",
+   "title": "Conditional Contrastive Confidence-Based Uncertainty Quantification for LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166880671",
+   "doi": "https://doi.org/10.18653/v1/2026.findings-acl.2064",
+   "title": "From Passive Metric to Active Signal: The Evolving Role of Uncertainty Quantification in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214651727",
+   "doi": "https://doi.org/10.56975/ijrti.v11i9.300739",
+   "title": "Proactive Trust Calibration for Large Language Models: A Systematic Framework for Hallucination Detection, Uncertainty Estimation, and Reliability Assessment",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155386571",
+   "doi": "https://doi.org/10.48448/fq99-n763",
+   "title": "FactSelfCheck: Fact-Level Black-Box Hallucination Detection for LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416887364",
+   "doi": "https://doi.org/10.48550/arxiv.2504.18639",
+   "title": "Span-Level Hallucination Detection for LLM-Generated Answers",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7172502394",
+   "doi": "https://doi.org/10.48550/arxiv.2608.03966",
+   "title": "HalluTruthQA-4K: A Fine-Grained Corpus and Annotation Process for Arabic Hallucination Detection and Truth Verification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7106572344",
+   "doi": "https://doi.org/10.48448/9023-0938",
+   "title": "Atomic Calibration of LLMs in Long-Form Generations",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7137862630",
+   "doi": "https://doi.org/10.18653/v1/2025.findings-ijcnlp.9",
+   "title": "Atomic Calibration of LLMs in Long-Form Generations",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4415249784",
+   "doi": "https://doi.org/10.48550/arxiv.2505.20045",
+   "title": "Efficient Hallucination Detection for LLMs Using Uncertainty-Aware Attention Heads",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7147451450",
+   "doi": "https://doi.org/10.1109/iciss67859.2026.11453765",
+   "title": "Reliable Hallucination Detection in Large Language Models using Multi-Source Evidence and Natural Language Inference",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4411725579",
+   "doi": "https://doi.org/10.1109/access.2025.3583759",
+   "title": "Meticulous Thought Defender: Fine-Grained Chain-of-Thought (CoT) for Detecting Prompt Injection Attacks of Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7172413477",
+   "doi": "https://doi.org/10.5281/zenodo.21790278",
+   "title": "TruthLens: An Explainable Multi-Agent Framework for Hallucination Detection through Evidence-Based Verification in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7134958205",
+   "doi": "https://doi.org/10.1109/iisec69317.2026.11418463",
+   "title": "A White-Box Benchmark for Intrinsic Hallucination Detection in Turkish LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166807118",
+   "doi": "https://doi.org/10.18653/v1/2026.mellm-1.6",
+   "title": "MultiHaluDet: Multilingual Hallucination Detection via LLM Hidden State Probing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7128096049",
+   "doi": null,
+   "title": "Uncertainty Quantification in LLM Agents: Foundations, Emerging Challenges, and Opportunities",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162605949",
+   "doi": null,
+   "title": "MultiHaluDet: Multilingual Hallucination Detection via LLM Hidden State Probing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7168392588",
+   "doi": "https://doi.org/10.48448/0r8a-pk92",
+   "title": "Uncertainty Quantification in LLM Agents: Foundations, Emerging Challenges, and Opportunities",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162402683",
+   "doi": "https://doi.org/10.48550/arxiv.2605.24919",
+   "title": "MultiHaluDet: Multilingual Hallucination Detection via LLM Hidden State Probing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7127988307",
+   "doi": "https://doi.org/10.48550/arxiv.2602.05073",
+   "title": "Uncertainty Quantification in LLM Agents: Foundations, Emerging Challenges, and Opportunities",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165863365",
+   "doi": "https://doi.org/10.21203/rs.3.rs-9986071/v1",
+   "title": "A Multi-Layer Framework for Hallucination Detection and Mitigation in Large Language Models Using Retrieval Grounding and Small Language Model Verification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221509191",
+   "doi": "https://doi.org/10.67698/pjpcr.2026.0193",
+   "title": "Semantic Entropy as a Scalable Hallucination Detection Signal in Large Language Models: Theoretical Grounding, Calibration, and Downstream Task Benchmark",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7169123952",
+   "doi": "https://doi.org/10.48448/qn14-6c10",
+   "title": "JointCQ: Improving Factual Hallucination Detection with Joint Claim and Query Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7221082227",
+   "doi": "https://doi.org/10.48550/arxiv.2610.10971",
+   "title": "When Citations Mislead? A Claim-Level Benchmark for Legal Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416246729",
+   "doi": "https://doi.org/10.18653/v1/2026.findings-acl.58",
+   "title": "JointCQ: Improving Factual Hallucination Detection with Joint Claim and Query Generation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7220991868",
+   "doi": "https://doi.org/10.48550/arxiv.2610.07948",
+   "title": "Confidence Reasoning Graphs: Structured Confidence Estimation for LLM Agents",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7170369345",
+   "doi": "https://doi.org/10.5281/zenodo.21523000",
+   "title": "TruthLens: Real-Time Evidence Verification and AI Hallucination Detection for Large Language Models via a Multi-Agent Architecture",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7172382753",
+   "doi": "https://doi.org/10.48550/arxiv.2608.00422",
+   "title": "TrAC: Trace-Conditioned Answer Consistency for Efficient Uncertainty Quantification in LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7157305287",
+   "doi": "https://doi.org/10.48550/arxiv.2604.23366",
+   "title": "GSAR: Typed Grounding for Hallucination Detection and Recovery in Multi-Agent LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4417300510",
+   "doi": "https://doi.org/10.48550/arxiv.2505.12265",
+   "title": "Learning Auxiliary Tasks Improves Reference-Free Hallucination Detection in Open-Domain Long-Form Generation",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4413250343",
+   "doi": "https://doi.org/10.70844/ijas.2025.2.29",
+   "title": "Evaluating Log-Likelihood for Confidence Estimation in LLM-Based Multiple-Choice Question Answering",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7204249701",
+   "doi": "https://doi.org/10.48550/arxiv.2608.24492",
+   "title": "When Do Supervised UQ Ensembles Improve LLM Hallucination Detection? A Robustness Study",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7213984551",
+   "doi": "https://doi.org/10.2196/92090",
+   "title": "Improving Reliability and Explainability of Medical Question Answering Through Atomic Fact-Checking in Retrieval-Augmented Large Language Models: Creation and Validation Study",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7222765688",
+   "doi": "https://doi.org/10.48550/arxiv.2610.22031",
+   "title": "GraphACM: Graph-based Action Consistency Measurement for Uncertainty Quantification in LLM Agents",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4412944464",
+   "doi": "https://doi.org/10.18653/v1/2025.sdp-1.31",
+   "title": "A.M.P at SciHal2025: Automated Hallucination Detection in Scientific Content via LLMs and Prompt Engineering",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7169636052",
+   "doi": null,
+   "title": "Uncertainty in large language models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7215938166",
+   "doi": "https://doi.org/10.48550/arxiv.2610.02066",
+   "title": "External Observers May See More Clearly: Cross-Model Span-Level Hallucination Detection in Large Language Models via Hidden State Probing",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414858752",
+   "doi": "https://doi.org/10.48550/arxiv.2505.24830",
+   "title": "Improving Reliability and Explainability of Medical Question Answering through Atomic Fact Checking in Retrieval-Augmented LLMs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7207690729",
+   "doi": "https://doi.org/10.48550/arxiv.2609.02679",
+   "title": "From Tokens to Semantics: Leveraging Complementary Signals for Hallucination Detection in Black-Box LLMs",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7154981443",
+   "doi": "https://doi.org/10.1007/978-981-95-7078-2_36",
+   "title": "SCD-HDC: A Hallucination Detection and Correction Method for LLMs Based on Syntactic Component Decomposition",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416369288",
+   "doi": "https://doi.org/10.48550/arxiv.2510.02671",
+   "title": "Uncertainty as Feature Gaps: Epistemic Uncertainty Quantification of LLMs in Contextual Question-Answering",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7152584011",
+   "doi": "https://doi.org/10.17762/ijisae.v13i2s.8147",
+   "title": "Embedded Hallucination Detection Widgets as UI-Level Model Health Indicators in Web-Based LLM Applications",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4414601981",
+   "doi": "https://doi.org/10.1007/978-3-032-06078-5_16",
+   "title": "Uncertainty Quantification for Black-Box LLMs via Star Graphs Connectivity: Exploring Alternatives for Semantic Density",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7220466739",
+   "doi": "https://doi.org/10.48550/arxiv.2610.03482",
+   "title": "Single-Pass Uncertainty Heads for Claim-Level Hallucination Detection in Persian Medical Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7160847460",
+   "doi": "https://doi.org/10.18130/xmj4-m547",
+   "title": "TopoGuard: Training-Free Hallucination Detection in Graph-Grounded Question Answering; LLM Hallucinations in Academic Research",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7133217615",
+   "doi": "https://doi.org/10.3389/fdgth.2026.1761601",
+   "title": "MEDAI-LLM-SUMM: a reporting checklist for medical text summarization studies using large language models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7165192912",
+   "doi": "https://doi.org/10.25258/ijddt.16.54s.157",
+   "title": "VERIFY-DD: An Evidence-Grounded Agentic AI Framework for Hallucination Detection and Mitigation in LLM-Assisted Drug Discovery",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7161025369",
+   "doi": "https://doi.org/10.48550/arxiv.2605.11334",
+   "title": "VERDI: Single-Call Confidence Estimation for Verification-Based LLM Judges via Decomposed Inference",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7206156952",
+   "doi": "https://doi.org/10.48550/arxiv.2609.00581",
+   "title": "Enoki: Efficient Multi-Level Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7211976003",
+   "doi": "https://doi.org/10.1051/itmconf/20269005009",
+   "title": "Lightweight Hallucination Detection for Latency-Sensitive Financial Trading: A Real-Time Architecture with Atomic Claim Verification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7155050102",
+   "doi": "https://doi.org/10.1109/icassp55912.2026.11463868",
+   "title": "Cross Paraphrastic Invariance Learning for Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416138628",
+   "doi": "https://doi.org/10.48550/arxiv.2506.05243",
+   "title": "CLATTER: Comprehensive Entailment Reasoning for Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4416036295",
+   "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.684",
+   "title": "The Impact of Negated Text on Hallucination with Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7164010189",
+   "doi": "https://doi.org/10.48550/arxiv.2606.08157",
+   "title": "Cross Paraphrastic Invariance Learning for Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7201835280",
+   "doi": "https://doi.org/10.48550/arxiv.2608.05823",
+   "title": "Decomposed Entailment for Factuality Checking and Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7106813562",
+   "doi": "https://doi.org/10.48448/ttzm-h856",
+   "title": "The Impact of Negated Text on Hallucination with Large Language Models",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7164233782",
+   "doi": null,
+   "title": "Cross Paraphrastic Invariance Learning for Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7207592016",
+   "doi": "https://doi.org/10.3791/72636",
+   "title": "Adaptive NLI-Driven Claim Verification with Statistical Decision Modeling for Low-Latency Hallucination Reduction in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414848608",
+   "doi": "https://doi.org/10.48550/arxiv.2502.17125",
+   "title": "LettuceDetect: A Hallucination Detection Framework for RAG Applications",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7167466118",
+   "doi": "https://doi.org/10.69987/jacs.2024.40207",
+   "title": "Evidence-Chain Reliable RAG: Word-Level Hallucination Detection, Source Attribution, and Provenance Explanation for LLM Applications",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W4412944465",
+   "doi": "https://doi.org/10.18653/v1/2025.sdp-1.33",
+   "title": "Natural Language Inference Fine-tuning for Scientific Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7128437676",
+   "doi": "https://doi.org/10.1371/journal.pone.0342053",
+   "title": "Emotion meets coordination: Designing multi-agent LLMs for fine-grained user sentiment detection on social media",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7203758729",
+   "doi": "https://doi.org/10.48550/arxiv.2608.17687",
+   "title": "Mixture-of-Expert Blocks Contain Strong Hallucination Detection Signals",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7169168860",
+   "doi": "https://doi.org/10.1007/978-981-92-3417-2_50",
+   "title": "Unsupervised Hallucination Detection via Generalized Semantic Entropy",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7130391626",
+   "doi": "https://doi.org/10.48448/2s7y-8k76",
+   "title": "SciHallu: A Multi-Granularity Hallucination Detection Dataset for Scientific Writing",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7146954963",
+   "doi": "https://doi.org/10.48550/arxiv.2603.27752",
+   "title": "Retromorphic Testing with Hierarchical Verification for Hallucination Detection in RAG",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7162784072",
+   "doi": "https://doi.org/10.21203/rs.3.rs-9707462/v1",
+   "title": "ConfidentNeuro: Conformal Prediction-Based Uncertainty Quantification for Hallucination Risk Scoring in LLM-Assisted Alzheimer's Clinical Decision Support",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7163385930",
+   "doi": "https://doi.org/10.1109/icoei68323.2026.11542188",
+   "title": "Transformer based Hallucination Detection and Correction System in the Medical Field",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4417248784",
+   "doi": "https://doi.org/10.48550/arxiv.2504.07069",
+   "title": "HalluciNot: Hallucination Detection Through Context and Common Knowledge Verification",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7221045138",
+   "doi": "https://doi.org/10.48550/arxiv.2610.08026",
+   "title": "The Labeling Problem in Hallucination Detection Benchmarks: An Empirical Evaluation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7220852664",
+   "doi": "https://doi.org/10.1007/s10791-026-10667-z",
+   "title": "Claim level graph reasoning for training free LLM hallucination mitigation",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7171510770",
+   "doi": "https://doi.org/10.48550/arxiv.2607.22661",
+   "title": "TRE: Training-Free Hallucination Detection for Diffusion Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414561568",
+   "doi": "https://doi.org/10.1007/s10579-025-09864-x",
+   "title": "A framework to synthetically generate fine-grained hallucinated data",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7168846530",
+   "doi": "https://doi.org/10.48448/fk5s-qa36",
+   "title": "RLSeek: Evidence-Grounded Reasoning for RAG Hallucination Detection",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7171750289",
+   "doi": null,
+   "title": "TRE: Training-Free Hallucination Detection for Diffusion Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416456107",
+   "doi": "https://doi.org/10.48550/arxiv.2511.10621",
+   "title": "SSR: Socratic Self-Refine for Large Language Model Reasoning",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7166036265",
+   "doi": "https://doi.org/10.29003/2075-7182-2026-24-516-534",
+   "title": "RusHallu-RAG: benchmarking hallucination detection for Russian RAG",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7166697677",
+   "doi": "https://doi.org/10.20944/preprints202606.2166.v1",
+   "title": "TRE: Training-Free Hallucination Detection for Diffusion Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7210281412",
+   "doi": "https://doi.org/10.1016/j.asoc.2026.116357",
+   "title": "Uncertainty calibration for hallucination detection via token dependency and sequence divergence",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4412888482",
+   "doi": "https://doi.org/10.18653/v1/2025.findings-acl.478",
+   "title": "MHALO: Evaluating MLLMs as Fine-grained Hallucination Detectors",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7160880110",
+   "doi": "https://doi.org/10.48550/arxiv.2605.07209",
+   "title": "Hallucination Detection via Activations of Open-Weight Proxy Analyzers",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7214753533",
+   "doi": "https://doi.org/10.48550/arxiv.2609.34967",
+   "title": "Semantic Uncertainty Quantification Needs Factual Equivalence",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4415191490",
+   "doi": "https://doi.org/10.63317/3y7cf5ctmi4c",
+   "title": "FineDialFact: A Benchmark for Fine-Grained Dialogue Fact Verification",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7167047807",
+   "doi": "https://doi.org/10.5281/zenodo.21125737",
+   "title": "Capability and Verification Claims in LLM Outputs: A Technical Note on Annotation Targets",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7130593875",
+   "doi": "https://doi.org/10.1109/fllm67465.2025.11390913",
+   "title": "Turk-LettuceDetect: A Hallucination Detection Model for Turkish RAG Applications",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4412944220",
+   "doi": "https://doi.org/10.18653/v1/2025.sdp-1.32",
+   "title": "SciBERT Meets Contrastive Learning: A Solution for Scientific Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4415797483",
+   "doi": "https://doi.org/10.52202/079017-1916",
+   "title": "ANAH-v2: Scaling Analytical Hallucination Annotation of Large Language Models",
+   "year": 2024
+  },
+  {
+   "id": "https://openalex.org/W7222794282",
+   "doi": "https://doi.org/10.56726/irjmets102786",
+   "title": "HALLUCINATION IN LARGE LANGUAGE MODELS: CAUSES, DETECTION, AND MITIGATION STRATEGIES",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4414749141",
+   "doi": "https://doi.org/10.48550/arxiv.2509.17671",
+   "title": "Turk-LettuceDetect: A Hallucination Detection Models for Turkish RAG Applications",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4407758946",
+   "doi": "https://doi.org/10.48550/arxiv.2502.11948",
+   "title": "HalluEntity: Benchmarking and Understanding Entity-Level Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7137857386",
+   "doi": "https://doi.org/10.48448/09tx-we23",
+   "title": "Global-Local Confidence Fusion for Hallucination Detection in Mathematical Reasoning Task",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7164044278",
+   "doi": "https://doi.org/10.48550/arxiv.2606.08705",
+   "title": "Analyzing the Correlation Between Hallucinations and Knowledge Conflicts in Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416445237",
+   "doi": "https://doi.org/10.48550/arxiv.2504.15771",
+   "title": "ORION Grounded in Context: Retrieval-Based Method for Hallucination Detection",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7138866418",
+   "doi": "https://doi.org/10.1609/aaai.v40i41.40762",
+   "title": "Global-Local Confidence Fusion for Hallucination Detection in Mathematical Reasoning Task",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4410398621",
+   "doi": "https://doi.org/10.32473/flairs.38.1.138892",
+   "title": "Exploring the Potential for Large Language Models to Demonstrate Rational Probabilistic Beliefs",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7168909693",
+   "doi": "https://doi.org/10.48448/v7h8-jr90",
+   "title": "Evolutionary Search for Automated Design of Uncertainty Quantification Methods",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7151581071",
+   "doi": "https://doi.org/10.48550/arxiv.2604.03473",
+   "title": "Evolutionary Search for Automated Design of Uncertainty Quantification Methods",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7152330574",
+   "doi": null,
+   "title": "Evolutionary Search for Automated Design of Uncertainty Quantification Methods",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W7167932174",
+   "doi": "https://doi.org/10.5281/zenodo.21283930",
+   "title": "From Tokens to Trust: Understanding Uncertainty in Autoregressive Large Language Models",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4416402222",
+   "doi": "https://doi.org/10.23919/fruct67853.2025.11239326",
+   "title": "Detecting Token-Level Hallucinations Using Variance Signals: A Reference-Free Approach",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W4414972588",
+   "doi": "https://doi.org/10.48550/arxiv.2510.04849",
+   "title": "When Models Lie, We Learn: Multilingual Span-Level Hallucination Detection with PsiloQA",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7106848570",
+   "doi": "https://doi.org/10.48448/hswk-pr74",
+   "title": "When Models Lie, We Learn: Multilingual Span-Level Hallucination Detection with PsiloQA",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7104401253",
+   "doi": "https://doi.org/10.18653/v1/2025.newsum-main.9",
+   "title": "HalluTree: Explainable Multi-Hop Hallucination Detection for Abstractive Summarization",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7214411691",
+   "doi": null,
+   "title": "Detecting Contextual Hallucinations in Large Language Models with Frequency-Aware Attention",
+   "year": 2026
+  },
+  {
+   "id": "https://openalex.org/W4417087080",
+   "doi": "https://doi.org/10.48550/arxiv.2512.04841",
+   "title": "SoK: a Comprehensive Causality Analysis Framework for Large Language Model Security",
+   "year": 2025
+  },
+  {
+   "id": "https://openalex.org/W7162795496",
+   "doi": "https://doi.org/10.48550/arxiv.2605.29523",
+   "title": "K-FinHallu: A Hallucination Detection Benchmark for Multi-Turn RAG in Korean Finance",
+   "year": 2026
+  }
+ ]
+}

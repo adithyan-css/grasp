@@ -1,0 +1,427 @@
+{
+ "query": "abs:hallucination AND (abs:\"attention heads\" OR abs:\"attention maps\" OR abs:\"hidden states\") AND abs:detection",
+ "retrieved": "2026-10-26",
+ "totalResults": "84",
+ "results": [
+  {
+   "id": "http://arxiv.org/abs/2407.07071v2",
+   "title": "Lookback Lens: Detecting and Mitigating Contextual Hallucinations in Large Language Models Using Only Attention Maps",
+   "published": "2024-07-09T17:44:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2601.05547v2",
+   "title": "VIB-Probe: Detecting and Mitigating Hallucinations in Vision-Language Models via Variational Information Bottleneck",
+   "published": "2026-01-09T05:58:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.02888v2",
+   "title": "HALT: Hallucination Assessment via Log-probs as Time series",
+   "published": "2026-02-02T22:46:23Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2502.17598v2",
+   "title": "Hallucination Detection in LLMs Using Spectral Features of Attention Maps",
+   "published": "2025-02-24T19:30:24Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.23299v1",
+   "title": "Data-efficient Meta-models for Evaluation of Context-based Questions and Answers in LLMs",
+   "published": "2025-05-29T09:50:56Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.20045v3",
+   "title": "Efficient Hallucination Detection for LLMs Using Uncertainty-Aware Attention Heads",
+   "published": "2025-05-26T14:28:37Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2410.02899v2",
+   "title": "FactCheckmate: Preemptively Detecting and Mitigating Hallucinations in LMs",
+   "published": "2024-10-03T18:45:00Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2412.15264v3",
+   "title": "ReXTrust: A Model for Fine-Grained Hallucination Detection in AI-Generated Radiology Reports",
+   "published": "2024-12-17T02:07:33Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2507.16488v1",
+   "title": "ICR Probe: Tracking Hidden State Dynamics for Reliable Hallucination Detection in LLMs",
+   "published": "2025-07-22T11:44:26Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.21538v1",
+   "title": "InterpDetect: Interpretable Signals for Detecting Hallucinations in Retrieval-Augmented Generation",
+   "published": "2025-10-24T15:02:01Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.10697v2",
+   "title": "Attention Sinks as Internal Signals for Hallucination Detection in Large Language Models",
+   "published": "2026-04-12T15:46:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2603.13782v1",
+   "title": "Your Vision-Language-Action Model Already Has Attention Heads For Path Deviation Detection",
+   "published": "2026-03-14T06:26:11Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.21096v1",
+   "title": "Detecting Hallucination in LLMs: Tracing the Topological Signatures of Impaired Context Sharing",
+   "published": "2026-09-17T21:15:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.19565v1",
+   "title": "Detecting Hallucinations in SpeechLLMs at Inference Time Using Attention Maps",
+   "published": "2026-04-21T15:18:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.18628v1",
+   "title": "AggTruth: Contextual Hallucination Detection using Aggregated Attention Scores in LLMs",
+   "published": "2025-06-23T13:35:05Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.23182v1",
+   "title": "What LLMs Do in the Shadows: Reading Context Reliance from the Unembedding Dark Space",
+   "published": "2026-10-16T09:21:49Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.27455v1",
+   "title": "Detecting Errors in Large Language Model Responses: The Incremental Predictive Value of Hidden States",
+   "published": "2026-10-20T01:12:00Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.09033v3",
+   "title": "Do LLMs Really Know What They Don't Know? Internal States Mainly Reflect Knowledge Recall Rather Than Truthfulness",
+   "published": "2025-10-10T06:09:04Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.14330v2",
+   "title": "Ensembling Multiple Hallucination Detectors Trained on VLLM Internal Representations",
+   "published": "2025-10-16T06:09:26Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.09886v2",
+   "title": "Probabilistic distances-based hallucination detection in LLMs with RAG",
+   "published": "2025-06-11T15:59:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.11536v2",
+   "title": "HARP: Hallucination Detection via Reasoning Subspace Projection",
+   "published": "2025-09-15T03:02:33Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.08389v1",
+   "title": "Revisiting Hallucination Detection with Effective Rank-based Uncertainty",
+   "published": "2025-10-09T16:12:12Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.19250v1",
+   "title": "Causal Evidence for Attention Head Imbalance in Modality Conflict Hallucination",
+   "published": "2026-05-19T01:47:53Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.29412v1",
+   "title": "Role-Break in Attention Heads: Understanding and Detecting Hallucinations in VLMs",
+   "published": "2026-07-31T13:33:51Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.22138v1",
+   "title": "Does the Truthfulness Signal Survive Code-Mixing? Probing Hidden States for Hallucination Detection in Hinglish",
+   "published": "2026-08-25T10:14:31Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.02784v2",
+   "title": "EnsemHalDet: Robust VLM Hallucination Detection via Ensemble of Internal State Detectors",
+   "published": "2026-04-03T06:48:27Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2406.15927v1",
+   "title": "Semantic Entropy Probes: Robust and Cheap Hallucination Detection in LLMs",
+   "published": "2024-06-22T19:46:06Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.06277v1",
+   "title": "Weakly Supervised Distillation of Hallucination Signals into Transformer Representations",
+   "published": "2026-04-07T08:14:48Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.02066v1",
+   "title": "External Observers May See More Clearly: Cross-Model Span-Level Hallucination Detection in Large Language Models via Hidden State Probing",
+   "published": "2026-10-01T17:06:53Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.08024v1",
+   "title": "Prompt Embedding Probes (PEP): Hallucination Detection in LLMs from Hidden States",
+   "published": "2026-08-08T09:14:47Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.13699v2",
+   "title": "Gradient-Stable Attention Heads Signal LLM Correctness",
+   "published": "2026-02-14T09:50:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.15741v1",
+   "title": "Learning Uncertainty from Sequential Internal Dispersion in Large Language Models",
+   "published": "2026-04-17T06:31:29Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.15607v1",
+   "title": "ASK-NN: An Asymmetric Nearest-Neighbor Test that detects Distribution Drifts in Natural Language",
+   "published": "2026-07-17T04:06:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.28520v1",
+   "title": "Detecting Clinical Hallucinations in LVLMs via Counterfactual Visual Grounding Uncertainty",
+   "published": "2026-06-26T18:15:38Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2505.08200v1",
+   "title": "A Head to Predict and a Head to Question: Pre-trained Uncertainty Quantification Heads for Hallucination Detection in LLM Outputs",
+   "published": "2025-05-13T03:30:26Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.24770v2",
+   "title": "Neural Message-Passing on Attention Graphs for Hallucination Detection",
+   "published": "2025-09-29T13:37:12Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.02028v1",
+   "title": "Detecting Object Hallucinations in Large Vision-Language Models via Cross-Modal Attention Drifts and Mask-Based Verification",
+   "published": "2026-09-02T02:58:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.17028v1",
+   "title": "PARALLAX: Separating Genuine Hallucination Detection from Benchmark Construction Artifacts",
+   "published": "2026-05-16T14:57:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.32964v2",
+   "title": "The Commit-Abstain Circuit: Why Language Models Hallucinate Instead of Abstaining",
+   "published": "2026-09-26T21:53:53Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.05686v3",
+   "title": "Attractor Geometry of Transformer Memory: From Conflict Arbitration to Confident Hallucination",
+   "published": "2026-05-07T05:25:54Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2601.14210v2",
+   "title": "DRIFT: Detecting Representational Inconsistencies for Factual Truthfulness",
+   "published": "2026-01-20T18:16:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2601.17467v3",
+   "title": "Harnessing Reasoning Trajectories for Hallucination Detection via Answer-agreement Representation Shaping",
+   "published": "2026-01-24T13:47:51Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.20949v1",
+   "title": "Neural Probe-Based Hallucination Detection for Large Language Models",
+   "published": "2025-12-24T05:10:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.13154v1",
+   "title": "LLM Hallucination Detection: A Fast Fourier Transform Method Based on Hidden Layer Temporal Signals",
+   "published": "2025-09-16T15:08:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.06056v1",
+   "title": "ROT: Rotating Hidden States towards Contextual Vectors for Hallucination Mitigation in LVLMs",
+   "published": "2026-10-05T09:49:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.05025v1",
+   "title": "Detecting Hallucinations in Large Language Models via Internal Attention Divergence Signals",
+   "published": "2026-05-06T15:21:27Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2506.17748v1",
+   "title": "HIDE and Seek: Detecting Hallucinations in Language Models via Decoupled Representations",
+   "published": "2025-06-21T16:02:49Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.22007v1",
+   "title": "Hallucination as Commitment Failure: Larger LLMs Misfire Despite Knowing the Answer",
+   "published": "2026-05-21T05:08:37Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2404.09971v2",
+   "title": "Constructing Benchmarks and Interventions for Combating Hallucinations in LLMs",
+   "published": "2024-04-15T17:48:46Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2503.08216v2",
+   "title": "Attention Hijackers: Detect and Disentangle Attention Hijacking in LVLMs for Hallucination Mitigation",
+   "published": "2025-03-11T09:35:55Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2607.24586v1",
+   "title": "D-Score: A Spectral Hidden-State Signal for Hallucination Detection in Large Language Models",
+   "published": "2026-07-27T15:52:33Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.10244v1",
+   "title": "Two-Token Features and Small-Large Ensembles for VLM Hallucination Detection",
+   "published": "2026-09-09T14:34:27Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.29545v1",
+   "title": "AURORA: Asymmetry and Update-Induced Rotation for Robust Hallucination Detection in Large Language Models",
+   "published": "2026-06-28T18:15:00Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2503.10602v3",
+   "title": "TruthPrInt: Mitigating Large Vision-Language Models Object Hallucination Via Latent Truthful-Guided Pre-Intervention",
+   "published": "2025-03-13T17:46:06Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.05953v1",
+   "title": "Hallucination as an Anomaly: Dynamic Intervention via Probabilistic Circuits",
+   "published": "2026-05-07T10:02:27Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2507.06722v2",
+   "title": "On the Effect of Uncertainty on Layer-wise Inference Dynamics",
+   "published": "2025-07-09T10:30:09Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.24919v1",
+   "title": "MultiHaluDet: Multilingual Hallucination Detection via LLM Hidden State Probing",
+   "published": "2026-05-24T07:50:03Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.13772v1",
+   "title": "Where Does Reasoning Break? Step-Level Hallucination Detection via Hidden-State Transport Geometry",
+   "published": "2026-05-13T16:48:48Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2104.08852v1",
+   "title": "Let's See Clearly: Contaminant Artifact Removal for Moving Cameras",
+   "published": "2021-04-18T13:37:34Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.03482v3",
+   "title": "Single-Pass Uncertainty Heads for Claim-Level Hallucination Detection in Persian Medical Language Models",
+   "published": "2026-10-02T15:50:46Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.01033v1",
+   "title": "TriLens: Per-Layer Logit-Lens Entropy for White-Box Hallucination Detection",
+   "published": "2026-05-31T05:48:21Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2510.04933v1",
+   "title": "The Geometry of Truth: Layer-wise Semantic Dynamics for Hallucination Detection in Large Language Models",
+   "published": "2025-10-06T15:41:22Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.30703v2",
+   "title": "SingProbe Technical Report",
+   "published": "2026-08-31T12:42:11Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2408.10692v2",
+   "title": "Unconditional Truthfulness: Learning Unconditional Uncertainty of Large Language Models",
+   "published": "2024-08-20T09:42:26Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2409.10597v1",
+   "title": "Optimizing Resource Consumption in Diffusion Models through Hallucination Early Detection",
+   "published": "2024-09-16T18:00:00Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2509.06472v2",
+   "title": "Rethinking LLM Parametric Knowledge as Post-retrieval Confidence for Dynamic Retrieval and Reranking",
+   "published": "2025-09-08T09:37:20Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.22723v1",
+   "title": "LEMON: Equivariant Learning over Attention Maps for Zero-Shot Misbehavior Monitoring on New LLMs",
+   "published": "2026-10-15T22:53:45Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.13417v1",
+   "title": "The Cognitive Circuit Breaker: A Systems Engineering Framework for Intrinsic AI Reliability",
+   "published": "2026-04-15T02:34:37Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.02628v1",
+   "title": "Hallucination Is Linearly Decodable from Mid-Layer Hidden States in Quantized LLMs",
+   "published": "2026-05-30T02:04:30Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.24115v1",
+   "title": "A Benchmark for Hallucination Detection in VLMs for Gastrointestinal Endoscopy",
+   "published": "2026-06-23T04:04:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2605.10893v3",
+   "title": "Grounded or Guessing? LVLM Confidence Estimation via Blind-Image Contrastive Ranking",
+   "published": "2026-05-11T17:35:10Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2610.27711v1",
+   "title": "How Fine-Tuning Objectives Shape Layer-Wise Information in LLM Hallucination Detection",
+   "published": "2026-10-20T06:30:27Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2601.12286v1",
+   "title": "Conversational Context Classification: A Representation Engineering Approach",
+   "published": "2026-01-18T06:47:35Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2504.00446v2",
+   "title": "Exposing the Ghost in the Transformer: Abnormal Detection for Large Language Models via Hidden State Forensics",
+   "published": "2025-04-01T05:58:14Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.28930v2",
+   "title": "The Hallucination Signal Is a Mean Shift: Why Simple Probes Suffice",
+   "published": "2026-08-28T23:01:21Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.27679v2",
+   "title": "From Signals to Transfer: A Factorised Study of Probe-Based Uncertainty Estimation in Large Language Models",
+   "published": "2026-06-26T03:23:15Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2604.20354v1",
+   "title": "Hallucination Early Detection in Diffusion Models",
+   "published": "2026-04-22T08:57:19Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.02289v2",
+   "title": "DECK: A Consistency x Confidence Taxonomy of LLM Hallucinations",
+   "published": "2026-06-01T14:11:11Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.20578v2",
+   "title": "Can LLMs Predict Their Own Failures? Self-Awareness via Internal Circuits",
+   "published": "2025-12-23T18:21:32Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2608.17950v2",
+   "title": "Do Large Language Models Play Six Degrees of Separation? Measuring Topological Compression in Long-Context Manifolds",
+   "published": "2026-08-18T16:05:25Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2512.11099v1",
+   "title": "VGent: Visual Grounding via Modular Design for Disentangling Reasoning and Prediction",
+   "published": "2025-12-11T20:21:00Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2606.10198v2",
+   "title": "Density Ridge Selective Prediction for LLM and VLM Hallucination Detection under Calibration Label Scarcity",
+   "published": "2026-06-08T21:36:12Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2609.06000v1",
+   "title": "ModularPhaseNet: Finite-Cyclic Phase Geometry for Computable Semantic Hierarchy, Direction, and Context Consistency in Standard Transformers",
+   "published": "2026-09-05T10:02:23Z"
+  },
+  {
+   "id": "http://arxiv.org/abs/2602.04918v2",
+   "title": "Simulated Adoption: Decoupling Magnitude and Direction in LLM In-Context Conflict Resolution",
+   "published": "2026-02-04T06:13:11Z"
+  }
+ ]
+}
